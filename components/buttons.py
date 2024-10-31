@@ -16,7 +16,7 @@ def facebook_login_button(translation, page: ft.Page):
                 "hovered": ft.BorderSide(width=0.5, color=ft.colors.BLACK),
             },
         ),
-        on_click=lambda _: page.go("/facebook-login"),
+        on_click=lambda _: page.go("/login"),
     )
     
 
@@ -135,7 +135,7 @@ def register_button_google(translation, page: ft.Page):
                     "hovered": ft.BorderSide(width=0.5, color=ft.colors.BLACK),
                 },
             ),
-            on_click=lambda e: page.go("/google-login")
+            on_click=lambda e: handle_google_login(e, page),
         )
     )
     
@@ -190,5 +190,20 @@ def send_button(translation, page: ft.Page, handle_forgot_password):
     )
     
     
-    
-    
+def log_in_button_home_page(translation, page: ft.Page):
+    return ft.Container(
+        padding=ft.padding.only(left=20, top=10, right=20, bottom=0),
+        alignment=ft.alignment.center,
+        content=ft.ElevatedButton(
+            disabled=False,
+            bgcolor=ft.colors.BLUE_700,
+            text=translation["login"].upper(),
+            width=150,
+            height=50,
+            style=ft.ButtonStyle(
+                overlay_color=ft.colors.BLUE_900,
+            ),
+            color=ft.colors.WHITE,
+            on_click=lambda _: page.go("/login")
+        )
+    )

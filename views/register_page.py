@@ -68,6 +68,7 @@ class RegisterView(ft.View):
         
         # Create social buttons
         self.social_buttons = ft.Column(
+            alignment=ft.MainAxisAlignment.CENTER,
             controls=[
                 register_button_facebook(self.translation, self.page),
                 register_button_google(self.translation, self.page)
@@ -79,6 +80,7 @@ class RegisterView(ft.View):
         # Create account form fields
         self.first_name_value = first_name_field(self.translation, self.validate_fields)
         self.last_name_value = last_name_field(self.translation, self.validate_fields)
+        
         self.email_value = email_field(self.translation, self.validate_fields)
         self.password_value = password_field(self.translation, self.validate_fields)
         self.repeat_password_value = repeat_password_field(self.translation, self.validate_fields)
@@ -90,6 +92,7 @@ class RegisterView(ft.View):
         # Setup controls
         self.controls = [
             ft.Container(
+                # border=ft.border.all(5),
                 alignment=ft.alignment.center,
                 padding=ft.padding.only(20, 30, 20, 0),
                 expand=True,

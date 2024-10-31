@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tankify"
-version = "0.1.0"
+version = "1.0.0"
 description = "Manage car"
 authors = ["Peter Kacmarik"]
 license = "MIT"
@@ -8,13 +8,62 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-flet = "^0.24.1"
+flet = "0.25.0.dev3526"
 sqlalchemy = "^2.0.36"
 supabase = "^2.9.1"
 psycopg2-binary = "^2.9.10"
 python-dotenv = "^1.0.1"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+
+
+
+
+
+[project]
+name = "tankify"
+version = "1.0.0"
+description = "Manage car"
+authors = [
+  {name = "Peter Kacmarik", email = "junior.py.dev@gmail.com"}
+]
+dependencies = [
+    "flet==0.25.0.dev3526",
+]
+
+[tool.flet]
+org = "com.mycompany" # --org
+product = "Product name" # --product
+company = "My Company" # --company
+copyright = "Copyright (C) 2024 by MyCompany" # --copyright
+build_number = 1 # --build-number
+
+[tool.flet]
+app.module = "main" # --module-name
+app.path = "tankify" # path to Python app relative to `pyproject.toml`
+app.exclude = ["assets"] # --exclude
+
+compile.app = false # --compile-app
+compile.packages = false # --compile-packages
+compile.cleanup = false # --cleanup-on-compile
+
+[tool.flet.splash]
+color = "" # --splash-color
+dark_color = "" # --splash-dark-color
+web = false # --no-web-splash
+ios = false # --no-ios-splash
+android = false # --no-android-splash
+
+[tool.flet.android]
+adaptive_icon_background = "" # --android-adaptive-icon-background
+split_per_abi = false # --split-per-abi
+
+[tool.flet.web]
+base_url = "https://tankify.onrender.com" # --base-url
+renderer = "canvaskit" # --web-renderer
+use_color_emoji = false # --use-color-emoji
+route_url_strategy = "path" # --route-url-strategy

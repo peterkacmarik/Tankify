@@ -1,6 +1,6 @@
 import flet as ft
-
-
+from components.logo import home_page_logo, page_logo
+from components.buttons import log_in_button_home_page
 
 def line_separator(translation):
     return ft.Row(
@@ -129,3 +129,70 @@ def cancel_link(translation, page: ft.Page):
             on_click=lambda _: page.go("/login")
         )
     )
+    
+    
+
+def home_page_box(translation, page: ft.Page):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.Column(
+            alignment=ft.alignment.center,
+            controls=[
+                ft.Stack(
+                    alignment=ft.alignment.center,
+                    controls=[
+                        # Spodný rámček
+                        ft.Container(
+                            alignment=ft.alignment.center,
+                            width=400,
+                            height=300,
+                            top=100,  # posunie rámček nižšie
+                            border_radius=20,
+                            border=ft.border.all(1, ft.colors.GREY_500),
+                            bgcolor=ft.colors.WHITE,
+                            padding=ft.padding.only(left=20, top=70, right=20, bottom=20),
+                            content=ft.Column(
+                                spacing=10,
+                                alignment=ft.alignment.center,
+                                controls=[
+                                    ft.Text(
+                                        value=translation["home_personal_use_desc"],
+                                        size=16,
+                                        weight=ft.FontWeight.NORMAL,
+                                        font_family="Roboto_Slap",
+                                    ),
+                                    log_in_button_home_page(translation=translation, page=page),
+                                ]
+                            )
+                        ),
+                        
+                        # Logo prekrývajúce rámček
+                        ft.Column(
+                            alignment=ft.alignment.center,
+                            top=40,
+                            controls=[
+                                ft.Container(
+                                    content=ft.Image(
+                                        src="/logo/logo_147.png",
+                                        width=128,
+                                        height=128,
+                                    ),
+                                    width=128,
+                                    height=128,
+                                    # bgcolor=ft.colors.WHITE,
+                                    # border=ft.border.all(1, ft.colors.GREY_500),
+                                    border_radius=100,
+                                )
+                            ]
+                        )
+                    ],
+                    width=600,
+                    height=800,
+                )
+            ]
+        )
+    )
+    
+    
+    
+    

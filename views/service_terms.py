@@ -1,20 +1,17 @@
 import flet as ft
-from components.links_separator_text import home_page_box
 from locales.language_manager import LanguageManager
 from locales.translations import get_translation
-from components.buttons import log_in_button_home_page
+from components.logo import page_logo
+from components.buttons import login_button, register_button
 from views.register_page import RegisterView
 from views.login_page import LoginView
 
-
-class HomeView(ft.View):
+class ServiceTermsView(ft.View):
     def __init__(self, page: ft.Page):
-        super().__init__(route="/")
+        super().__init__(route="/service-terms")
         self.page = page
         
-        self.bgcolor = "#dee1de" #ft.colors.WHITE
-        self.vertical_alignment = ft.CrossAxisAlignment.CENTER
-        self.horizontal_alignment = ft.MainAxisAlignment.CENTER
+        self.bgcolor = ft.colors.WHITE
         
         self.scroll = ft.ScrollMode.HIDDEN
         self.fullscreen_dialog = True
@@ -35,18 +32,23 @@ class HomeView(ft.View):
     def init_components(self):
         # Tvorba prepínača jazyka a prihlasovacieho formulára
         self.language_switch_button = self.language_switch()
-        self.home_page_box = home_page_box(self.translation, self.page)
-
+        self.page_logo = page_logo()
+        self.handle_login = LoginView(self.page)
+        self.handle_register = RegisterView(self.page)
+        self.login_button = login_button(self.translation, self.page, self.handle_login.handle_login)
+        self.register_button = register_button(self.translation, self.handle_register.handle_register)
+        
         # Pridanie komponentov do hlavnej časti stránky
         self.controls = [
             ft.Container(
-                # border=ft.border.all(5, ft.colors.BLACK),
                 alignment=ft.alignment.center,
                 padding=ft.padding.only(20, 30, 20, 0),
                 content=ft.Column(
                     controls=[
                         self.language_switch_button,
-                        self.home_page_box,
+                        self.page_logo,
+                        self.login_button,
+                        self.register_button
                     ]
                 )
             )
@@ -151,6 +153,5 @@ class HomeView(ft.View):
         self.page.update()
         
     
-    def handle_home_page(self):
+    def handle_service_terms(self):
         pass
-    
