@@ -72,7 +72,7 @@ def main_register_text(translation):
         # border=ft.border.all(0),
         alignment=ft.alignment.center,
         content=ft.Text(
-            translation["criar_conta_drivvo"],
+            translation["criar_conta_tankify"],
             size=24,
             weight=ft.FontWeight.NORMAL,
             font_family="Roboto_Slap",

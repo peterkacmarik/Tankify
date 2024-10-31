@@ -2,9 +2,6 @@ import flet as ft
 from components.links_separator_text import home_page_box
 from locales.language_manager import LanguageManager
 from locales.translations import get_translation
-from components.buttons import log_in_button_home_page
-from views.register_page import RegisterView
-from views.login_page import LoginView
 
 
 class HomeView(ft.View):
