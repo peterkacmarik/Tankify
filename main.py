@@ -8,6 +8,8 @@ from views.forgot_password import ForgotPasswordView
 from views.service_terms import ServiceTermsView
 from locales.language_manager import LanguageManager
 
+port = int(os.getenv("PORT", 8000))
+
 
 def main(page: ft.Page):
     LanguageManager.set_language("en")  # Predvolený jazyk je angličtina
@@ -18,12 +20,11 @@ def main(page: ft.Page):
         "ABeeZee": "/fonts/ABeeZee/ABeeZee-Regular.ttf",
         "Roboto_Slap": "/fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf",
     }
-    page.splash
     page.theme = ft.Theme(font_family="Roboto")
     page.theme_mode = ft.ThemeMode.LIGHT
     page.adaptive = True
-    # page.window.width = 400
-    # page.window.height = 800
+    page.window.width = 400
+    page.window.height = 800
     page.update()
 
     def route_change(route):
@@ -45,8 +46,6 @@ def main(page: ft.Page):
     page.on_route_change = route_change
     page.go("/")
 
-# Získanie portu
-port = int(os.getenv("PORT", 8000))
 ft.app(
     target=main,
     view=ft.AppView.FLET_APP,
