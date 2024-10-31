@@ -1,6 +1,6 @@
 import flet as ft
 
-from locales.translations import get_translation
+from locales.open_files import get_translation
 from components.logo import page_logo
 from components.links_separator_text import (
     main_forgot_password_text,
@@ -87,6 +87,7 @@ class ForgotPasswordView(ft.View):
             # padding=ft.padding.only(left=20),
             alignment=ft.Alignment(x=-1.0, y=0.0),
             content=ft.Dropdown(
+                bgcolor=ft.colors.TRANSPARENT,
                 options=[
                     ft.dropdown.Option(
                         key="en", 

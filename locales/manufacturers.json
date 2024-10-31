@@ -1,0 +1,2570 @@
+[
+    {
+        "id_marca": 1,
+        "id_unico": "fecf3062-443a-4b8d-be5b-1334cdc8cfe9",
+        "nome": "Abarth",
+        "referencia": "marca_abarth",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 2,
+        "id_unico": "88b22f2c-63de-45d2-8d72-0f06fab7bc95",
+        "nome": "AC Cars",
+        "referencia": "marca_ac_cars",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 3,
+        "id_unico": "8c6a8c27-bb00-42c0-82b1-6544e4a5d777",
+        "nome": "AC Propulsion",
+        "referencia": "marca_ac_propulsion",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 4,
+        "id_unico": "c5a6cdcf-8236-4854-aad0-b1bb7aaad306",
+        "nome": "Acura",
+        "referencia": "marca_acura",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 5,
+        "id_unico": "76e1de76-8c8f-460e-97ef-9db5b6172aa4",
+        "nome": "Adamo",
+        "referencia": "marca_adamo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 6,
+        "id_unico": "fcf79e45-66b1-4a52-908b-3deb8cda4a28",
+        "nome": "Agrale",
+        "referencia": "marca_agrale",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 7,
+        "id_unico": "59f7335c-3482-4c75-9b34-bba9d6c76ced",
+        "nome": "Aixam",
+        "referencia": "marca_aixam",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 8,
+        "id_unico": "26d2a58d-01b3-46cc-87e3-1037848febe0",
+        "nome": "AJS",
+        "referencia": "marca_ajs",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 9,
+        "id_unico": "5525968b-3fcc-4497-ae69-daaab1cc3e97",
+        "nome": "Alfa Romeo",
+        "referencia": "marca_alfa_romeo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 10,
+        "id_unico": "b9a51c7f-9bb5-4a0d-98b9-5cd1079134a3",
+        "nome": "Alpina",
+        "referencia": "marca_alpina",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 11,
+        "id_unico": "6318d7bb-f3b4-4329-bf34-77573ea5020f",
+        "nome": "Alpine",
+        "referencia": "marca_alpine",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 12,
+        "id_unico": "0a0cc99e-a7b1-4b4f-be6b-8754c733cfe7",
+        "nome": "American Motors",
+        "referencia": "marca_american_motors",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 13,
+        "id_unico": "2edef905-e062-4ee9-b8be-4631badcecb2",
+        "nome": "Aprilia",
+        "referencia": "marca_aprilia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 14,
+        "id_unico": "20d4d21a-0554-4db6-9f4c-ed0a1b0f9d77",
+        "nome": "Aptera",
+        "referencia": "marca_aptera",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 15,
+        "id_unico": "549551d5-abb3-4f7e-864d-f05adff03b55",
+        "nome": "Ariel",
+        "referencia": "marca_ariel",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 16,
+        "id_unico": "676f6422-23ae-4ff2-a83b-424589a0c8a6",
+        "nome": "ARO",
+        "referencia": "marca_aro",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 17,
+        "id_unico": "e0f337da-c6d4-429a-bde2-da47817c5acd",
+        "nome": "Artega",
+        "referencia": "marca_artega",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 18,
+        "id_unico": "fbe8ae25-a525-4e22-97df-d5b4061194f5",
+        "nome": "Ascari",
+        "referencia": "marca_ascari",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 19,
+        "id_unico": "87250d49-e651-47d5-9a14-a3e3c87e0bc3",
+        "nome": "Ashok Leyland",
+        "referencia": "marca_ashok_leyland",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 20,
+        "id_unico": "6931607d-d6b8-4504-8b9c-e743fa4b21be",
+        "nome": "Asia",
+        "referencia": "marca_asia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 21,
+        "id_unico": "f87423da-f9d0-4c34-bb3f-98511121e646",
+        "nome": "Aston Martin",
+        "referencia": "marca_aston_martin",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 22,
+        "id_unico": "7559de5c-b7c6-46ff-b231-cbf8db3bbe40",
+        "nome": "Astra",
+        "referencia": "marca_astra",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 23,
+        "id_unico": "e73f43bc-c122-4937-b181-c7e6270308b9",
+        "nome": "Audi",
+        "referencia": "marca_audi",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 24,
+        "id_unico": "6cf83a96-511a-4578-93ea-affadbf50a5b",
+        "nome": "Austin",
+        "referencia": "marca_austin",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 25,
+        "id_unico": "e548e385-f795-4e4f-8d37-79f121ab271e",
+        "nome": "Autobacs",
+        "referencia": "marca_autobacs",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 26,
+        "id_unico": "6ea0dbfd-c384-48f0-a781-ad989f3df65d",
+        "nome": "Autobianchi",
+        "referencia": "marca_autobianchi",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 27,
+        "id_unico": "a37420ea-64ad-4405-9b76-bd1cab85d38e",
+        "nome": "Avia",
+        "referencia": "marca_avia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 28,
+        "id_unico": "fb4bb107-f6b4-48ac-8dda-464436f2b226",
+        "nome": "Bajaj",
+        "referencia": "marca_bajaj",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 29,
+        "id_unico": "7e2addbd-3bcf-487b-86d7-5d9eace2e82b",
+        "nome": "Bellier",
+        "referencia": "marca_bellier",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 30,
+        "id_unico": "ff87a332-088e-4243-99ea-44be8f266d7b",
+        "nome": "Benelli",
+        "referencia": "marca_benelli",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 31,
+        "id_unico": "48e0c249-2ee3-49be-8f17-64ba91232e17",
+        "nome": "Bentley",
+        "referencia": "marca_bentley",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 32,
+        "id_unico": "c97b3e7c-5440-47f7-a605-082b1a3525d5",
+        "nome": "Bertone",
+        "referencia": "marca_bertone",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 33,
+        "id_unico": "0a737761-a9e3-4a14-a8f6-4e186c775949",
+        "nome": "Beta",
+        "referencia": "marca_beta",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 34,
+        "id_unico": "bdaf0e07-64ec-40ba-9206-8a2b5f0e7bc0",
+        "nome": "Bimota",
+        "referencia": "marca_bimota",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 35,
+        "id_unico": "0fad3f01-8c78-4415-ad83-74ae187ad97d",
+        "nome": "Bitter Cars",
+        "referencia": "marca_bitter_cars",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 36,
+        "id_unico": "125da669-5cb3-4218-90d1-46c678b3c9c4",
+        "nome": "BMW",
+        "referencia": "marca_bmw",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 37,
+        "id_unico": "fc0388d8-62b2-4ba3-8882-13114b681416",
+        "nome": "Borgward",
+        "referencia": "marca_borgward",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 38,
+        "id_unico": "27bfb1a0-560e-4c1c-bf2f-3518b323450b",
+        "nome": "Brabus",
+        "referencia": "marca_brabus",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 39,
+        "id_unico": "adbc3be8-7e9f-4668-b675-1d6a7eec9803",
+        "nome": "Bravax",
+        "referencia": "marca_bravax",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 40,
+        "id_unico": "84e25d63-9975-40d4-8275-6c34be49dc05",
+        "nome": "Bricklin",
+        "referencia": "marca_bricklin",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 41,
+        "id_unico": "9416e4c1-96bf-4ed4-9e11-49f58dc79f8a",
+        "nome": "Brilliance",
+        "referencia": "marca_brilliance",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 42,
+        "id_unico": "d3f795d7-709e-4b9e-a5bb-de9d2c6e587a",
+        "nome": "Bristol",
+        "referencia": "marca_bristol",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 43,
+        "id_unico": "3e8197a3-8548-4fba-8508-4855d0c5d241",
+        "nome": "British Leyland",
+        "referencia": "marca_british_leyland",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 44,
+        "id_unico": "38aed67e-5e81-4645-b232-fe536b00bc5d",
+        "nome": "BRP",
+        "referencia": "marca_brp",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 45,
+        "id_unico": "3f25bf23-a7a4-4836-aabc-d4b8c413ec75",
+        "nome": "Buell",
+        "referencia": "marca_buell",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 46,
+        "id_unico": "f64f1b6b-a78b-4628-a519-cc5eb4b20dec",
+        "nome": "Bufori",
+        "referencia": "marca_bufori",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 47,
+        "id_unico": "436b9104-65ca-4949-9e8c-af0d77812a6b",
+        "nome": "Bugatti",
+        "referencia": "marca_bugatti",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 48,
+        "id_unico": "06118e6a-baa8-47ae-9fed-08936cf4906f",
+        "nome": "Buick",
+        "referencia": "marca_buick",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 49,
+        "id_unico": "b36a5220-fb66-4fd9-b265-dc769152d09e",
+        "nome": "BYD",
+        "referencia": "marca_byd",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 50,
+        "id_unico": "4b82cd75-d4ca-4c36-a347-0b0642736af1",
+        "nome": "Cadillac",
+        "referencia": "marca_cadillac",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 51,
+        "id_unico": "9357a977-ce7f-4129-bc20-76e37bfbdf2d",
+        "nome": "Cagiva",
+        "referencia": "marca_cagiva",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 52,
+        "id_unico": "056d23fb-0491-4341-91fc-85794cf50b20",
+        "nome": "Callaway",
+        "referencia": "marca_callaway",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 53,
+        "id_unico": "9e735e08-66c5-422b-90c3-1e8757c84e49",
+        "nome": "Caparo",
+        "referencia": "marca_caparo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 54,
+        "id_unico": "f61d2787-5c8c-4953-88a8-fd4025f6f81e",
+        "nome": "Carbon Motors",
+        "referencia": "marca_carbon_motors",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 55,
+        "id_unico": "06c77b06-fa76-43ea-b789-83ce37e9021b",
+        "nome": "Carver",
+        "referencia": "marca_carver",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 56,
+        "id_unico": "a347a489-4f31-4a98-b8f4-0a8317cc5e05",
+        "nome": "Caterham",
+        "referencia": "marca_caterham",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 57,
+        "id_unico": "d5727d6a-1769-4082-ba7c-62606d647ae9",
+        "nome": "Chamonix",
+        "referencia": "marca_chamonix",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 58,
+        "id_unico": "b6dda6db-daf9-4611-8191-682d303bafb0",
+        "nome": "Chana",
+        "referencia": "marca_chana",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 59,
+        "id_unico": "4212bb0f-c343-48e9-9e0d-f66d6e243405",
+        "nome": "Changan",
+        "referencia": "marca_changan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 60,
+        "id_unico": "f36dc993-414c-4289-be28-8a44bb6b5bf8",
+        "nome": "Chery",
+        "referencia": "marca_chery",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 61,
+        "id_unico": "64f29556-50f0-4074-a0f7-3b32a3eeae21",
+        "nome": "Chevrolet",
+        "referencia": "marca_chevrolet",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 62,
+        "id_unico": "d1076b02-2413-4f21-9d92-feaff8cb0355",
+        "nome": "Chrysler",
+        "referencia": "marca_chrysler",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 63,
+        "id_unico": "7416ae78-b71d-4548-9421-58710f0eb37f",
+        "nome": "Citro\u00ebn",
+        "referencia": "marca_citroen",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 64,
+        "id_unico": "e5f19b95-d3d3-4579-ad50-0195444424eb",
+        "nome": "Cizeta",
+        "referencia": "marca_cizeta",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 65,
+        "id_unico": "f49f5105-38b6-4114-b197-1900d8abbf9b",
+        "nome": "Coda",
+        "referencia": "marca_coda",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 66,
+        "id_unico": "e7ef7f42-a4cc-48d7-b28f-a2e3f3bed57d",
+        "nome": "Cord",
+        "referencia": "marca_cord",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 67,
+        "id_unico": "225aaa7f-6e9e-4c28-888a-308847dfdeb3",
+        "nome": "Corvette",
+        "referencia": "marca_corvette",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 68,
+        "id_unico": "78eaf710-3e6a-497f-81cb-919e3cfed0a7",
+        "nome": "Cross Lander",
+        "referencia": "marca_cross_lander",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 69,
+        "id_unico": "c9b2fb0e-dc65-4abc-9843-37fee755353f",
+        "nome": "Dacia",
+        "referencia": "marca_dacia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 70,
+        "id_unico": "9350bf18-03a0-4b49-b601-472b215c1304",
+        "nome": "Daelim",
+        "referencia": "marca_daelim",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 71,
+        "id_unico": "c5d2c6ad-5526-4ecb-a4c4-896391990cca",
+        "nome": "Daewoo",
+        "referencia": "marca_daewoo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 72,
+        "id_unico": "c3c8e247-aab1-4e72-8841-7c01e10e955d",
+        "nome": "DAF",
+        "referencia": "marca_daf",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 73,
+        "id_unico": "29bc317e-b925-4c01-892c-853abb4ae0d5",
+        "nome": "Dafra",
+        "referencia": "marca_dafra",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 74,
+        "id_unico": "2f3d1aa6-bf73-42c3-bf7f-a29a2433f070",
+        "nome": "Daihatsu",
+        "referencia": "marca_daihatsu",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 75,
+        "id_unico": "31cbc7bf-e4fe-4dc5-a701-0a622489bcb0",
+        "nome": "Daimler",
+        "referencia": "marca_daimler",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 76,
+        "id_unico": "6ca097d3-f290-4d13-b78d-921f4ce38e38",
+        "nome": "Datsun",
+        "referencia": "marca_datsun",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 77,
+        "id_unico": "79a24d09-d419-4ca5-a954-5e4d6108ec58",
+        "nome": "Dayun",
+        "referencia": "marca_dayun",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 78,
+        "id_unico": "659dff3b-ea8d-4ad1-a1f1-aab96d33b3ae",
+        "nome": "De Tomaso",
+        "referencia": "marca_de_tomaso",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 79,
+        "id_unico": "76ee4541-e0e4-4635-9214-e75cea1f89a6",
+        "nome": "Delorean",
+        "referencia": "marca_delorean",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 80,
+        "id_unico": "1105cccb-186b-439e-9936-d50a09113ec8",
+        "nome": "Devon",
+        "referencia": "marca_devon",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 81,
+        "id_unico": "b3950341-71ff-41a1-b6fd-0cf03a0a0153",
+        "nome": "DINA",
+        "referencia": "marca_dina",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 82,
+        "id_unico": "56a50967-68f8-45e7-8dbc-c804b8c7a046",
+        "nome": "Ditally",
+        "referencia": "marca_ditally",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 83,
+        "id_unico": "105f3201-c841-4184-92fa-767cbe866415",
+        "nome": "DKW Vemag",
+        "referencia": "marca_dkw_vemag",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 84,
+        "id_unico": "faeb8bc3-5d36-4c8e-be1f-1ed3bfde2ae0",
+        "nome": "Dodge",
+        "referencia": "marca_dodge",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 85,
+        "id_unico": "0ae57ded-3553-4e97-9d93-09ecb44ae431",
+        "nome": "Donkervoort",
+        "referencia": "marca_donkervoort",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 86,
+        "id_unico": "dfc1c8da-d05f-4fc2-94dd-3b9c078b5dac",
+        "nome": "DR Motor",
+        "referencia": "marca_dr_motor",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 87,
+        "id_unico": "e40132f8-a439-4fbe-9e86-ec0b0e219640",
+        "nome": "Ducati",
+        "referencia": "marca_ducati",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 88,
+        "id_unico": "6e041bd6-d1c2-462d-a2d2-225346f30a26",
+        "nome": "Duesenberg",
+        "referencia": "marca_duesenberg",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 89,
+        "id_unico": "89ffbbba-7c14-44e5-b9e6-420321b6dcab",
+        "nome": "Eagle",
+        "referencia": "marca_eagle",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 90,
+        "id_unico": "a5650e28-0695-4612-a535-405c5ac96896",
+        "nome": "Effa",
+        "referencia": "marca_effa",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 91,
+        "id_unico": "a076015a-6c71-4d9e-9add-511773c5465d",
+        "nome": "Eicher",
+        "referencia": "marca_eicher",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 92,
+        "id_unico": "70aa2f95-35d0-4bba-bbf9-264d18469094",
+        "nome": "Elfin",
+        "referencia": "marca_elfin",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 93,
+        "id_unico": "a506d6bb-30d3-423d-b26c-8607e22c8dd0",
+        "nome": "Elva",
+        "referencia": "marca_elva",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 94,
+        "id_unico": "6a715c54-79cd-4759-a6b0-7083e9fd709f",
+        "nome": "ERF",
+        "referencia": "marca_erf",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 95,
+        "id_unico": "dce6d7ce-9d36-4987-a8c3-4ca584bf58f2",
+        "nome": "Facel",
+        "referencia": "marca_facel",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 96,
+        "id_unico": "a5def35e-1908-4923-b1f3-3f972868e31e",
+        "nome": "FAP",
+        "referencia": "marca_fap",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 97,
+        "id_unico": "aadaa1cb-e232-4da4-b5a7-acb859d720ed",
+        "nome": "Faw",
+        "referencia": "marca_faw",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 98,
+        "id_unico": "11786cdb-6c04-430c-aca9-002424910884",
+        "nome": "Ferrari",
+        "referencia": "marca_ferrari",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 99,
+        "id_unico": "fd83f910-6372-4865-a243-beba247fa378",
+        "nome": "Fiat",
+        "referencia": "marca_fiat",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 100,
+        "id_unico": "5ad237ca-7620-47ad-a683-aca84dc95796",
+        "nome": "Fisker",
+        "referencia": "marca_fisker",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 101,
+        "id_unico": "58ed80a8-7412-4029-8cf1-af6e1ec73854",
+        "nome": "Ford",
+        "referencia": "marca_ford",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 102,
+        "id_unico": "46f01b12-489b-484b-82e7-4b87d05cdc20",
+        "nome": "Foton",
+        "referencia": "marca_foton",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 103,
+        "id_unico": "c83e23bc-603f-4cd2-962f-ced625710621",
+        "nome": "FPV",
+        "referencia": "marca_fpv",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 104,
+        "id_unico": "83617dda-b66a-4c3f-bf1c-b48a20850a21",
+        "nome": "Franklin",
+        "referencia": "marca_franklin",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 105,
+        "id_unico": "d523fdf9-4788-48a2-8a39-71ccfb35b144",
+        "nome": "Freightliner",
+        "referencia": "marca_freightliner",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 106,
+        "id_unico": "beffc344-2a9e-4e89-9fc0-9bcc8636da14",
+        "nome": "FSO",
+        "referencia": "marca_fso",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 107,
+        "id_unico": "b8397fc1-f93d-4ef6-bdc3-65c49ce064de",
+        "nome": "GAZ",
+        "referencia": "marca_gaz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 108,
+        "id_unico": "b182eb0b-16b0-43e9-82b3-cd772fd0a419",
+        "nome": "Geely",
+        "referencia": "marca_geely",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 109,
+        "id_unico": "c3359773-fd3f-458c-97c7-8989e954da31",
+        "nome": "GEM",
+        "referencia": "marca_gem",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 110,
+        "id_unico": "97478a1a-f2fd-486f-808e-eb8412bcfe7b",
+        "nome": "General Motors",
+        "referencia": "marca_general_motors",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 111,
+        "id_unico": "c302cb6f-77b7-43a6-af57-90ceb492d93d",
+        "nome": "Geo",
+        "referencia": "marca_geo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 112,
+        "id_unico": "d88d9796-0878-4824-8353-33ef283f5861",
+        "nome": "Gilera",
+        "referencia": "marca_gilera",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 113,
+        "id_unico": "8970ad39-2007-4f07-9d1c-d497729e1599",
+        "nome": "Ginetta",
+        "referencia": "marca_ginetta",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 114,
+        "id_unico": "5675536a-fdb0-465e-857a-a103e8289118",
+        "nome": "GMC",
+        "referencia": "marca_gmc",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 115,
+        "id_unico": "e91f58dd-4e11-4a64-932c-43305574f484",
+        "nome": "Great Wall",
+        "referencia": "marca_great_wall",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 116,
+        "id_unico": "ca49fa3c-cb02-4b22-8dda-de49f1fd9e0c",
+        "nome": "Gumpert",
+        "referencia": "marca_gumpert",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 117,
+        "id_unico": "0c9d622a-34cc-4920-adf3-1131c63454bb",
+        "nome": "Gurgel",
+        "referencia": "marca_gurgel",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 118,
+        "id_unico": "cc664db1-00dd-4016-8858-9f17fcd15c11",
+        "nome": "Hafei",
+        "referencia": "marca_hafei",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 119,
+        "id_unico": "8af72faa-fb31-4b61-a13b-96fd6b57308e",
+        "nome": "Harley Davidson",
+        "referencia": "marca_harley",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 120,
+        "id_unico": "6acbde10-a4ea-4787-9d04-d2fba2ebe2de",
+        "nome": "Hero",
+        "referencia": "marca_hero",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 121,
+        "id_unico": "988f2213-3ee3-468e-8cdb-59785695d496",
+        "nome": "Hillman",
+        "referencia": "marca_hillman",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 122,
+        "id_unico": "429665a4-e6cf-4ac5-b901-3dbe9868c94f",
+        "nome": "Hino",
+        "referencia": "marca_hino",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 123,
+        "id_unico": "95f1b238-665a-41f8-a7ee-12d739cdf228",
+        "nome": "Hispano",
+        "referencia": "marca_hispano",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 124,
+        "id_unico": "c055604b-f15e-4621-9e56-1c8a1c09c585",
+        "nome": "Holden",
+        "referencia": "marca_holden",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 125,
+        "id_unico": "014adc45-0fe1-414b-b650-7a2bc2f0bc6d",
+        "nome": "Hommell",
+        "referencia": "marca_hommell",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 126,
+        "id_unico": "b785ef46-0fcd-470e-b237-64b3b7657ea5",
+        "nome": "Honda",
+        "referencia": "marca_honda",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 127,
+        "id_unico": "f587f84b-536e-4e22-b864-4cdf3736b918",
+        "nome": "Honda Moto",
+        "referencia": "marca_honda_motos",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 128,
+        "id_unico": "91e87c05-e80d-41cd-8abe-4350ff1ea35e",
+        "nome": "HSV",
+        "referencia": "marca_hsv",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 129,
+        "id_unico": "7bf24a56-f692-41b8-be02-285c29fec2ba",
+        "nome": "Hummer",
+        "referencia": "marca_hummer",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 130,
+        "id_unico": "11122fc8-294f-4211-8c2f-12fbf7b8528e",
+        "nome": "Hyundai",
+        "referencia": "marca_hyundai",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 131,
+        "id_unico": "218905a6-0dd2-455f-9f41-112aece6d28a",
+        "nome": "IH",
+        "referencia": "marca_ih",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 132,
+        "id_unico": "9aeef35a-f5c2-4dd2-a172-511773034859",
+        "nome": "IKA",
+        "referencia": "marca_ika",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 133,
+        "id_unico": "7ae62991-ea59-40ed-8403-78716517a6ef",
+        "nome": "IKCO",
+        "referencia": "marca_ikco",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 134,
+        "id_unico": "2d2a4003-908f-4515-b07c-2a98b39b83f0",
+        "nome": "Infiniti",
+        "referencia": "marca_infiniti",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 135,
+        "id_unico": "eb3670e1-1170-4c32-9fe0-7780d6f56a3f",
+        "nome": "Innocenti",
+        "referencia": "marca_innocenti",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 136,
+        "id_unico": "f3e85701-a5cc-4f28-9abe-f4ac9d95f964",
+        "nome": "Invicta",
+        "referencia": "marca_invicta",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 137,
+        "id_unico": "b4145ba8-3125-4ff0-98aa-77b419855875",
+        "nome": "Isdera",
+        "referencia": "marca_isdera",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 138,
+        "id_unico": "924f76dc-1770-4c0d-8fc2-e66fa051b174",
+        "nome": "Isuzu",
+        "referencia": "marca_isuzu",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 139,
+        "id_unico": "075fe98e-2446-4ec4-a19f-9dc2f8e895ac",
+        "nome": "Iveco",
+        "referencia": "marca_iveco",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 140,
+        "id_unico": "654b6405-7938-47e1-8f90-4ec610539303",
+        "nome": "Jac Motors",
+        "referencia": "marca_jacmotors",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 141,
+        "id_unico": "f1146fb2-5c80-498c-9f77-6ff03a887151",
+        "nome": "Jaguar",
+        "referencia": "marca_jaguar",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 142,
+        "id_unico": "a88a36bb-eb98-4c1b-be7a-ee304f4e82d8",
+        "nome": "Jawa",
+        "referencia": "marca_jawa",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 143,
+        "id_unico": "23305f76-547a-4ad6-971d-718ac1fc35f2",
+        "nome": "Jeep",
+        "referencia": "marca_jeep",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 144,
+        "id_unico": "37d1d220-a4f9-4ba4-9bdf-c44ca8730360",
+        "nome": "Jensen",
+        "referencia": "marca_jensen",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 145,
+        "id_unico": "5ef17d3e-7b31-414f-9330-7f4904b531b4",
+        "nome": "Jinbei",
+        "referencia": "marca_jinbei",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 146,
+        "id_unico": "e463e4f3-e0c3-4b27-afbf-dcb824b5c4fd",
+        "nome": "Kaipan",
+        "referencia": "marca_kaipan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 147,
+        "id_unico": "1969d6cb-1555-4718-92d8-edfe9bc741cd",
+        "nome": "Kamaz",
+        "referencia": "marca_kamaz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 148,
+        "id_unico": "10a87986-1716-45a0-8fb1-549f1afaa5f0",
+        "nome": "Karsan",
+        "referencia": "marca_karsan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 149,
+        "id_unico": "3af2e102-cbac-4e0a-8d9e-bc69885a6235",
+        "nome": "Kasinski",
+        "referencia": "marca_kasinski",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 150,
+        "id_unico": "10d1ff29-c2db-42bd-af58-2d9dcc7cdc34",
+        "nome": "Kawasaki",
+        "referencia": "marca_kawasaki",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 151,
+        "id_unico": "b84c8666-98a2-4c08-924d-7c61cb7728e3",
+        "nome": "Kenworth",
+        "referencia": "marca_kenworth",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 152,
+        "id_unico": "c4e5de22-e185-409d-9378-0c753fbb632b",
+        "nome": "Kia",
+        "referencia": "marca_kia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 153,
+        "id_unico": "9af8cc7c-cb33-4f41-8738-534a6e693b9e",
+        "nome": "Koenigsegg",
+        "referencia": "marca_koenigsegg",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 154,
+        "id_unico": "fe8413db-dc78-41a0-a839-3c42e99dd1f9",
+        "nome": "Ktm",
+        "referencia": "marca_ktm",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 155,
+        "id_unico": "b9b78bd1-694c-451c-9341-7e571ae90f51",
+        "nome": "Lada",
+        "referencia": "marca_lada",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 156,
+        "id_unico": "efbcc941-92cd-40e8-ad32-9cd7ba01c49e",
+        "nome": "Lagonda",
+        "referencia": "marca_lagonda",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 157,
+        "id_unico": "bed04f24-3b50-49bd-8eb6-00a0a6fc7bf9",
+        "nome": "Lamborghini",
+        "referencia": "marca_lamborguini",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 158,
+        "id_unico": "6f6544a2-bed4-48cb-a94e-72d2d9d66700",
+        "nome": "Lancia",
+        "referencia": "marca_lancia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 159,
+        "id_unico": "77ca0019-e5c6-4c5f-b36c-ba38c3507a7d",
+        "nome": "Land Rover",
+        "referencia": "marca_land_rover",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 160,
+        "id_unico": "a5580536-ca3c-415e-8a3a-46bed5ee88ee",
+        "nome": "Landwind",
+        "referencia": "marca_landwind",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 161,
+        "id_unico": "3243271e-bbbe-41ab-810d-feda0347e493",
+        "nome": "Laraki",
+        "referencia": "marca_laraki",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 162,
+        "id_unico": "cecb8cdb-acab-4b1a-9e8b-f924566a6aeb",
+        "nome": "LDV",
+        "referencia": "marca_ldv",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 163,
+        "id_unico": "0080cb60-9254-486e-a8d4-b5217d7a7511",
+        "nome": "Lexus",
+        "referencia": "marca_lexus",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 164,
+        "id_unico": "9c2bcca6-7b9f-4c8c-aedf-b2d8d99cc893",
+        "nome": "LIAZ",
+        "referencia": "marca_liaz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 165,
+        "id_unico": "f0284d3a-ee9f-4e3e-9ccd-98e6d9b208d3",
+        "nome": "Lifan",
+        "referencia": "marca_lifan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 166,
+        "id_unico": "beb2e1bf-83df-4664-80f4-73e294ed313e",
+        "nome": "Ligier",
+        "referencia": "marca_ligier",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 167,
+        "id_unico": "60ee04c7-5e0d-4a20-ab01-c6b9ce8fbf33",
+        "nome": "Lincoln",
+        "referencia": "marca_lincoln",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 168,
+        "id_unico": "bdebe896-2c2a-4b0d-9a73-1bd4c3c1f7a2",
+        "nome": "Lister",
+        "referencia": "marca_lister",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 169,
+        "id_unico": "f75843f6-d818-46e9-af38-4d9a58a7e7ec",
+        "nome": "Lotus",
+        "referencia": "marca_lotus",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 170,
+        "id_unico": "452b5e77-30c8-46be-8fee-f17e458578c4",
+        "nome": "Luxgen",
+        "referencia": "marca_luxgen",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 171,
+        "id_unico": "ab69454e-a24f-4b68-9fdb-d9bfd6ee81ad",
+        "nome": "Mack",
+        "referencia": "marca_mack",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 172,
+        "id_unico": "d3f7d28a-9767-4372-a489-01961e4f15ab",
+        "nome": "Magna",
+        "referencia": "marca_magna",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 173,
+        "id_unico": "d1fef307-300c-43df-ab1b-89da4a2b14ee",
+        "nome": "Mahindra",
+        "referencia": "marca_mahindra",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 174,
+        "id_unico": "f1ea21ed-0368-449d-8252-feaf56e0e980",
+        "nome": "MAN",
+        "referencia": "marca_man",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 175,
+        "id_unico": "d099c99b-34c5-48cc-8418-ab09557731af",
+        "nome": "Mansory",
+        "referencia": "marca_mansory",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 176,
+        "id_unico": "e01029fe-b201-4f8b-91f6-70688e30c19e",
+        "nome": "Marcos",
+        "referencia": "marca_marcos",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 177,
+        "id_unico": "43a98528-c062-4882-9807-a7de7f43d2fe",
+        "nome": "Marussia",
+        "referencia": "marca_marussia",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 178,
+        "id_unico": "c92a3357-fef9-41e7-add5-46a2bcc7a927",
+        "nome": "Maserati",
+        "referencia": "marca_maserati",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 179,
+        "id_unico": "8043c169-70e4-4d27-8ca4-c3db0d245e36",
+        "nome": "Mastretta",
+        "referencia": "marca_mastretta",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 180,
+        "id_unico": "6d21c4aa-d2c9-441a-b43d-1fe6a9aeb0fd",
+        "nome": "Matra",
+        "referencia": "marca_matra",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 181,
+        "id_unico": "d25d0cdf-55ca-4b90-b85b-7c2f83dac353",
+        "nome": "Maybach",
+        "referencia": "marca_maybach",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 182,
+        "id_unico": "241dd6b6-cf87-47c7-a368-58d8b976b606",
+        "nome": "MAZ",
+        "referencia": "marca_maz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 183,
+        "id_unico": "5caae38f-a922-462b-96d3-4253744bbf3c",
+        "nome": "Mazda",
+        "referencia": "marca_mazda",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 184,
+        "id_unico": "4529c1a9-2399-455b-ab99-81edbf7da8e8",
+        "nome": "McLaren",
+        "referencia": "marca_mclaren",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 185,
+        "id_unico": "e4e4e31c-e94d-4b51-8b69-73c2c28af5dd",
+        "nome": "Melkus",
+        "referencia": "marca_melkus",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 186,
+        "id_unico": "550f1476-e214-43b9-ade9-fb74b7f73d4f",
+        "nome": "Mercedes-Benz",
+        "referencia": "marca_mercedes_benz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 187,
+        "id_unico": "a34b9e98-a2c9-4276-baa4-4a591686b0c5",
+        "nome": "Mercury",
+        "referencia": "marca_mercury",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 188,
+        "id_unico": "34957a3a-ed85-4383-911c-37d6a98bea73",
+        "nome": "MG Motors",
+        "referencia": "marca_mg_motors",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 189,
+        "id_unico": "79b4406f-3586-49c5-b6fb-9c870b543184",
+        "nome": "Minardi",
+        "referencia": "marca_minardi",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 190,
+        "id_unico": "fe57dee0-b64c-4909-aaea-257626f6c4ed",
+        "nome": "Mini",
+        "referencia": "marca_mini",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 191,
+        "id_unico": "c840c777-0ebd-42fa-a6c2-476daa5550d3",
+        "nome": "Mitsubishi",
+        "referencia": "marca_mitsubishi",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 192,
+        "id_unico": "3ee62443-b613-4846-929c-c84c6ebe7c64",
+        "nome": "Mitsuoka",
+        "referencia": "marca_mitsuoka",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 193,
+        "id_unico": "67360e83-5c16-4ee3-82d4-c20b3ff3da92",
+        "nome": "Miura",
+        "referencia": "marca_miura",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 194,
+        "id_unico": "40fecee0-6309-4462-9be2-4a3df295bae3",
+        "nome": "Morgan",
+        "referencia": "marca_morgan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 195,
+        "id_unico": "2ad925e2-6fef-4425-b37a-fc2d5734269e",
+        "nome": "Morris",
+        "referencia": "marca_morris",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 196,
+        "id_unico": "b32d450f-84f0-49ba-b103-f0677903eec0",
+        "nome": "Mosler Automotive",
+        "referencia": "marca_mosler_automotive",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 197,
+        "id_unico": "d10fd2b6-9e33-44d8-917e-69af63b8dc04",
+        "nome": "Mv Agusta",
+        "referencia": "marca_mv_agusta",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 198,
+        "id_unico": "10323e7e-67ca-435d-b5e7-75068e922228",
+        "nome": "Nash",
+        "referencia": "marca_nash",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 199,
+        "id_unico": "9a83809c-995d-4f67-b2b8-91475f01d0ed",
+        "nome": "Navistar",
+        "referencia": "marca_navistar",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 200,
+        "id_unico": "ed231439-f5b2-4679-b676-3a53df14518a",
+        "nome": "Naza",
+        "referencia": "marca_naza",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 201,
+        "id_unico": "dcf94fcd-9185-4566-97cd-b3fb0f6f45c7",
+        "nome": "Neoplan",
+        "referencia": "marca_neoplan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 202,
+        "id_unico": "2077e895-32f9-4b96-ba4c-703803eb26bd",
+        "nome": "New Flyer",
+        "referencia": "marca_new_flyer",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 203,
+        "id_unico": "fe65107c-6ffe-4dbd-803b-253d21f18285",
+        "nome": "Nissan",
+        "referencia": "marca_nissan",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 204,
+        "id_unico": "c97add74-33e7-4388-9511-9e2c11187e4b",
+        "nome": "Noble",
+        "referencia": "marca_noble",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 205,
+        "id_unico": "ea0b747e-68c0-4223-8ae1-ba1bc0bf6693",
+        "nome": "Oldsmobile",
+        "referencia": "marca_oldsmobile",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 206,
+        "id_unico": "23650f4f-1263-4d17-837b-df3d197fce05",
+        "nome": "Oltcit",
+        "referencia": "marca_oltcit",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 207,
+        "id_unico": "6fb66c61-2db2-4355-be0c-978aedfdfcce",
+        "nome": "Opel",
+        "referencia": "marca_opel",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 208,
+        "id_unico": "68c934db-9d80-4314-9d01-d57bdc1ba9db",
+        "nome": "Orion",
+        "referencia": "marca_orion",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 209,
+        "id_unico": "18362447-f274-49c3-ae5c-296cc80365ff",
+        "nome": "Paccar",
+        "referencia": "marca_paccar",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 210,
+        "id_unico": "e1329f95-6364-46e4-96a5-3a3a79f6b3ae",
+        "nome": "Packard",
+        "referencia": "marca_packard",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 211,
+        "id_unico": "2cad70b2-8f8e-4640-87b9-319939813778",
+        "nome": "Pagani",
+        "referencia": "marca_pagani",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 212,
+        "id_unico": "46f18d56-c018-4640-8d97-ef89ee7ebba2",
+        "nome": "Panoz",
+        "referencia": "marca_panoz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 213,
+        "id_unico": "b45ab9ef-892d-4f77-ab88-f07116c869c0",
+        "nome": "Pars Khodro",
+        "referencia": "marca_pars_khodro",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 214,
+        "id_unico": "6dea380e-9ea3-4aa1-b8f9-f8be1ce0cbcc",
+        "nome": "Perodua",
+        "referencia": "marca_perodua",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 215,
+        "id_unico": "67db2b8e-646e-407a-a2c8-98cbfbf60aab",
+        "nome": "Peterbilt",
+        "referencia": "marca_peterbilt",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 216,
+        "id_unico": "26a1816b-ed41-4665-8ecc-1162b21a4a75",
+        "nome": "Peugeot",
+        "referencia": "marca_peugeot",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 217,
+        "id_unico": "7986bee4-a2ca-4bc4-98eb-688e7e609399",
+        "nome": "PGO",
+        "referencia": "marca_pgo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 218,
+        "id_unico": "d427a7da-3f40-4512-a62a-e046923e3857",
+        "nome": "Piaggio",
+        "referencia": "marca_piaggio",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 219,
+        "id_unico": "b7cd3aed-6546-4fb0-916d-d25fe3777c9b",
+        "nome": "Plymouth",
+        "referencia": "marca_plymouth",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 220,
+        "id_unico": "b3c9a0f3-b2b6-409d-8504-df0b2dc31919",
+        "nome": "Polaris",
+        "referencia": "marca_polaris",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 221,
+        "id_unico": "1fb8bec3-509d-4769-bc47-63b2a15f8228",
+        "nome": "Pontiac",
+        "referencia": "marca_pontiac",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 222,
+        "id_unico": "f8c21b89-e782-432c-8505-4fb477291b5d",
+        "nome": "Porsche",
+        "referencia": "marca_porshe",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 223,
+        "id_unico": "ffbef296-8059-4e31-9105-39191462badb",
+        "nome": "Premier",
+        "referencia": "marca_premier",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 224,
+        "id_unico": "ee6810f0-7566-4f74-8735-3b7c58821b17",
+        "nome": "Prodrive",
+        "referencia": "marca_prodrive",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 225,
+        "id_unico": "6c1a636b-5eda-4d17-9df1-dc95938a04c9",
+        "nome": "Proton",
+        "referencia": "marca_proton",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 226,
+        "id_unico": "d25b1ddd-186f-4445-804b-4c0f4cdcb49b",
+        "nome": "Puch",
+        "referencia": "marca_puch",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 227,
+        "id_unico": "551bc3cb-c936-4798-8ecc-846036cb5775",
+        "nome": "Radical",
+        "referencia": "marca_radical",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 228,
+        "id_unico": "3a47b099-738e-405c-8b41-e40478d8a534",
+        "nome": "Ram",
+        "referencia": "marca_ram",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 229,
+        "id_unico": "c0d0567d-d54a-4aac-bf76-adc1c26b74c7",
+        "nome": "Rambler",
+        "referencia": "marca_rambler",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 230,
+        "id_unico": "026e3cab-8ef3-40d8-addd-19871c14e749",
+        "nome": "Renault",
+        "referencia": "marca_renault",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 231,
+        "id_unico": "999ff52b-7c95-4c97-a6ab-c67e5a043617",
+        "nome": "Renault Samsung",
+        "referencia": "marca_renault_samsung",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 232,
+        "id_unico": "dda6e9b7-1a7a-4bf3-a998-e530b1bdb7b7",
+        "nome": "Riley",
+        "referencia": "marca_riley",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 233,
+        "id_unico": "37e59609-ed8d-4f62-b45d-2c25ce18fd99",
+        "nome": "Robur",
+        "referencia": "marca_robur",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 234,
+        "id_unico": "7c6b3588-5ba1-4165-abcc-41e90dd16e0e",
+        "nome": "Rolls Royce",
+        "referencia": "marca_rolls_royce",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 235,
+        "id_unico": "7d53e752-caca-4f42-82d6-d966aa21a695",
+        "nome": "Rossion",
+        "referencia": "marca_rossion",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 236,
+        "id_unico": "68b0db5f-628d-4b59-965a-888dea98f91f",
+        "nome": "Rover",
+        "referencia": "marca_rover",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 237,
+        "id_unico": "af1851b4-2158-4625-b810-9001800d6578",
+        "nome": "Ruf",
+        "referencia": "marca_ruf",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 238,
+        "id_unico": "bd0663c1-4387-49ff-85fd-68e312a6817e",
+        "nome": "Saab",
+        "referencia": "marca_saab",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 239,
+        "id_unico": "44b82c19-f93a-43cd-b159-2fa8aa6e9173",
+        "nome": "Saipa",
+        "referencia": "marca_saipa",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 240,
+        "id_unico": "483a65d5-c547-4b5c-9b66-525b247aae2f",
+        "nome": "Saleen",
+        "referencia": "marca_saleen",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 241,
+        "id_unico": "a3136679-d965-40d7-a001-ba8b4d82aee0",
+        "nome": "Saturn",
+        "referencia": "marca_saturn",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 242,
+        "id_unico": "9d5e2846-93ec-4ce9-9aa8-57b9847a4542",
+        "nome": "Scania",
+        "referencia": "marca_scania",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 243,
+        "id_unico": "015bbddd-0f4d-44d8-8558-184b6ad9d712",
+        "nome": "Scion",
+        "referencia": "marca_scion",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 244,
+        "id_unico": "31e59611-0eb2-4cc1-8f39-aed2175db655",
+        "nome": "Seat",
+        "referencia": "marca_seat",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 245,
+        "id_unico": "0c6f9b60-1d71-44b7-9fbb-082879db46d3",
+        "nome": "Setra",
+        "referencia": "marca_setra",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 246,
+        "id_unico": "f9bb144d-b921-4432-99b1-751b1fe379e0",
+        "nome": "Shelby",
+        "referencia": "marca_shelby",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 247,
+        "id_unico": "2c3b1c88-88bf-440f-98ad-2d35dd4ee867",
+        "nome": "Shineray",
+        "referencia": "marca_shineray",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 248,
+        "id_unico": "9d4af62b-091b-4f1a-88ce-322d95a1bca9",
+        "nome": "Siata",
+        "referencia": "marca_siata",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 249,
+        "id_unico": "578d3665-f6d4-406a-8997-70f639ca7eeb",
+        "nome": "Sisu",
+        "referencia": "marca_sisu",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 250,
+        "id_unico": "af30a823-1cb3-4634-b29d-6228c7fb7732",
+        "nome": "Skoda",
+        "referencia": "marca_skoda",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 251,
+        "id_unico": "8f8b5a37-885c-4124-9d39-310732e50529",
+        "nome": "Smart",
+        "referencia": "marca_smart",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 252,
+        "id_unico": "b723fafd-0c50-4d67-8a75-f1da8178d328",
+        "nome": "Spyker",
+        "referencia": "marca_spyker",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 253,
+        "id_unico": "68252c22-dcb2-4db0-ba9a-0e3d42503bd1",
+        "nome": "Ssangyong",
+        "referencia": "marca_ssangyoung",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 254,
+        "id_unico": "93ba0653-e115-42e6-89ed-79ed24163ba3",
+        "nome": "Steyr",
+        "referencia": "marca_steyr",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 255,
+        "id_unico": "0b87f42f-de44-4cdc-911a-bd67b2fecb66",
+        "nome": "Studebaker",
+        "referencia": "marca_studebaker",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 256,
+        "id_unico": "a07800cc-0e35-4b83-922e-e775584132e3",
+        "nome": "Subaru",
+        "referencia": "marca_subaru",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 257,
+        "id_unico": "5e4ff22b-224f-4848-8910-5c6f24a85a63",
+        "nome": "Sundown",
+        "referencia": "marca_sundown",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 258,
+        "id_unico": "55597483-74f0-48d6-8066-8d3c695aabd7",
+        "nome": "Suzuki",
+        "referencia": "marca_suzuki",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 259,
+        "id_unico": "8e409236-177c-4951-80a9-6073476b18bd",
+        "nome": "Talbot",
+        "referencia": "marca_talbot",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 260,
+        "id_unico": "1dbf4db8-bc5b-45cc-9dd8-b9337a5ce4a9",
+        "nome": "Tata",
+        "referencia": "marca_tata",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 261,
+        "id_unico": "31ec20b1-4886-40f8-82cc-cc096071ee53",
+        "nome": "Tatra",
+        "referencia": "marca_tatra",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 262,
+        "id_unico": "b3e0597f-9db7-4b06-b1be-a3ba27f94f65",
+        "nome": "Tauro",
+        "referencia": "marca_tauro",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 263,
+        "id_unico": "c0345a7c-ddc1-4b2d-ba92-8cf4f66b65ef",
+        "nome": "Tavria",
+        "referencia": "marca_tavria",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 264,
+        "id_unico": "44b206a4-4b8a-4e68-8d4f-a7ffa0ade6f7",
+        "nome": "TEMSA",
+        "referencia": "marca_temsa",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 265,
+        "id_unico": "b11c5e8e-7156-4015-89f0-a5f9d3a1573e",
+        "nome": "Tesla",
+        "referencia": "marca_tesla",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 266,
+        "id_unico": "0d3659ee-c5ce-4f32-83dd-0f71beff38a6",
+        "nome": "Thai Rung",
+        "referencia": "marca_thai_rung",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 267,
+        "id_unico": "f7c74d33-ffe3-449c-9e19-b20823cdbf6a",
+        "nome": "Toyota",
+        "referencia": "marca_toyota",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 268,
+        "id_unico": "62750234-7157-4d92-b129-374d5a82d816",
+        "nome": "Trabant",
+        "referencia": "marca_trabant",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 269,
+        "id_unico": "4de2e5d7-8d56-4306-a51b-165fc461c61d",
+        "nome": "Traxx",
+        "referencia": "marca_traxx",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 270,
+        "id_unico": "0b07bb38-f8ca-44a8-96df-e3d18f0d1c67",
+        "nome": "Triumph",
+        "referencia": "marca_triumph",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 271,
+        "id_unico": "2a92bf71-e635-429d-aa61-4e8c4d9331ec",
+        "nome": "Troller",
+        "referencia": "marca_troller",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 272,
+        "id_unico": "526aa7e7-cc97-4016-ad37-f0109da32714",
+        "nome": "Tryumph",
+        "referencia": "marca_tryumph",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 273,
+        "id_unico": "8029a898-f678-4c0e-8947-bfdff33b4e6c",
+        "nome": "TVR",
+        "referencia": "marca_tvr",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 274,
+        "id_unico": "3753bc23-82eb-47ee-9fe6-1c1fe8a7a5b7",
+        "nome": "TVS",
+        "referencia": "marca_tvs",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 275,
+        "id_unico": "73c975a1-7341-4ad9-9e3f-a7f8cc90fb12",
+        "nome": "UAZ",
+        "referencia": "marca_uaz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 276,
+        "id_unico": "748dd76b-3ca1-4105-b99f-1e92b196d523",
+        "nome": "Unimog",
+        "referencia": "marca_unimog",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 277,
+        "id_unico": "7a03a014-3025-4298-b5cb-5ba85580e419",
+        "nome": "Vauxhall",
+        "referencia": "marca_vauxhall",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 278,
+        "id_unico": "55cffafd-143d-4c6a-bcfb-02444fa770fd",
+        "nome": "Vector Motors",
+        "referencia": "marca_vector_motors",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 279,
+        "id_unico": "adf3a84d-3f14-4aa2-9710-b05b5ede58aa",
+        "nome": "Vento",
+        "referencia": "marca_vento",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 280,
+        "id_unico": "192962f9-fb0d-459f-a33d-9dc0b3d2722a",
+        "nome": "Venturi",
+        "referencia": "marca_venturi",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 281,
+        "id_unico": "6191bc9d-b00d-47ef-bb8a-93ec3b0f5511",
+        "nome": "Veritas",
+        "referencia": "marca_veritas",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 282,
+        "id_unico": "1d2ac810-b7d0-4ad7-a1b9-3d54393713e6",
+        "nome": "Vespa",
+        "referencia": "marca_vespa",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 283,
+        "id_unico": "c794ab94-a4cc-4174-bb90-35277569e31e",
+        "nome": "Volkswagen",
+        "referencia": "marca_volkswagen",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 284,
+        "id_unico": "c8ffceee-42fa-4c29-b8ef-35203722ace2",
+        "nome": "Volvo",
+        "referencia": "marca_volvo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 285,
+        "id_unico": "a97acd6f-b50c-4891-bd1e-808e41c28876",
+        "nome": "Wartburg",
+        "referencia": "marca_wartburg",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 286,
+        "id_unico": "03e4c222-b1a2-4e44-81d9-0f080ec7520f",
+        "nome": "Western Star",
+        "referencia": "marca_western_star",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 287,
+        "id_unico": "edf18c14-8a20-49b1-8a9b-a455d09d424e",
+        "nome": "Westfield",
+        "referencia": "marca_westfield",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 288,
+        "id_unico": "569f3723-5919-4e38-88b9-0f187818fb5a",
+        "nome": "Wiesmann",
+        "referencia": "marca_wiesmann",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 289,
+        "id_unico": "8b6db060-9d68-49f1-a8c0-964a8853f1f4",
+        "nome": "Willys",
+        "referencia": "marca_willys",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 290,
+        "id_unico": "7e37f862-df29-4534-9d73-f4642af110ba",
+        "nome": "Yamaha",
+        "referencia": "marca_yamaha",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 291,
+        "id_unico": "55d639f7-ff4c-478b-b9bc-5095bb293698",
+        "nome": "Yugo",
+        "referencia": "marca_yugo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 292,
+        "id_unico": "976d8829-dd07-4a41-9912-abe1cb3f0635",
+        "nome": "Zastava",
+        "referencia": "marca_zastava",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 293,
+        "id_unico": "0a82a4e3-7f66-411f-a42b-c1e2c0d59880",
+        "nome": "Zenvo",
+        "referencia": "marca_zenvo",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 294,
+        "id_unico": "5926ae96-841e-4318-a9a3-2e9ae6fe7d29",
+        "nome": "ZiL",
+        "referencia": "marca_zil",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 295,
+        "id_unico": "8b315ccc-30e0-4f19-91ec-333937cf59d3",
+        "nome": "Zimmer",
+        "referencia": "marca_zimmer",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 296,
+        "id_unico": "01215396-58e5-483e-952e-2279a3bdd109",
+        "nome": "Aeon",
+        "referencia": "marca_aeon",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 297,
+        "id_unico": "e2f39bdd-d47a-491d-9ebf-7bfdfb5d44b0",
+        "nome": "AKT Motos",
+        "referencia": "marca_akt",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 298,
+        "id_unico": "75d8aad3-4765-4fe4-a841-f3a20d90808a",
+        "nome": "Auteco",
+        "referencia": "marca_auteco",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 299,
+        "id_unico": "8acb512f-083a-43e5-93ad-326da1af6393",
+        "nome": "AvtoVAZ",
+        "referencia": "marca_avtovaz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 300,
+        "id_unico": "edafeb55-05ab-499c-99d4-9dc161836d2b",
+        "nome": "AZLK",
+        "referencia": "marca_azlk",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 301,
+        "id_unico": "f223c14b-0465-4f7f-bc9f-58e2a81a8007",
+        "nome": "DFSK",
+        "referencia": "marca_dfsk",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 302,
+        "id_unico": "ce7d1a8b-fccf-45b5-9486-8f7880750650",
+        "nome": "Dongfeng",
+        "referencia": "marca_dongfeng",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 303,
+        "id_unico": "c2fabce4-8eb3-4e7f-900c-870bcb38d961",
+        "nome": "Force Motors",
+        "referencia": "marca_force",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 304,
+        "id_unico": "bbe14e43-74e0-44e3-82b1-c4c8334d6771",
+        "nome": "Genesis",
+        "referencia": "marca_genesis",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 305,
+        "id_unico": "c215584d-5309-4264-bbcb-2f8d8b3e3bfc",
+        "nome": "Haima",
+        "referencia": "marca_haima",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 306,
+        "id_unico": "d18cef4a-afd3-4b45-8b4c-de85bc777789",
+        "nome": "Hartford",
+        "referencia": "marca_hartford",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 307,
+        "id_unico": "b7a8cf4f-a594-4e0c-b309-e72ee33fb8b1",
+        "nome": "International",
+        "referencia": "marca_international",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 308,
+        "id_unico": "b597547c-5220-4af0-a32a-e26436c0dbc4",
+        "nome": "Italika",
+        "referencia": "marca_italika",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 309,
+        "id_unico": "c210e083-1048-4895-9614-f224bbcd6ef2",
+        "nome": "John Deere",
+        "referencia": "marca_john_deere",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 310,
+        "id_unico": "ae51ae84-a112-4379-b482-65d2156179f0",
+        "nome": "Keeway",
+        "referencia": "marca_keeway",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 311,
+        "id_unico": "cdd4e306-a159-4e7e-af2c-3a485916ec16",
+        "nome": "KYMCO",
+        "referencia": "marca_kymco",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 312,
+        "id_unico": "caed8c0a-748e-49ec-89c7-0540d158dbb1",
+        "nome": "Maruti Suzuki",
+        "referencia": "marca_maruti",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 313,
+        "id_unico": "d23539ec-847d-43ce-99f2-e156bf538823",
+        "nome": "Moskvitch",
+        "referencia": "marca_moskvitch",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 314,
+        "id_unico": "4d3e6f96-b5a3-4823-a947-257cfc5b8b78",
+        "nome": "Royal Enfield",
+        "referencia": "marca_royal_enfield",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 315,
+        "id_unico": "f13f4dc2-122a-4ee2-adc4-de4bc213997b",
+        "nome": "SYM",
+        "referencia": "marca_sym",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 316,
+        "id_unico": "9c06265a-60bb-4b7e-825a-e90d1e7c5f61",
+        "nome": "Tofa\u015f",
+        "referencia": "marca_tofas",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 317,
+        "id_unico": "79cf3f77-7bfb-4876-839b-bfcf21f52d9f",
+        "nome": "UM",
+        "referencia": "marca_um",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 318,
+        "id_unico": "be3de8ea-fa60-430b-b9d1-fff04535b741",
+        "nome": "Viper",
+        "referencia": "marca_viper",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 319,
+        "id_unico": "42f37e63-89cb-4180-a39b-0780c33af1f6",
+        "nome": "Wuling",
+        "referencia": "marca_wuling",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 320,
+        "id_unico": "7719534c-4ac7-4b9a-a0b5-e777d4fedd96",
+        "nome": "ZAZ",
+        "referencia": "marca_zaz",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    },
+    {
+        "id_marca": 321,
+        "id_unico": "ea47a4e9-cdd5-4d7a-85f0-2c78847e0796",
+        "nome": "Zotye",
+        "referencia": "marca_zotye",
+        "data_acao": "2012-01-01 12:12:12",
+        "acao": "I"
+    }
+]

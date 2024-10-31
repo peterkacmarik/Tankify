@@ -4,7 +4,7 @@ from core.auth_google import handle_google_login
 
 def facebook_login_button(translation, page: ft.Page):
     return ft.OutlinedButton(
-        width=140,
+        width=150,
         height=60,
         text=translation["facebook"],
         icon=ft.icons.FACEBOOK,
@@ -22,7 +22,7 @@ def facebook_login_button(translation, page: ft.Page):
 
 def google_login_button(translation, page: ft.Page):
     return ft.OutlinedButton(
-        width=140,
+        width=150,
         height=60,
         content=ft.Row(
             controls=[

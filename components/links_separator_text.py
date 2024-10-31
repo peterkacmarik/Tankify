@@ -144,8 +144,8 @@ def home_page_box(translation, page: ft.Page):
                         # Spodný rámček
                         ft.Container(
                             alignment=ft.alignment.center,
-                            width=400,
-                            height=300,
+                            width=300,
+                            height=500,
                             top=100,  # posunie rámček nižšie
                             border_radius=20,
                             border=ft.border.all(1, ft.colors.GREY_500),
@@ -169,7 +169,7 @@ def home_page_box(translation, page: ft.Page):
                         # Logo prekrývajúce rámček
                         ft.Column(
                             alignment=ft.alignment.center,
-                            top=40,
+                            top=35,
                             controls=[
                                 ft.Container(
                                     content=ft.Image(
@@ -186,7 +186,7 @@ def home_page_box(translation, page: ft.Page):
                             ]
                         )
                     ],
-                    width=600,
+                    width=350,
                     height=800,
                 )
             ]

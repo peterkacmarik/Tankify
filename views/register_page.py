@@ -1,6 +1,6 @@
 import flet as ft
 
-from locales.translations import get_translation
+from locales.open_files import get_translation
 from locales.language_manager import LanguageManager
 from components.logo import page_logo
 from components.buttons import (
@@ -121,14 +121,14 @@ class RegisterView(ft.View):
     
     def validate_fields(self, e=None):
         # Získame hodnoty z polí
-        firs_name = self.first_name_value.value
-        last_name = self.last_name_value.value
-        email = self.email_value.value
-        password = self.password_value.value
-        repeat_password = self.repeat_password_value.value
+        first_name = self.first_name_value.content.value
+        last_name = self.last_name_value.content.value
+        email = self.email_value.content.value
+        password = self.password_value.content.value
+        repeat_password = self.repeat_password_value.content.value
         
         # Aktivujeme tlačidlo len ak sú obe polia vyplnené
-        if firs_name and last_name and email and password and repeat_password:
+        if first_name and last_name and email and password and repeat_password:
             self.registration.content.disabled = False
         else:
             self.registration.content.disabled = True
@@ -155,6 +155,7 @@ class RegisterView(ft.View):
         return ft.Container(
             alignment=ft.Alignment(x=-1.0, y=0.0),
             content=ft.Dropdown(
+                bgcolor=ft.colors.TRANSPARENT,
                 options=[
                     ft.dropdown.Option(
                         key="en", 
@@ -239,18 +240,18 @@ class RegisterView(ft.View):
         
     def handle_register(self, e):
         try:
-            email=self.email_value.value,
-            password=self.password_value.value,
-            first_name=self.first_name_value.value,
-            last_name=self.last_name_value.value
+            first_name = self.first_name_value.content.value
+            last_name = self.last_name_value.content.value
+            email = self.email_value.content.value
+            password = self.password_value.content.value
             
             response = self.supabase.auth.sign_up(
                 credentials={
-                    "email": f"{email[0]}",
-                    "password": f"{password[0]}",
+                    "email": f"{email}",
+                    "password": f"{password}",
                     "options": {
                         "data": {
-                            "first_name": f"{first_name[0]}", 
+                            "first_name": f"{first_name}", 
                             "last_name": f"{last_name}"
                         }
                     }

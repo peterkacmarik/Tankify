@@ -1,7 +1,7 @@
 import flet as ft
 from components.links_separator_text import home_page_box
 from locales.language_manager import LanguageManager
-from locales.translations import get_translation
+from locales.open_files import get_translation
 
 
 class HomeView(ft.View):
@@ -55,6 +55,7 @@ class HomeView(ft.View):
             # padding=ft.padding.only(left=20),
             alignment=ft.Alignment(x=-1.0, y=0.0),
             content=ft.Dropdown(
+                bgcolor=ft.colors.TRANSPARENT,
                 options=[
                     ft.dropdown.Option(
                         key="en", 

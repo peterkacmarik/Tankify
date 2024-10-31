@@ -1,6 +1,7 @@
 import os
 import flet as ft
 
+from views.dashboard import DashboardView
 from views.login_page import LoginView
 from views.home_page import HomeView
 from views.register_page import RegisterView
@@ -15,6 +16,7 @@ def main(page: ft.Page):
     LanguageManager.set_language("en")  # Predvolený jazyk je angličtina
     page.title = "TankiFy"
     page.fonts = {
+        "PoiretOne": "/fonts/Poiret_One/PoiretOne-Regular.ttf",
         "Roboto": "/fonts/Roboto/Roboto-Regular.ttf",
         "OpenSans": "/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf",
         "ABeeZee": "/fonts/ABeeZee/ABeeZee-Regular.ttf",
@@ -40,6 +42,8 @@ def main(page: ft.Page):
             page.views.append(ForgotPasswordView(page))
         elif page.route == "/service-terms":
             page.views.append(ServiceTermsView(page))
+        elif page.route == "/dashboard":
+            page.views.append(DashboardView(page))
 
         page.update()
 

@@ -1,17 +1,42 @@
 import flet as ft
-from locales.language_manager import LanguageManager
+from components.navigations import app_bar, bottom_navigation_bar, left_drawer
 from locales.open_files import get_translation
-from components.logo import page_logo
-from components.buttons import login_button, register_button
-from views.register_page import RegisterView
-from views.login_page import LoginView
+from components.fields import (
+    model_field,
+    vehicle_name_field,
+    vehicle_type_field,
+    manufacturer_field
+)
+from components.buttons import (
+    google_login_button, 
+    facebook_login_button,
+    login_button
+)
+from components.logo import (
+    page_logo
+)
+from components.links_separator_text import (
+    line_separator,
+    main_login_text,
+    forgot_password_link,
+    create_account_link
+)
+from locales.language_manager import LanguageManager
+from supabase import Client
+from core.supa_base import get_supabese_client
 
-class ServiceTermsView(ft.View):
+
+class DashboardView(ft.View):
     def __init__(self, page: ft.Page):
-        super().__init__(route="/service-terms")
+        super().__init__(route="/dashboard")
         self.page = page
         
-        self.bgcolor = ft.colors.WHITE
+        self.drawer = left_drawer(self.handle_change)
+        self.appbar = app_bar(self.open_drawer, self.switch_theme)
+        self.navigation_bar = bottom_navigation_bar()
+        
+        # self.bgcolor = ft.colors.WHITE
+        # self.supabase: Client = get_supabese_client()
         
         self.scroll = ft.ScrollMode.HIDDEN
         self.fullscreen_dialog = True
@@ -27,16 +52,16 @@ class ServiceTermsView(ft.View):
             show_close_icon=True
         )
         self.page.overlay.append(self.snack_bar)
-        
-        
+
+    
     def init_components(self):
         # Tvorba prepínača jazyka a prihlasovacieho formulára
         self.language_switch_button = self.language_switch()
-        self.page_logo = page_logo()
-        self.handle_login = LoginView(self.page)
-        self.handle_register = RegisterView(self.page)
-        self.login_button = login_button(self.translation, self.page, self.handle_login.handle_login)
-        self.register_button = register_button(self.translation, self.handle_register.handle_register)
+        # self.page_logo = page_logo()
+        # self.vehicle_type_fields = vehicle_type_field(self.translation)
+        # search_input, search_results = manufacturer_field(self.translation, self.page)
+        # self.model_field = model_field(self.translation)
+        # self.vehicle_name_field = vehicle_name_field(self.translation)
         
         # Pridanie komponentov do hlavnej časti stránky
         self.controls = [
@@ -46,13 +71,58 @@ class ServiceTermsView(ft.View):
                 content=ft.Column(
                     controls=[
                         self.language_switch_button,
-                        self.page_logo,
-                        self.login_button,
-                        self.register_button
                     ]
                 )
-            )
+            ), 
+            self.drawer,
+            self.appbar,
+            self.navigation_bar
         ]
+    
+    
+    def handle_change(self, e):
+        selected_index = e.control.selected_index
+        if selected_index == 0:   # Domov
+            self.page.go("/dashboard")
+        elif selected_index == 1:   # Kalkulačka
+            self.page.go("/login")
+        elif selected_index == 2:   # Nastavenia
+            self.page.go("/register")
+        elif selected_index == 3:   # O aplikácií
+            self.page.go("/forgot-password")
+        self.page.update()
+        
+    
+    def switch_theme(self, e):
+        self.page.theme_mode = ft.ThemeMode.DARK if self.page.theme_mode == ft.ThemeMode.LIGHT else ft.ThemeMode.LIGHT
+        self.page.update()
+    
+    
+    def open_drawer(self, e):
+        """Otvorenie drawer menu"""
+        self.drawer.open = True
+        self.drawer.update()
+        
+        
+    def close_drawer(self, e):
+        """Zatvorenie drawer menu"""
+        self.drawer.open = False
+        self.drawer.update()
+        
+    
+    def validate_fields(self, e=None):
+        # Získame hodnoty z polí
+        email = self.login_fields.content.controls[0].value
+        password = self.login_fields.content.controls[1].value
+    
+        # Aktivujeme tlačidlo len ak sú obe polia vyplnené
+        if email and password:
+            self.login_button.content.disabled = False
+        else:
+            self.login_button.content.disabled = True
+            
+        # Aktualizujeme UI
+        self.login_button.update()
     
     
     def language_switch(self):
@@ -153,6 +223,27 @@ class ServiceTermsView(ft.View):
         self.init_components()
         self.page.update()
         
-    
-    def handle_service_terms(self):
-        pass
+        
+        
+    # def handle_drawer_item_click(self, e, index):
+    #     """Spracovanie kliknutia na položku v draweri"""
+    #     # Aktualizácia vizuálneho stavu položiek
+    #     for i, control in enumerate(self.page.drawer.controls):
+    #         if isinstance(control, ft.NavigationDrawerDestination):
+    #             control.selected = (i == index)
+        
+    #     # Zatvorenie drawera
+    #     self.close_drawer(e)
+        
+    #     # Navigácia alebo akcia podľa vybranej položky
+    #     if index == 0:  # Domov
+    #         self.show_snack_bar_message("Navigácia na domovskú obrazovku")
+    #     elif index == 1:  # Kalkulačka
+    #         self.show_snack_bar_message("Otvorenie kalkulačky")
+    #     elif index == 2:  # Nastavenia
+    #         self.show_snack_bar_message("Otvorenie nastavení")
+    #     elif index == 3:  # O aplikácii
+    #         self.show_snack_bar_message("Zobrazenie informácií o aplikácii")
+        
+    #     self.page.update()
+        

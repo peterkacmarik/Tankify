@@ -1,7 +1,9 @@
 import flet as ft
-from locales.translations import get_translation
+from locales.open_files import get_translation
 from components.fields import (
-    email_field, 
+    email_field,
+    login_email_field,
+    login_password_field, 
     password_field
 )
 from components.buttons import (
@@ -71,13 +73,13 @@ class LoginView(ft.View):
         self.line_separator = line_separator(self.translation)
         
         self.login_fields = ft.Container(
-            padding=ft.padding.only(top=10),
+            alignment=ft.alignment.center,
             content=ft.Column(
                 alignment=ft.MainAxisAlignment.CENTER,
                 spacing=20,
                 controls=[
-                    email_field(self.translation, self.validate_fields),
-                    password_field(self.translation, self.validate_fields)
+                    login_email_field(self.translation, self.validate_fields),
+                    login_password_field(self.translation, self.validate_fields)
                 ]
             )
         )
@@ -99,6 +101,8 @@ class LoginView(ft.View):
                         self.social_buttons,
                         self.line_separator,
                         self.login_fields,
+                        # self.email_field,
+                        # self.password_field,
                         self.forgot_password_link,
                         self.login_button,
                         self.create_account_link
@@ -128,6 +132,7 @@ class LoginView(ft.View):
             # padding=ft.padding.only(left=20),
             alignment=ft.Alignment(x=-1.0, y=0.0),
             content=ft.Dropdown(
+                bgcolor=ft.colors.TRANSPARENT,
                 options=[
                     ft.dropdown.Option(
                         key="en", 
@@ -238,7 +243,7 @@ class LoginView(ft.View):
                 self.snack_bar.open = True
                 self.page.update()
                 
-                self.page.go("/")
+                self.page.go("/dashboard")
                 
         except Exception as ex:
             self.snack_bar.content.value = str(ex)
