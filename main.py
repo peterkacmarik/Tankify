@@ -48,7 +48,7 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = route_change
-    page.go("/")
+    page.go("/dashboard")
 
 ft.app(
     target=main,

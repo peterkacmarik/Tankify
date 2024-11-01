@@ -155,7 +155,6 @@ class RegisterView(ft.View):
         return ft.Container(
             alignment=ft.Alignment(x=-1.0, y=0.0),
             content=ft.Dropdown(
-                bgcolor=ft.colors.TRANSPARENT,
                 options=[
                     ft.dropdown.Option(
                         key="en", 

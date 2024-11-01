@@ -1,5 +1,6 @@
 import flet as ft
 from components.navigations import app_bar, bottom_navigation_bar, left_drawer
+from core.set_dashboard import update_theme
 from locales.open_files import get_translation
 from components.fields import (
     model_field,
@@ -31,11 +32,11 @@ class DashboardView(ft.View):
         super().__init__(route="/dashboard")
         self.page = page
         
-        self.drawer = left_drawer(self.handle_change)
-        self.appbar = app_bar(self.open_drawer, self.switch_theme)
-        self.navigation_bar = bottom_navigation_bar()
+        # Definuj farby pre svetlý a tmavý režim
+        self.light_bgcolor = "white" # "#eaf0f5"
+        self.dark_bgcolor = "#2e3b4e"
+        self.bgcolor = self.get_background_color()
         
-        # self.bgcolor = ft.colors.WHITE
         # self.supabase: Client = get_supabese_client()
         
         self.scroll = ft.ScrollMode.HIDDEN
@@ -46,6 +47,10 @@ class DashboardView(ft.View):
         self.translation = get_translation(self.current_language)
         self.init_components()
         
+        self.drawer = left_drawer(self.translation, self.handle_change_drawer)
+        self.appbar = app_bar(self.page, self.open_drawer, self.switch_theme, self.translation)
+        self.navigation_bar = bottom_navigation_bar(self.translation, self.handle_change_bottom_nav)
+        
         # Snack bar
         self.snack_bar = ft.SnackBar(
             content=ft.Text(""),
@@ -53,10 +58,19 @@ class DashboardView(ft.View):
         )
         self.page.overlay.append(self.snack_bar)
 
-    
+    def get_background_color(self):
+        # Vráti farbu podľa aktuálneho theme_mode stránky
+        return self.light_bgcolor if self.page.theme_mode == ft.ThemeMode.LIGHT else self.dark_bgcolor
+
+    # Prípadne pridaj metódu, ktorá reaguje na zmenu režimu, ak prepínaš dynamicky
+    def update_theme(self):
+        self.bgcolor = self.get_background_color()
+        self.page.update()
+        
+        
     def init_components(self):
         # Tvorba prepínača jazyka a prihlasovacieho formulára
-        self.language_switch_button = self.language_switch()
+        # self.language_switch_button = self.language_switch()
         # self.page_logo = page_logo()
         # self.vehicle_type_fields = vehicle_type_field(self.translation)
         # search_input, search_results = manufacturer_field(self.translation, self.page)
@@ -70,31 +84,55 @@ class DashboardView(ft.View):
                 padding=ft.padding.only(20, 30, 20, 0),
                 content=ft.Column(
                     controls=[
-                        self.language_switch_button,
+                        # self.language_switch_button,
                     ]
                 )
             ), 
-            self.drawer,
-            self.appbar,
-            self.navigation_bar
+            # self.drawer,
+            # self.appbar,
+            # self.navigation_bar
         ]
     
     
-    def handle_change(self, e):
+    def handle_change_drawer(self, e):
         selected_index = e.control.selected_index
-        if selected_index == 0:   # Domov
-            self.page.go("/dashboard")
-        elif selected_index == 1:   # Kalkulačka
-            self.page.go("/login")
-        elif selected_index == 2:   # Nastavenia
-            self.page.go("/register")
-        elif selected_index == 3:   # O aplikácií
-            self.page.go("/forgot-password")
+        if selected_index == 0:   # History
+            self.page.go("/history")
+        elif selected_index == 1:   # Add new
+            self.page.go("/add-new")
+        elif selected_index == 2:   # Reminders
+            self.page.go("/reminders")
+        elif selected_index == 3:   # Report
+            self.page.go("/report")
+        elif selected_index == 4:   # Vehicles
+            self.page.go("/vehicles")
+        elif selected_index == 5:   # Users
+            self.page.go("/users")
+        elif selected_index == 6:   # Settings
+            self.page.go("/settings")
+        elif selected_index == 7:   # Contact
+            self.page.go("/contact")
         self.page.update()
         
     
+    def handle_change_bottom_nav(self, e):
+        selected_index = e.control.selected_index
+        if selected_index == 0:   # History
+            self.page.go("/history")
+        elif selected_index == 1:   # Report
+            self.page.go("/report")
+        elif selected_index == 2:   # Add new
+            self.page.go("/add-new")
+        elif selected_index == 3:   # Reminders
+            self.page.go("/reminders")
+        elif selected_index == 4:   # More
+            self.page.go("/settings")
+        self.page.update()
+    
+    
     def switch_theme(self, e):
         self.page.theme_mode = ft.ThemeMode.DARK if self.page.theme_mode == ft.ThemeMode.LIGHT else ft.ThemeMode.LIGHT
+        self.update_theme()  # Aktualizácia pozadia pre nový režim
         self.page.update()
     
     
@@ -130,7 +168,6 @@ class DashboardView(ft.View):
             # padding=ft.padding.only(left=20),
             alignment=ft.Alignment(x=-1.0, y=0.0),
             content=ft.Dropdown(
-                bgcolor=ft.colors.TRANSPARENT,
                 options=[
                     ft.dropdown.Option(
                         key="en", 

@@ -2,40 +2,31 @@ import flet as ft
 
         
 
-def app_bar(open_draver, switch_theme):
+def app_bar(page: ft.Page, open_draver, switch_theme, translation):
     return ft.AppBar(
         leading=ft.IconButton(
             ft.icons.MENU,
             on_click=open_draver,
-            icon_color=ft.colors.SURFACE_VARIANT,
         ),
         leading_width=40,
-        title=ft.Text("tankify"),
-        title_text_style=ft.TextStyle(
-            font_family="PoiretOne",
-            size=18,
-            color=ft.colors.SURFACE_VARIANT,
-            
-        ),
         center_title=False,
-        bgcolor="#03aac0",
         actions=[
             ft.IconButton(
                 ft.icons.WB_SUNNY_OUTLINED,
                 on_click=switch_theme,
-                icon_color=ft.colors.SURFACE_VARIANT,
             ),
             ft.PopupMenuButton(
-                icon_color=ft.colors.SURFACE_VARIANT,
                 items=[
                     ft.PopupMenuItem(
-                        text="Profil",
-                        icon=ft.icons.PERSON
+                        text=translation["minha_conta"],
+                        icon=ft.icons.ACCOUNT_CIRCLE,
+                        on_click=lambda e: page.go("/settings/account"),
                     ),
                     ft.PopupMenuItem(),  # divider
                     ft.PopupMenuItem(
-                        text="Odhlásiť sa",
-                        icon=ft.icons.LOGOUT
+                        text=translation["logoff"],
+                        icon=ft.icons.LOGOUT, 
+                        on_click=lambda e: page.go("/logout"),
                     ),
                 ]
             ),
@@ -43,63 +34,117 @@ def app_bar(open_draver, switch_theme):
     )
         
         
-def left_drawer(handle_change):
+def left_drawer(translation, handle_change_drawer):
     return ft.NavigationDrawer(
-        position=ft.NavigationDrawerPosition.END,
-        on_change=handle_change,
+        position=ft.NavigationDrawerPosition.START,
+        on_change=handle_change_drawer,
         # on_dismiss=self.handle_dismissal,
+        selected_index=0,
+        indicator_color=ft.colors.TRANSPARENT,
+        indicator_shape=ft.ContinuousRectangleBorder(radius=50),
         controls=[
             ft.Container(
-                content=ft.Column([
-                    ft.Container(
-                        content=ft.Icon(ft.icons.ACCOUNT_CIRCLE, size=64),
-                        margin=ft.margin.only(top=20, bottom=10),
-                    ),
-                    ft.Text("Dôchodkový kalkulátor", size=16, weight="bold"),
-                ], 
-                horizontal_alignment="center"
-                ),
+                alignment=ft.alignment.center,
                 padding=ft.padding.all(16),
+                content=ft.Column(
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    controls=[
+                        ft.Container(
+                            alignment=ft.alignment.center,
+                            content=ft.Icon(ft.icons.ACCOUNT_CIRCLE, size=64),
+                            margin=ft.margin.only(top=20, bottom=10),
+                        ),
+                        ft.Text(
+                            translation["google_play_titulo"], 
+                            size=16, 
+                            weight="bold",
+                        ),
+                    ]
+                )
             ),
-            ft.Divider(thickness=2),
+            ft.Divider(thickness=1),
             ft.NavigationDrawerDestination(
-                label="Dashboard",
-                icon=ft.icons.HOME_OUTLINED,
-                selected_icon=ft.icons.HOME,
+                label=translation["historico"],
+                icon=ft.icons.HISTORY_OUTLINED,
+                selected_icon=ft.icons.MANAGE_HISTORY,
             ),
             ft.NavigationDrawerDestination(
-                icon_content=ft.Icon(ft.icons.CALCULATE_OUTLINED),
-                label="Kalkulačka",
-                selected_icon=ft.icons.CALCULATE,
+                label=translation["adicionar_novo"],
+                icon=ft.icons.ADD_OUTLINED,
+                selected_icon=ft.icons.ADD_CIRCLE,
             ),
             ft.NavigationDrawerDestination(
-                icon_content=ft.Icon(ft.icons.SETTINGS_OUTLINED),
-                label="Nastavenia",
+                label=translation["lembretes"],
+                icon=ft.icons.NOTIFICATIONS_OUTLINED,
+                selected_icon=ft.icons.NOTIFICATIONS,
+            ),
+            ft.NavigationDrawerDestination(
+                label=translation["relatorios"],
+                icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED,
+                selected_icon=ft.icons.REPORT,
+            ),
+            ft.Divider(thickness=1),
+            ft.NavigationDrawerDestination(
+                label=translation["veiculos"],
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                selected_icon=ft.icons.DIRECTIONS_CAR,
+            ),
+            ft.NavigationDrawerDestination(
+                label=translation["usuarios"],
+                icon=ft.icons.SUPERVISED_USER_CIRCLE_OUTLINED,
+                selected_icon=ft.icons.SUPERVISED_USER_CIRCLE,
+            ),
+            ft.NavigationDrawerDestination(
+                label=translation["configuracoes"],
+                icon=ft.icons.SETTINGS_OUTLINED,
                 selected_icon=ft.icons.SETTINGS,
             ),
-            ft.Divider(thickness=2),
+            ft.Divider(thickness=1, opacity=1.0),
             ft.NavigationDrawerDestination(
-                icon_content=ft.Icon(ft.icons.INFO_OUTLINED),
-                label="O aplikácii",
-                selected_icon=ft.icons.INFO,
+                label=translation["contato"],
+                icon=ft.icons.EMAIL_OUTLINED,
+                selected_icon=ft.icons.EMAIL,
             ),
         ],
-        selected_index=0,
+        
     )
         
         
-def bottom_navigation_bar():
+def bottom_navigation_bar(translation, handle_change_bottom_nav):
     return ft.NavigationBar(
-        border=ft.border.all(10, ft.colors.SURFACE_VARIANT),
-        # on_change=lambda e: self.handle_navigation_change(e),
-        destinations=[
-            ft.NavigationBarDestination(icon=ft.icons.HOME, label="Home"),
-            ft.NavigationBarDestination(icon=ft.icons.SEARCH, label="Search"),
-            ft.NavigationBarDestination(icon=ft.icons.SETTINGS, label="Settings"),
-        ],
-        selected_index=0,
-        # bgcolor="#03aac0",
-        indicator_color="#00bcd4",
-    )
+            selected_index=0,
+            on_change=handle_change_bottom_nav,
+            # bgcolor=ft.colors.WHITE,
+            indicator_color=ft.colors.TRANSPARENT,
+            indicator_shape=ft.CircleBorder(type="circle"),
+            destinations=[
+                ft.NavigationBarDestination(
+                    bgcolor=ft.colors.BLACK12,
+                    icon=ft.icons.HISTORY_OUTLINED, 
+                    label=translation["historico"],
+                    selected_icon=ft.icons.MANAGE_HISTORY,
+                ),
+                ft.NavigationBarDestination(
+                    icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED, 
+                    label=translation["relatorios"],
+                    selected_icon=ft.icons.REPORT,
+                ),
+                ft.NavigationBarDestination(
+                    icon=ft.icons.ADD_OUTLINED, 
+                    selected_icon=ft.icons.ADD_CIRCLE,
+                ),
+                ft.NavigationBarDestination(
+                    icon=ft.icons.NOTIFICATIONS_OUTLINED, 
+                    label=translation["lembretes"],
+                    selected_icon=ft.icons.NOTIFICATIONS,
+                ),
+                ft.NavigationBarDestination(
+                    icon=ft.icons.MORE_HORIZ_OUTLINED, 
+                    label=translation["mais"],
+                    selected_icon=ft.icons.MORE_HORIZ,
+                ),
+            ],
+        )
         
         
