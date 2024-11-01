@@ -242,7 +242,7 @@ class LoginView(ft.View):
                 self.snack_bar.open = True
                 self.page.update()
                 
-                self.page.go("/dashboard")
+                self.page.go("/history")
                 
         except Exception as ex:
             self.snack_bar.content.value = str(ex)

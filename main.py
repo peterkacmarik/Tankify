@@ -1,13 +1,14 @@
 import os
 import flet as ft
 
-from views.dashboard import DashboardView
+from views.history import HistoryView
 from views.login_page import LoginView
 from views.home_page import HomeView
 from views.register_page import RegisterView
 from views.forgot_password import ForgotPasswordView
 from views.service_terms import ServiceTermsView
 from locales.language_manager import LanguageManager
+# from views.settings import SettingsView
 
 port = int(os.getenv("PORT", 8000))
 
@@ -42,13 +43,13 @@ def main(page: ft.Page):
             page.views.append(ForgotPasswordView(page))
         elif page.route == "/service-terms":
             page.views.append(ServiceTermsView(page))
-        elif page.route == "/dashboard":
-            page.views.append(DashboardView(page))
+        elif page.route == "/history":
+            page.views.append(HistoryView(page))
 
         page.update()
 
     page.on_route_change = route_change
-    page.go("/dashboard")
+    page.go("/history")
 
 ft.app(
     target=main,

@@ -4,12 +4,12 @@ import flet as ft
 
 def app_bar(page: ft.Page, open_draver, switch_theme, translation):
     return ft.AppBar(
+        leading_width=40,
+        center_title=False,
         leading=ft.IconButton(
             ft.icons.MENU,
             on_click=open_draver,
         ),
-        leading_width=40,
-        center_title=False,
         actions=[
             ft.IconButton(
                 ft.icons.WB_SUNNY_OUTLINED,
@@ -52,7 +52,12 @@ def left_drawer(translation, handle_change_drawer):
                     controls=[
                         ft.Container(
                             alignment=ft.alignment.center,
-                            content=ft.Icon(ft.icons.ACCOUNT_CIRCLE, size=64),
+                            content=ft.Image(
+                                src="/logo/fuel_logo_transparent_1024_crop_128.png",
+                                width=72,
+                                height=72,
+                            ),
+                            # content=ft.Icon(ft.icons.ACCOUNT_CIRCLE, size=64),
                             margin=ft.margin.only(top=20, bottom=10),
                         ),
                         ft.Text(
@@ -110,41 +115,97 @@ def left_drawer(translation, handle_change_drawer):
         
     )
         
-        
-def bottom_navigation_bar(translation, handle_change_bottom_nav):
+    
+def navigation_bottom_bar(page: ft.Page, translation, handle_change_bottom_nav):
     return ft.NavigationBar(
-            selected_index=0,
-            on_change=handle_change_bottom_nav,
-            # bgcolor=ft.colors.WHITE,
-            indicator_color=ft.colors.TRANSPARENT,
-            indicator_shape=ft.CircleBorder(type="circle"),
-            destinations=[
-                ft.NavigationBarDestination(
-                    bgcolor=ft.colors.BLACK12,
-                    icon=ft.icons.HISTORY_OUTLINED, 
-                    label=translation["historico"],
-                    selected_icon=ft.icons.MANAGE_HISTORY,
-                ),
-                ft.NavigationBarDestination(
-                    icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED, 
-                    label=translation["relatorios"],
-                    selected_icon=ft.icons.REPORT,
-                ),
-                ft.NavigationBarDestination(
-                    icon=ft.icons.ADD_OUTLINED, 
-                    selected_icon=ft.icons.ADD_CIRCLE,
-                ),
-                ft.NavigationBarDestination(
-                    icon=ft.icons.NOTIFICATIONS_OUTLINED, 
-                    label=translation["lembretes"],
-                    selected_icon=ft.icons.NOTIFICATIONS,
-                ),
-                ft.NavigationBarDestination(
-                    icon=ft.icons.MORE_HORIZ_OUTLINED, 
-                    label=translation["mais"],
-                    selected_icon=ft.icons.MORE_HORIZ,
-                ),
-            ],
-        )
-        
+        selected_index=0,
+        on_change=handle_change_bottom_nav,
+        # bgcolor=ft.colors.WHITE,
+        indicator_color=ft.colors.TRANSPARENT,
+        indicator_shape=ft.CircleBorder(type="circle"),
+        destinations=[
+            ft.NavigationBarDestination(
+                bgcolor=ft.colors.BLACK12,
+                icon=ft.icons.HISTORY_OUTLINED, 
+                label=translation["historico"],
+                selected_icon=ft.icons.MANAGE_HISTORY,
+            ),
+            ft.NavigationBarDestination(
+                icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED, 
+                label=translation["relatorios"],
+                selected_icon=ft.icons.REPORT,
+            ),            
+            ft.NavigationBarDestination(
+                icon=ft.icons.NOTIFICATIONS_OUTLINED, 
+                label=translation["lembretes"],
+                selected_icon=ft.icons.NOTIFICATIONS,
+            ),
+            ft.NavigationBarDestination(
+                icon=ft.icons.MORE_HORIZ_OUTLINED, 
+                label=translation["mais"],
+                selected_icon=ft.icons.MORE_HORIZ,
+            ),
+            
+        ],
+    )
+    
+    
+# def bottom_appbar_nav(translation):
+#     return ft.BottomAppBar(
+#         shape=ft.NotchShape.CIRCULAR,
+#         content=ft.Container(
+#             alignment=ft.alignment.center,
+#             padding=ft.padding.only(left=20, right=20, top=0, bottom=0),
+#             content=ft.Row(
+#                 spacing=20,
+#                 # expand=True,
+#                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
+#                 alignment=ft.MainAxisAlignment.CENTER,
+#                 controls=[
+#                     ft.Column(
+#                         spacing=-10,
+#                         controls=[
+#                             ft.IconButton(
+#                                 icon=ft.icons.HISTORY_OUTLINED, 
+#                                 selected_icon=ft.icons.MANAGE_HISTORY,
+#                             ),
+#                             ft.Text(translation["historico"], size=12),
+#                         ]
+#                     ),
+#                     ft.Column(
+#                         spacing=-10,
+#                         controls=[
+#                             ft.IconButton(
+#                                 icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED, 
+#                                 selected_icon=ft.icons.REPORT,
+#                             ),
+#                             ft.Text(translation["relatorios"], size=12),
+#                         ]
+#                     ),
+#                     ft.Container(expand=True),
+#                     ft.Column(
+#                         spacing=-10,
+#                         controls=[
+#                             ft.IconButton(
+#                                 icon=ft.icons.NOTIFICATIONS_OUTLINED, 
+#                                 selected_icon=ft.icons.NOTIFICATIONS,
+#                             ),
+#                             ft.Text(translation["lembretes"], size=12),
+#                         ]
+#                     ),
+#                     ft.Column(
+#                         spacing=-10,
+#                         controls=[
+#                             ft.IconButton(
+#                                 icon=ft.icons.MORE_HORIZ_OUTLINED, 
+#                                 selected_icon=ft.icons.MORE_HORIZ,
+#                             ),
+#                             ft.Text(translation["mais"], size=12),
+#                         ]
+#                     ),
+#                 ],
+#             )
+#         )
+#     )
+    
         
