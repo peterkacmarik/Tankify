@@ -2,7 +2,6 @@ import flet as ft
 from components.links_separator_text import home_page_box
 from core.page_classes import BgColor, LanguageSwitcher
 from locales.language_manager import LanguageManager
-from locales.open_files import get_translation
 from views.base_page import BaseView
 
 

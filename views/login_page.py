@@ -1,6 +1,5 @@
 import flet as ft
 from core.page_classes import BgColor, LanguageSwitcher
-from locales.open_files import get_translation
 from components.fields import (
     email_field,
     login_email_field,

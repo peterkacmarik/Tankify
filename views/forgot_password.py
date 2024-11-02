@@ -1,7 +1,6 @@
 import flet as ft
 
 from core.page_classes import BgColor, LanguageSwitcher
-from locales.open_files import get_translation
 from components.logo import page_logo
 from components.links_separator_text import (
     main_forgot_password_text,

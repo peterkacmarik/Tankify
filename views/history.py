@@ -28,7 +28,6 @@ class HistoryView(BaseView):
         self.floating_action_button = floating_action_button(self.dialog_window)
         self.floating_action_button_location = ft.FloatingActionButtonLocation.CENTER_DOCKED
         
-        # Snack bar
         self.snack_bar = ft.SnackBar(
             content=ft.Text(""),
             show_close_icon=True

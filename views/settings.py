@@ -6,6 +6,7 @@ from core.supa_base import get_supabese_client
 from views.base_page import BaseView
 from core.page_classes import BgColor, LanguageSwitcher
 
+
 class SettingsView(BaseView):
     def __init__(self, page: ft.Page):
         super().__init__("/settings", page)
