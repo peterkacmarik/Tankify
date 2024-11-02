@@ -1,20 +1,28 @@
 import os
 import flet as ft
 
+# from views.history_old import HistoryView
 from views.history import HistoryView
 from views.login_page import LoginView
 from views.home_page import HomeView
 from views.register_page import RegisterView
 from views.forgot_password import ForgotPasswordView
-from views.service_terms import ServiceTermsView
 from locales.language_manager import LanguageManager
-# from views.settings import SettingsView
+from views.settings import SettingsView
+
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 port = int(os.getenv("PORT", 8000))
 
 
 def main(page: ft.Page):
-    LanguageManager.set_language("en")  # Predvolený jazyk je angličtina
+    # Inicializácia language managera
+    LanguageManager.initialize(page)
+    
+    # Nastavenie predvoleného jazyka
+    LanguageManager.set_language("en", page)
+    
     page.title = "TankiFy"
     page.fonts = {
         "PoiretOne": "/fonts/Poiret_One/PoiretOne-Regular.ttf",
@@ -25,14 +33,15 @@ def main(page: ft.Page):
     }
     page.theme = ft.Theme(font_family="Roboto")
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.adaptive = True
-    page.window.width = 400
-    page.window.height = 800
+    page.splash = ft.ProgressBar(visible=False)
+    # page.adaptive = True
+    # page.window.width = 400
+    # page.window.height = 800
     page.update()
 
     def route_change(route):
         page.views.clear()
-
+        
         if page.route == "/":
             page.views.append(HomeView(page))
         if page.route == "/login":
@@ -41,19 +50,20 @@ def main(page: ft.Page):
             page.views.append(RegisterView(page))
         elif page.route == "/forgot-password":
             page.views.append(ForgotPasswordView(page))
-        elif page.route == "/service-terms":
-            page.views.append(ServiceTermsView(page))
         elif page.route == "/history":
             page.views.append(HistoryView(page))
+        elif page.route == "/settings":
+            page.views.append(SettingsView(page))
 
         page.update()
 
     page.on_route_change = route_change
-    page.go("/history")
+    page.go("/")
+    # page.go(page.route) # pri spusteni apk zobrazuje home page stranku
 
 ft.app(
     target=main,
-    view=ft.AppView.FLET_APP,
+    view=ft.AppView.WEB_BROWSER,
     web_renderer=ft.WebRenderer.CANVAS_KIT,
     assets_dir="assets",
     port=port

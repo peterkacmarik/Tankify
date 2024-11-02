@@ -1,8 +1,12 @@
 import flet as ft
 from components.logo import home_page_logo, page_logo
 from components.buttons import log_in_button_home_page
+from locales.language_manager import LanguageManager
 
-def line_separator(translation):
+
+lang_manager = LanguageManager()
+
+def line_separator():
     return ft.Row(
         alignment=ft.MainAxisAlignment.CENTER,
         controls=[
@@ -13,7 +17,7 @@ def line_separator(translation):
                 # expand=True
             ),
             ft.Text(
-                value=translation["ou"].lower(),
+                value=lang_manager.get_text("ou").lower(),
             ),
             ft.Container(
                 bgcolor=ft.colors.GREY,
@@ -25,22 +29,22 @@ def line_separator(translation):
     )
     
     
-def main_login_text(translation):
+def main_login_text():
     return ft.Text(
-        translation["login"],
+        lang_manager.get_text("login"),
         size=24,
         weight=ft.FontWeight.NORMAL,
         font_family="Roboto_Slap",
     )
     
     
-def forgot_password_link(translation, page: ft.Page):
+def forgot_password_link(page: ft.Page):
     return ft.Container(
         # border=ft.border.all(0),
         alignment=ft.alignment.center,
         content=ft.TextButton(
             content=ft.Text(
-                value=translation["esqueceu_sua_senha"],
+                value=lang_manager.get_text("esqueceu_sua_senha"),
                 style=ft.TextStyle(
                     size=13,
                     decoration=ft.TextDecoration.UNDERLINE
@@ -54,11 +58,11 @@ def forgot_password_link(translation, page: ft.Page):
     )
     
     
-def create_account_link(translation, page: ft.Page):
+def create_account_link(page: ft.Page):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextButton(
-            text=translation["criar_conta"].upper(),
+            text=lang_manager.get_text("criar_conta").upper(),
             style=ft.ButtonStyle(
                 overlay_color=ft.colors.TRANSPARENT,
             ),
@@ -67,12 +71,12 @@ def create_account_link(translation, page: ft.Page):
     )
     
     
-def main_register_text(translation):
+def main_register_text():
     return ft.Container(
         # border=ft.border.all(0),
         alignment=ft.alignment.center,
         content=ft.Text(
-            translation["criar_conta_tankify"],
+            lang_manager.get_text("criar_conta_tankify"),
             size=24,
             weight=ft.FontWeight.NORMAL,
             font_family="Roboto_Slap",
@@ -80,12 +84,12 @@ def main_register_text(translation):
     )
     
     
-def sub_register_text(translation):
+def sub_register_text():
     return ft.Container(
         # border=ft.border.all(0),
         alignment=ft.alignment.center,
         content=ft.Text(
-            translation["comece_gerenciamento_gratuito"],
+            lang_manager.get_text("comece_gerenciamento_gratuito"),
             size=15,
             weight=ft.FontWeight.NORMAL,
             color=ft.colors.GREY_600,
@@ -93,11 +97,11 @@ def sub_register_text(translation):
     )
     
     
-def main_forgot_password_text(translation):
+def main_forgot_password_text():
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.Text(
-            translation["esqueceu_sua_senha"],
+            lang_manager.get_text("esqueceu_sua_senha"),
             size=24,
             weight=ft.FontWeight.NORMAL,
             font_family="Roboto_Slap",
@@ -105,12 +109,12 @@ def main_forgot_password_text(translation):
     )
     
     
-def sub_forgot_password_text(translation):
+def sub_forgot_password_text():
     return ft.Container(
         padding=ft.padding.only(bottom=20),
         alignment=ft.alignment.center,
         content=ft.Text(
-            translation["ajudaremos_redefinir"],
+            lang_manager.get_text("ajudaremos_redefinir"),
             size=16,
             weight=ft.FontWeight.NORMAL,
             font_family="Roboto_Slab",
@@ -118,11 +122,11 @@ def sub_forgot_password_text(translation):
     )
     
     
-def cancel_link(translation, page: ft.Page):
+def cancel_link(page: ft.Page):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextButton(
-            text=translation["btn_cancelar"].upper(),
+            text=lang_manager.get_text("btn_cancelar").upper(),
             style=ft.ButtonStyle(
                 overlay_color=ft.colors.TRANSPARENT,
             ),
@@ -132,7 +136,7 @@ def cancel_link(translation, page: ft.Page):
     
     
 
-def home_page_box(translation, page: ft.Page):
+def home_page_box(page: ft.Page):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.Column(
@@ -156,12 +160,12 @@ def home_page_box(translation, page: ft.Page):
                                 alignment=ft.alignment.center,
                                 controls=[
                                     ft.Text(
-                                        value=translation["home_personal_use_desc"],
+                                        value=lang_manager.get_text("home_personal_use_desc"),
                                         size=16,
                                         weight=ft.FontWeight.NORMAL,
                                         font_family="Roboto_Slap",
                                     ),
-                                    log_in_button_home_page(translation=translation, page=page),
+                                    log_in_button_home_page(page),
                                 ]
                             )
                         ),

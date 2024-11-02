@@ -1,12 +1,15 @@
 import flet as ft
 from core.auth_google import handle_google_login
+from locales.language_manager import LanguageManager
 
 
-def facebook_login_button(translation, page: ft.Page):
+lang_manager = LanguageManager()
+
+def facebook_login_button(page: ft.Page):
     return ft.OutlinedButton(
         width=150,
         height=60,
-        text=translation["facebook"],
+        text=lang_manager.get_text("facebook"),
         icon=ft.icons.FACEBOOK,
         style=ft.ButtonStyle(
             bgcolor=ft.colors.WHITE,
@@ -20,7 +23,7 @@ def facebook_login_button(translation, page: ft.Page):
     )
     
 
-def google_login_button(translation, page: ft.Page):
+def google_login_button(page: ft.Page):
     return ft.OutlinedButton(
         width=150,
         height=60,
@@ -33,7 +36,7 @@ def google_login_button(translation, page: ft.Page):
                     fit=ft.ImageFit.CONTAIN,
                     repeat=ft.ImageRepeat.NO_REPEAT,
                 ),
-                ft.Text(translation["google"]),
+                ft.Text(lang_manager.get_text("google")),
             ]
         ),
         style=ft.ButtonStyle(
@@ -48,7 +51,7 @@ def google_login_button(translation, page: ft.Page):
     )
     
     
-def login_button(translation, page: ft.Page, handle_login):
+def login_button(handle_login):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.ElevatedButton(
@@ -59,14 +62,14 @@ def login_button(translation, page: ft.Page, handle_login):
             ),
             width=300,
             height=50,
-            text=translation["login"].upper(), 
+            text=lang_manager.get_text("login").upper(), 
             color=ft.colors.WHITE,
             on_click=handle_login,
         ),
     )
 
 
-def logout_button(translation, page: ft.Page):
+def logout_button(page: ft.Page):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.ElevatedButton(
@@ -76,14 +79,14 @@ def logout_button(translation, page: ft.Page):
             ),
             width=200,
             height=50,
-            text=translation["logoff"], 
+            text=lang_manager.get_text("logoff"), 
             color=ft.colors.WHITE,
             on_click=lambda _: page.go("/login"),
         ),
     )
     
     
-def register_button_facebook(translation, page: ft.Page):
+def register_button_facebook(page: ft.Page):
     return ft.Container(
         # padding=ft.padding.only(20, 0, 20, 0),
         alignment=ft.alignment.center,
@@ -91,7 +94,7 @@ def register_button_facebook(translation, page: ft.Page):
             width=300,
             height=60,
             expand=True,
-            text=translation["criar_conta_com_facebook"],
+            text=lang_manager.get_text("criar_conta_com_facebook"),
             icon=ft.icons.FACEBOOK,
             style=ft.ButtonStyle(
                 bgcolor=ft.colors.WHITE,
@@ -106,7 +109,7 @@ def register_button_facebook(translation, page: ft.Page):
     )
 
     
-def register_button_google(translation, page: ft.Page):
+def register_button_google(page: ft.Page):
     return ft.Container(
         # padding=ft.padding.only(20, 0, 20, 0),
         alignment=ft.alignment.center,
@@ -121,7 +124,7 @@ def register_button_google(translation, page: ft.Page):
                         fit=ft.ImageFit.CONTAIN,
                         repeat=ft.ImageRepeat.NO_REPEAT,
                     ),
-                    ft.Text(translation["criar_conta_com_google"]),
+                    ft.Text(lang_manager.get_text("criar_conta_com_google")),
                 ]
             ),
             width=300,
@@ -140,7 +143,7 @@ def register_button_google(translation, page: ft.Page):
     )
     
     
-def register_button(translation, handle_register):
+def register_button(handle_register):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.ElevatedButton(
@@ -151,18 +154,18 @@ def register_button(translation, handle_register):
             ),
             width=300,
             height=50,
-            text=translation["criar_conta"].upper(),
+            text=lang_manager.get_text("criar_conta").upper(),
             color=ft.colors.WHITE,
             on_click=handle_register
         )
     )
     
     
-def cancel_button(translation, page: ft.Page):
+def cancel_button(page: ft.Page):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextButton(
-            text=translation["btn_cancelar"].upper(),
+            text=lang_manager.get_text("btn_cancelar").upper(),
             style=ft.ButtonStyle(
                 overlay_color=ft.colors.TRANSPARENT,
             ),
@@ -171,14 +174,14 @@ def cancel_button(translation, page: ft.Page):
     )
     
     
-def send_button(translation, page: ft.Page, handle_forgot_password):
+def send_button(handle_forgot_password):
     return ft.Container(
         padding=ft.padding.only(left=20, top=10, right=20, bottom=0),
         alignment=ft.alignment.center,
         content=ft.ElevatedButton(
             disabled=True,
             bgcolor=ft.colors.BLUE_700,
-            text=translation["btn_enviar"].upper(),
+            text=lang_manager.get_text("btn_enviar").upper(),
             width=300,
             height=50,
             style=ft.ButtonStyle(
@@ -190,14 +193,14 @@ def send_button(translation, page: ft.Page, handle_forgot_password):
     )
     
     
-def log_in_button_home_page(translation, page: ft.Page):
+def log_in_button_home_page(page: ft.Page):
     return ft.Container(
         padding=ft.padding.only(left=20, top=10, right=20, bottom=0),
         alignment=ft.alignment.center,
         content=ft.ElevatedButton(
             disabled=False,
             bgcolor=ft.colors.BLUE_700,
-            text=translation["login"].upper(),
+            text=lang_manager.get_text("login").upper(),
             width=150,
             height=50,
             style=ft.ButtonStyle(
@@ -207,3 +210,11 @@ def log_in_button_home_page(translation, page: ft.Page):
             on_click=lambda _: page.go("/login")
         )
     )
+    
+    
+def floating_action_button(dialog_window):
+    return ft.FloatingActionButton(
+            icon=ft.icons.ADD, 
+            shape=ft.CircleBorder(type="circle"), 
+            on_click=dialog_window,
+        )

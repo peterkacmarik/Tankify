@@ -1,40 +1,49 @@
 import flet as ft
 
-        
+from locales.language_manager import LanguageManager
 
-def app_bar(page: ft.Page, open_draver, switch_theme, translation):
+lang_manager = LanguageManager()
+
+
+def app_bar(page: ft.Page, switch_theme):
     return ft.AppBar(
-        leading_width=40,
-        center_title=False,
-        leading=ft.IconButton(
-            ft.icons.MENU,
-            on_click=open_draver,
-        ),
+        leading=ft.Icon(ft.icons.PALETTE, color=ft.colors.TRANSPARENT),
+        title=ft.Text(lang_manager.get_text("historico"), size=18),
+        center_title=True,
         actions=[
-            ft.IconButton(
-                ft.icons.WB_SUNNY_OUTLINED,
-                on_click=switch_theme,
-            ),
-            ft.PopupMenuButton(
-                items=[
-                    ft.PopupMenuItem(
-                        text=translation["minha_conta"],
-                        icon=ft.icons.ACCOUNT_CIRCLE,
-                        on_click=lambda e: page.go("/settings/account"),
-                    ),
-                    ft.PopupMenuItem(),  # divider
-                    ft.PopupMenuItem(
-                        text=translation["logoff"],
-                        icon=ft.icons.LOGOUT, 
-                        on_click=lambda e: page.go("/logout"),
-                    ),
-                ]
-            ),
+            ft.Container(
+                padding=ft.padding.only(left=0, top=0, right=10, bottom=0),
+                content=ft.Row(
+                    spacing=10,
+                    controls=[
+                        ft.IconButton(
+                            icon=ft.icons.LIGHT_MODE_OUTLINED,
+                            selected_icon=ft.icons.DARK_MODE_OUTLINED,
+                            on_click=switch_theme,
+                        ),
+                        ft.PopupMenuButton(
+                            items=[
+                                ft.PopupMenuItem(
+                                    text=lang_manager.get_text("minha_conta"),
+                                    icon=ft.icons.ACCOUNT_CIRCLE,
+                                    on_click=lambda e: page.go("/settings/account"),
+                                ),
+                                ft.PopupMenuItem(),  # divider
+                                ft.PopupMenuItem(
+                                    text=lang_manager.get_text("logoff"),
+                                    icon=ft.icons.LOGOUT, 
+                                    on_click=lambda e: page.go("/login"),
+                                ),
+                            ]
+                        ),
+                    ]
+                )
+            )
         ],
     )
         
         
-def left_drawer(translation, handle_change_drawer):
+def left_drawer(handle_change_drawer):
     return ft.NavigationDrawer(
         position=ft.NavigationDrawerPosition.START,
         on_change=handle_change_drawer,
@@ -61,7 +70,7 @@ def left_drawer(translation, handle_change_drawer):
                             margin=ft.margin.only(top=20, bottom=10),
                         ),
                         ft.Text(
-                            translation["google_play_titulo"], 
+                            lang_manager.get_text("google_play_titulo"), 
                             size=16, 
                             weight="bold",
                         ),
@@ -70,44 +79,44 @@ def left_drawer(translation, handle_change_drawer):
             ),
             ft.Divider(thickness=1),
             ft.NavigationDrawerDestination(
-                label=translation["historico"],
+                label=lang_manager.get_text("historico"),
                 icon=ft.icons.HISTORY_OUTLINED,
                 selected_icon=ft.icons.MANAGE_HISTORY,
             ),
+            # ft.NavigationDrawerDestination(
+            #     label=translation["adicionar_novo"],
+            #     icon=ft.icons.ADD_OUTLINED,
+            #     selected_icon=ft.icons.ADD_CIRCLE,
+            # ),
             ft.NavigationDrawerDestination(
-                label=translation["adicionar_novo"],
-                icon=ft.icons.ADD_OUTLINED,
-                selected_icon=ft.icons.ADD_CIRCLE,
-            ),
-            ft.NavigationDrawerDestination(
-                label=translation["lembretes"],
-                icon=ft.icons.NOTIFICATIONS_OUTLINED,
-                selected_icon=ft.icons.NOTIFICATIONS,
-            ),
-            ft.NavigationDrawerDestination(
-                label=translation["relatorios"],
+                label=lang_manager.get_text("relatorios"),
                 icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED,
                 selected_icon=ft.icons.REPORT,
             ),
+            ft.NavigationDrawerDestination(
+                label=lang_manager.get_text("lembretes"),
+                icon=ft.icons.NOTIFICATIONS_OUTLINED,
+                selected_icon=ft.icons.NOTIFICATIONS,
+            ),
             ft.Divider(thickness=1),
             ft.NavigationDrawerDestination(
-                label=translation["veiculos"],
+                label=lang_manager.get_text("veiculos"),
                 icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
                 selected_icon=ft.icons.DIRECTIONS_CAR,
             ),
             ft.NavigationDrawerDestination(
-                label=translation["usuarios"],
+                label=lang_manager.get_text("usuarios"),
                 icon=ft.icons.SUPERVISED_USER_CIRCLE_OUTLINED,
                 selected_icon=ft.icons.SUPERVISED_USER_CIRCLE,
             ),
             ft.NavigationDrawerDestination(
-                label=translation["configuracoes"],
+                label=lang_manager.get_text("configuracoes"),
                 icon=ft.icons.SETTINGS_OUTLINED,
                 selected_icon=ft.icons.SETTINGS,
             ),
             ft.Divider(thickness=1, opacity=1.0),
             ft.NavigationDrawerDestination(
-                label=translation["contato"],
+                label=lang_manager.get_text("contato"),
                 icon=ft.icons.EMAIL_OUTLINED,
                 selected_icon=ft.icons.EMAIL,
             ),
@@ -116,7 +125,7 @@ def left_drawer(translation, handle_change_drawer):
     )
         
     
-def navigation_bottom_bar(page: ft.Page, translation, handle_change_bottom_nav):
+def navigation_bottom_bar(handle_change_bottom_nav):
     return ft.NavigationBar(
         selected_index=0,
         on_change=handle_change_bottom_nav,
@@ -127,22 +136,22 @@ def navigation_bottom_bar(page: ft.Page, translation, handle_change_bottom_nav):
             ft.NavigationBarDestination(
                 bgcolor=ft.colors.BLACK12,
                 icon=ft.icons.HISTORY_OUTLINED, 
-                label=translation["historico"],
+                label=lang_manager.get_text("historico"),
                 selected_icon=ft.icons.MANAGE_HISTORY,
             ),
             ft.NavigationBarDestination(
                 icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED, 
-                label=translation["relatorios"],
+                label=lang_manager.get_text("relatorios"),
                 selected_icon=ft.icons.REPORT,
             ),            
             ft.NavigationBarDestination(
                 icon=ft.icons.NOTIFICATIONS_OUTLINED, 
-                label=translation["lembretes"],
+                label=lang_manager.get_text("lembretes"),
                 selected_icon=ft.icons.NOTIFICATIONS,
             ),
             ft.NavigationBarDestination(
                 icon=ft.icons.MORE_HORIZ_OUTLINED, 
-                label=translation["mais"],
+                label=lang_manager.get_text("mais"),
                 selected_icon=ft.icons.MORE_HORIZ,
             ),
             

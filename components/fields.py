@@ -1,21 +1,24 @@
 import flet as ft
 from locales.open_files import get_manufacturers
+from locales.language_manager import LanguageManager
 
 
-def login_email_field(translation, validate_field):
+lang_manager = LanguageManager()
+
+def login_email_field(validate_field):
     return ft.TextField(
         width=300,
         border_color=ft.colors.GREY,
-        label=translation["email"],
+        label=lang_manager.get_text("email"),
         on_change=validate_field,
     )
     
 
-def login_password_field(translation, validate_field):
+def login_password_field(validate_field):
     return ft.TextField(
         width=300,
         border_color=ft.colors.GREY,
-        label=translation["senha"],
+        label=lang_manager.get_text("senha"),
         password=True,
         can_reveal_password=True,
         on_change=validate_field
@@ -23,52 +26,49 @@ def login_password_field(translation, validate_field):
 
 
 
-
-
-
-def first_name_field(translation, validate_field):
+def first_name_field(validate_field):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["primeiro_nome"],
+            label=lang_manager.get_text("primeiro_nome"),
             on_change=validate_field
         )
     )
                                                     
                                                     
-def last_name_field(translation, validate_field):
+def last_name_field(validate_field):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["segundo_nome"],
+            label=lang_manager.get_text("segundo_nome"),
             on_change=validate_field
         )
     )
 
 
-def email_field(translation, validate_field):
+def email_field(validate_field):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["email"],
+            label=lang_manager.get_text("email"),
             on_change=validate_field,
         )
     )
     
     
-def password_field(translation, validate_field):
+def password_field(validate_field):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["senha"],
+            label=lang_manager.get_text("senha"),
             password=True,
             can_reveal_password=True,
             on_change=validate_field
@@ -76,13 +76,13 @@ def password_field(translation, validate_field):
     )
     
     
-def repeat_password_field(translation, validate_field):
+def repeat_password_field(validate_field):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["senha_repetir"],
+            label=lang_manager.get_text("senha_repetir"),
             password=True,
             can_reveal_password=True,
             on_change=validate_field
@@ -90,13 +90,13 @@ def repeat_password_field(translation, validate_field):
     )
     
     
-def confirm_password_field(translation, validate_field):
+def confirm_password_field(validate_field):
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["senha"],
+            label=lang_manager.get_text("senha"),
             password=True,
             can_reveal_password=True,
             on_change=validate_field
@@ -104,7 +104,7 @@ def confirm_password_field(translation, validate_field):
     )
     
     
-def vehicle_type_field(translation):
+def vehicle_type_field():
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.Dropdown(
@@ -113,19 +113,19 @@ def vehicle_type_field(translation):
             bgcolor=ft.colors.WHITE,
             width=300,
             # border=ft.border.all(0.5, ft.colors.GREY),
-            label=translation["tipo_veiculo"],
+            label=lang_manager.get_text("tipo_veiculo"),
             options=[
-                ft.dropdown.Option(translation["tipo_veiculo_03"]),
-                ft.dropdown.Option(translation["tipo_veiculo_01"]),
-                ft.dropdown.Option(translation["tipo_veiculo_02"]),
-                ft.dropdown.Option(translation["tipo_veiculo_04"]),
+                ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_03")),
+                ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_01")),
+                ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_02")),
+                ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_04")),
             ]
         )
     )
     
 
 
-def manufacturer_field(translation, page: ft.Page):
+def manufacturer_field(page: ft.Page):
     manufacturers = get_manufacturers()
     search_results = ft.ListView(
             spacing=5
@@ -154,7 +154,7 @@ def manufacturer_field(translation, page: ft.Page):
             icon=ft.icons.SHIELD,
             width=300,
             border_color=ft.colors.GREY,
-            hint_text=translation["marca"],
+            hint_text=lang_manager.get_text("marca"),
             on_change=filter_manufacturers,  # Pripojenie funkcie na zmenu textu
         )
         
@@ -169,26 +169,26 @@ def manufacturer_field(translation, page: ft.Page):
         ), search_results
     
     
-def model_field(translation):
+def model_field():
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["modelo"],
+            label=lang_manager.get_text("modelo"),
         )
     )
 
 
-def vehicle_name_field(translation):
+def vehicle_name_field():
     return ft.Container(
         alignment=ft.alignment.center,
         content=ft.TextField(
             icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
             width=300,
             border_color=ft.colors.GREY,
-            label=translation["nome_carro"],
+            label=lang_manager.get_text["nome_carro"],
         )
     )
     
