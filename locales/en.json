@@ -352,6 +352,8 @@
     "login": "Log in",
     "minha_conta": "My account",
     "logoff": "Logoff",
+    "logoff_sucesso": "You have successfully logged out",
+    "logoff_erro": "Failed to log out",
     "primeiro_nome": "First name",
     "segundo_nome": "Last name",
     "sexo": "Gender",

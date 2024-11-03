@@ -8,6 +8,7 @@ lang_manager = LanguageManager()
 def login_email_field(validate_field):
     return ft.TextField(
         width=300,
+        height=50,
         border_color=ft.colors.GREY,
         label=lang_manager.get_text("email"),
         on_change=validate_field,
@@ -17,6 +18,7 @@ def login_email_field(validate_field):
 def login_password_field(validate_field):
     return ft.TextField(
         width=300,
+        height=50,
         border_color=ft.colors.GREY,
         label=lang_manager.get_text("senha"),
         password=True,
@@ -31,6 +33,7 @@ def first_name_field(validate_field):
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("primeiro_nome"),
             on_change=validate_field
@@ -43,6 +46,7 @@ def last_name_field(validate_field):
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("segundo_nome"),
             on_change=validate_field
@@ -55,6 +59,7 @@ def email_field(validate_field):
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("email"),
             on_change=validate_field,
@@ -67,6 +72,7 @@ def password_field(validate_field):
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("senha"),
             password=True,
@@ -81,6 +87,7 @@ def repeat_password_field(validate_field):
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("senha_repetir"),
             password=True,
@@ -95,6 +102,7 @@ def confirm_password_field(validate_field):
         alignment=ft.alignment.center,
         content=ft.TextField(
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("senha"),
             password=True,
@@ -112,6 +120,7 @@ def vehicle_type_field():
             border_color=ft.colors.GREY,
             bgcolor=ft.colors.WHITE,
             width=300,
+            height=50,
             # border=ft.border.all(0.5, ft.colors.GREY),
             label=lang_manager.get_text("tipo_veiculo"),
             options=[
@@ -130,7 +139,6 @@ def manufacturer_field(page: ft.Page):
     search_results = ft.ListView(
             spacing=5
         )
-
     
     # Funkcia na filtrovanie výrobcov podľa vstupu
     def filter_manufacturers(e):
@@ -175,6 +183,7 @@ def model_field():
         content=ft.TextField(
             icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("modelo"),
         )
@@ -187,13 +196,96 @@ def vehicle_name_field():
         content=ft.TextField(
             icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
             width=300,
+            height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text["nome_carro"],
         )
     )
     
     
+def name_field(validate_field):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.TextField(
+            width=300,
+            height=50,
+            border_color=ft.colors.GREY,
+            label=lang_manager.get_text("nome"),
+            on_change=validate_field,
+        )
+    )
     
     
+def user_type_field(validate_field):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.Dropdown(
+            label=lang_manager.get_text("tipo_usuario"),
+            width=300,
+            height=50,
+            border_color=ft.colors.GREY,
+            on_change=validate_field,
+            options=[
+                ft.dropdown.Option(lang_manager.get_text("tipo_usuario_02")),
+                ft.dropdown.Option(lang_manager.get_text("tipo_usuario_03")),
+            ]
+        )
+    )
     
     
+def driver_license_category_field(validate_field):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.TextField(
+            width=300,
+            height=50,
+            border_color=ft.colors.GREY,
+            label=lang_manager.get_text("cnh_categoria"),
+            on_change=validate_field,
+        )
+    )
+    
+    
+def driver_license_expiry_field(validate_field):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.TextField(
+            width=300,
+            height=50,
+            border_color=ft.colors.GREY,
+            label=lang_manager.get_text("cnh_validade"),
+            on_change=validate_field,
+        )
+    )
+    
+    
+def active_status_field(validate_field):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.Dropdown(
+            label=lang_manager.get_text("status"),
+            width=300,
+            height=50,
+            border_color=ft.colors.GREY,
+            on_change=validate_field,
+            options=[
+                ft.dropdown.Option(lang_manager.get_text("ativo")),
+                ft.dropdown.Option(lang_manager.get_text("inativo")),
+            ]
+        )
+    )
+    
+    
+def vehicle_user_field(validate_field):
+    return ft.Container(
+        content=ft.Dropdown(
+            label=lang_manager.get_text("veiculo_usuario"),
+            width=300,
+            height=50,
+            on_change=validate_field,
+            options=[
+                ft.dropdown.Option(lang_manager.get_text("tipo_usuario_02")),
+                ft.dropdown.Option(lang_manager.get_text("tipo_usuario_03")),
+            ]
+        )
+    )

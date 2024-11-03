@@ -1,6 +1,6 @@
 import flet as ft
 
-from core.page_classes import BgColor, LanguageSwitcher
+from core.page_classes import LanguageSwitcher
 from locales.language_manager import LanguageManager
 from components.logo import page_logo
 from components.buttons import (
@@ -32,7 +32,7 @@ class RegisterView(BaseView):
         self.page = page
         self.lang_manager = LanguageManager()
         
-        self.bgcolor = BgColor(self.page).get_background_color()
+        # self.bgcolor = BgColor(self.page).get_background_color()
         self.supabase: Client = get_supabese_client()
         
         self.scroll = ft.ScrollMode.HIDDEN

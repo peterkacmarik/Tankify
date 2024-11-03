@@ -1,14 +1,15 @@
 import flet as ft
-
+from core.theme import BgColor
+from core.supa_base import get_supabese_client
 from locales.language_manager import LanguageManager
 
 lang_manager = LanguageManager()
 
 
-def app_bar(page: ft.Page, switch_theme):
+def app_bar(page: ft.Page):
     return ft.AppBar(
         leading=ft.Icon(ft.icons.PALETTE, color=ft.colors.TRANSPARENT),
-        title=ft.Text(lang_manager.get_text("historico"), size=18),
+        # title=ft.Text(lang_manager.get_text("historico"), size=18),
         center_title=True,
         actions=[
             ft.Container(
@@ -19,7 +20,7 @@ def app_bar(page: ft.Page, switch_theme):
                         ft.IconButton(
                             icon=ft.icons.LIGHT_MODE_OUTLINED,
                             selected_icon=ft.icons.DARK_MODE_OUTLINED,
-                            on_click=switch_theme,
+                            on_click=lambda e: switch_theme(page, e),
                         ),
                         ft.PopupMenuButton(
                             items=[
@@ -32,7 +33,7 @@ def app_bar(page: ft.Page, switch_theme):
                                 ft.PopupMenuItem(
                                     text=lang_manager.get_text("logoff"),
                                     icon=ft.icons.LOGOUT, 
-                                    on_click=lambda e: page.go("/login"),
+                                    on_click=lambda e: logout_user(page, e),
                                 ),
                             ]
                         ),
@@ -41,12 +42,114 @@ def app_bar(page: ft.Page, switch_theme):
             )
         ],
     )
+    
+def logout_user(page: ft.Page, e):
+    try:
+        # Odstránenie session údajov z Flet session storage
+        page.client_storage.remove("access_token")
+        page.client_storage.remove("refresh_token")
         
+        supabase = get_supabese_client()
+        response = supabase.auth.sign_out()
         
-def left_drawer(handle_change_drawer):
+        page.go("/login")
+        page.open(ft.SnackBar(content=ft.Text(lang_manager.get_text("logoff_sucesso"))))
+        page.update()
+    except Exception as exception:
+        # print("Error:", exception)
+        page.open(ft.SnackBar(content=ft.Text(lang_manager.get_text("logoff_erro"))))
+        page.update()
+
+def switch_theme(page: ft.Page, e):
+    """
+    Prepína medzi svetlou a tmavou témou a aktualizuje všetky komponenty.
+    """
+    # Prepne tému
+    new_mode = ft.ThemeMode.DARK if page.theme_mode == ft.ThemeMode.LIGHT else ft.ThemeMode.LIGHT
+    page.theme_mode = new_mode
+    
+    # Uloží nastavenie
+    page.client_storage.set("theme_mode", "dark" if new_mode == ft.ThemeMode.DARK else "light")
+    
+    # Aktualizuje ikonu
+    e.control.selected = page.theme_mode == ft.ThemeMode.DARK
+    
+    # Aktualizuje pozadie
+    new_bgcolor = BgColor(page).get_background_color()
+    page.bgcolor = new_bgcolor
+    
+    # Aktualizuje témy
+    page.theme = ft.Theme(
+        color_scheme_seed="blue",
+        use_material3=True
+    )
+    
+    if new_mode == ft.ThemeMode.DARK:
+        page.dark_theme = ft.Theme(
+            color_scheme_seed="blue",
+            use_material3=True
+        )
+    
+    # Aktualizuje pozadie pre všetky views
+    if hasattr(page, 'views') and page.views:
+        for view in page.views:
+            view.bgcolor = new_bgcolor
+            if hasattr(view, 'controls'):
+                for control in view.controls:
+                    if isinstance(control, ft.Container):
+                        control.bgcolor = new_bgcolor
+    
+    # Vynúti prekreslenie celej stránky
+    page.update()
+
+def update_theme(page: ft.Page):
+    """
+    Aktualizuje tému aplikácie podľa uloženého nastavenia.
+    """
+    # Načíta uloženú tému
+    saved_theme = page.client_storage.get("theme_mode")
+    
+    # Nastaví tému
+    new_mode = ft.ThemeMode.DARK if saved_theme == "dark" else ft.ThemeMode.LIGHT
+    page.theme_mode = new_mode
+    
+    if not saved_theme:
+        page.client_storage.set("theme_mode", "light")
+    
+    # Nastaví pozadie
+    new_bgcolor = BgColor(page).get_background_color()
+    page.bgcolor = new_bgcolor
+    
+    # Nastaví témy
+    page.theme = ft.Theme(
+        color_scheme_seed="blue",
+        use_material3=True
+    )
+    
+    if new_mode == ft.ThemeMode.DARK:
+        page.dark_theme = ft.Theme(
+            color_scheme_seed="blue",
+            use_material3=True
+        )
+    
+    # Aktualizuje pozadie pre všetky views
+    if hasattr(page, 'views') and page.views:
+        for view in page.views:
+            view.bgcolor = new_bgcolor
+            if hasattr(view, 'controls'):
+                for control in view.controls:
+                    if isinstance(control, ft.Container):
+                        control.bgcolor = new_bgcolor
+    
+    # Vynúti prekreslenie
+    page.update()
+
+    
+    
+def left_drawer(page: ft.Page):
     return ft.NavigationDrawer(
         position=ft.NavigationDrawerPosition.START,
-        on_change=handle_change_drawer,
+        on_change=lambda e: handle_change_drawer(page, e),
         # on_dismiss=self.handle_dismissal,
         selected_index=0,
         indicator_color=ft.colors.TRANSPARENT,
@@ -83,11 +186,6 @@ def left_drawer(handle_change_drawer):
                 icon=ft.icons.HISTORY_OUTLINED,
                 selected_icon=ft.icons.MANAGE_HISTORY,
             ),
-            # ft.NavigationDrawerDestination(
-            #     label=translation["adicionar_novo"],
-            #     icon=ft.icons.ADD_OUTLINED,
-            #     selected_icon=ft.icons.ADD_CIRCLE,
-            # ),
             ft.NavigationDrawerDestination(
                 label=lang_manager.get_text("relatorios"),
                 icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED,
@@ -119,16 +217,34 @@ def left_drawer(handle_change_drawer):
                 label=lang_manager.get_text("contato"),
                 icon=ft.icons.EMAIL_OUTLINED,
                 selected_icon=ft.icons.EMAIL,
-            ),
-        ],
-        
+            )
+        ]
     )
-        
     
-def navigation_bottom_bar(handle_change_bottom_nav):
+def handle_change_drawer(page: ft.Page, e):
+    selected_index = e.control.selected_index
+    if selected_index == 0:   # History
+        e.page.go("/history")
+    elif selected_index == 1:   # Report
+        e.page.go("/reports/general")
+    elif selected_index == 2:   # Reminders
+        e.page.go("/reminders")
+    elif selected_index == 3:   # Vehicles
+        e.page.go("/vehicles")
+    elif selected_index == 4:   # Users
+        e.page.go("/users")
+    elif selected_index == 5:   # Settings
+        e.page.go("/settings/general")
+    elif selected_index == 6:   # Contact
+        e.page.go("/contact")
+    e.page.update()
+    
+    
+    
+def navigation_bottom_bar(page: ft.Page):
     return ft.NavigationBar(
         selected_index=0,
-        on_change=handle_change_bottom_nav,
+        on_change=lambda e: handle_change_bottom_nav(page, e),
         # bgcolor=ft.colors.WHITE,
         indicator_color=ft.colors.TRANSPARENT,
         indicator_shape=ft.CircleBorder(type="circle"),
@@ -158,63 +274,18 @@ def navigation_bottom_bar(handle_change_bottom_nav):
         ],
     )
     
+def open_drawer(page: ft.Page):
+    page.drawer.open = True
+    page.update()
     
-# def bottom_appbar_nav(translation):
-#     return ft.BottomAppBar(
-#         shape=ft.NotchShape.CIRCULAR,
-#         content=ft.Container(
-#             alignment=ft.alignment.center,
-#             padding=ft.padding.only(left=20, right=20, top=0, bottom=0),
-#             content=ft.Row(
-#                 spacing=20,
-#                 # expand=True,
-#                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
-#                 alignment=ft.MainAxisAlignment.CENTER,
-#                 controls=[
-#                     ft.Column(
-#                         spacing=-10,
-#                         controls=[
-#                             ft.IconButton(
-#                                 icon=ft.icons.HISTORY_OUTLINED, 
-#                                 selected_icon=ft.icons.MANAGE_HISTORY,
-#                             ),
-#                             ft.Text(translation["historico"], size=12),
-#                         ]
-#                     ),
-#                     ft.Column(
-#                         spacing=-10,
-#                         controls=[
-#                             ft.IconButton(
-#                                 icon=ft.icons.REPORT_GMAILERRORRED_OUTLINED, 
-#                                 selected_icon=ft.icons.REPORT,
-#                             ),
-#                             ft.Text(translation["relatorios"], size=12),
-#                         ]
-#                     ),
-#                     ft.Container(expand=True),
-#                     ft.Column(
-#                         spacing=-10,
-#                         controls=[
-#                             ft.IconButton(
-#                                 icon=ft.icons.NOTIFICATIONS_OUTLINED, 
-#                                 selected_icon=ft.icons.NOTIFICATIONS,
-#                             ),
-#                             ft.Text(translation["lembretes"], size=12),
-#                         ]
-#                     ),
-#                     ft.Column(
-#                         spacing=-10,
-#                         controls=[
-#                             ft.IconButton(
-#                                 icon=ft.icons.MORE_HORIZ_OUTLINED, 
-#                                 selected_icon=ft.icons.MORE_HORIZ,
-#                             ),
-#                             ft.Text(translation["mais"], size=12),
-#                         ]
-#                     ),
-#                 ],
-#             )
-#         )
-#     )
-    
-        
+def handle_change_bottom_nav(page, e):
+    selected_index = e.control.selected_index
+    if selected_index == 0:   # History
+        e.page.go("/history")
+    elif selected_index == 1:   # Report
+        e.page.go("/reports/general")
+    elif selected_index == 2:   # Reminders
+        e.page.go("/reminders")
+    elif selected_index == 3:   # More
+        open_drawer(page)
+    e.page.update()

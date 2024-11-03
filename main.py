@@ -2,6 +2,7 @@ import os
 import flet as ft
 
 # from views.history_old import HistoryView
+from views.add_user import AddUserData
 from views.history import HistoryView
 from views.login_page import LoginView
 from views.home_page import HomeView
@@ -11,6 +12,8 @@ from locales.language_manager import LanguageManager
 from views.settings import SettingsView
 
 import warnings
+
+from views.users import UsersView
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 port = int(os.getenv("PORT", 8000))
@@ -52,13 +55,16 @@ def main(page: ft.Page):
             page.views.append(ForgotPasswordView(page))
         elif page.route == "/history":
             page.views.append(HistoryView(page))
-        elif page.route == "/settings":
+        elif page.route == "/settings/general":
             page.views.append(SettingsView(page))
-
+        elif page.route == "/users":
+            page.views.append(UsersView(page))
+        elif page.route == "/users/add":
+            page.views.append(AddUserData(page))
         page.update()
 
     page.on_route_change = route_change
-    page.go("/")
+    page.go("/users")
     # page.go(page.route) # pri spusteni apk zobrazuje home page stranku
 
 ft.app(

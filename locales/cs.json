@@ -352,6 +352,8 @@
     "login": "Přihlásit se",
     "minha_conta": "Můj účet",
     "logoff": "Odhlásit",
+    "logoff_sucesso": "Úspěšně jste se odhlásili",
+    "logoff_erro": "Nepodařilo se odhlásit",
     "primeiro_nome": "Jméno",
     "segundo_nome": "Příjmení",
     "sexo": "Pohlaví",

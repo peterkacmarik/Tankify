@@ -1,6 +1,6 @@
 import flet as ft
 
-from core.page_classes import BgColor, LanguageSwitcher
+from core.page_classes import LanguageSwitcher
 from components.logo import page_logo
 from components.links_separator_text import (
     main_forgot_password_text,
@@ -23,7 +23,7 @@ class ForgotPasswordView(BaseView):
         self.lang_manager = LanguageManager()
         
         # self.bgcolor = ft.colors.WHITE
-        self.bgcolor = BgColor(self.page).get_background_color()
+        # self.bgcolor = BgColor(self.page).get_background_color()
         self.supabase: Client = get_supabese_client()
         
         self.scroll = ft.ScrollMode.AUTO

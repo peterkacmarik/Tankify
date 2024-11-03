@@ -1,5 +1,5 @@
 import flet as ft
-from core.page_classes import BgColor, LanguageSwitcher
+from core.page_classes import LanguageSwitcher
 from components.fields import (
     email_field,
     login_email_field,
@@ -33,7 +33,7 @@ class LoginView(BaseView):
         self.lang_manager = LanguageManager()
         
         # self.bgcolor = ft.colors.WHITE
-        self.bgcolor = BgColor(self.page).get_background_color()
+        # self.bgcolor = BgColor(self.page).get_background_color()
         self.supabase: Client = get_supabese_client()
         
         self.scroll = ft.ScrollMode.HIDDEN
@@ -131,6 +131,11 @@ class LoginView(BaseView):
         # Aktualizujeme UI
         self.login_button.update()
 
+
+    def save_session(self, response):
+        """Uloží session údaje do Flet session storage"""
+        self.page.client_storage.set("access_token", response.session.access_token)
+        self.page.client_storage.set("refresh_token", response.session.refresh_token)
         
     def handle_login(self, e=None):
         try:
@@ -143,6 +148,7 @@ class LoginView(BaseView):
                     "password": password
                 }
             )
+            self.save_session(response)
             
             if response:
                 self.snack_bar.content.value = self.lang_manager.get_text('msg_login')
@@ -150,65 +156,12 @@ class LoginView(BaseView):
                 self.page.update()
                 
                 self.page.go("/history")
-                
+            # return response.user
         except Exception as ex:
             self.snack_bar.content.value = str(ex)
             self.snack_bar.open = True
             self.page.update()
             return
         
-        # if user is None:
-        #     self.snack_bar.content.value = self.translation["erro_login"]
-        #     self.snack_bar.open = True
-        #     self.page.update()
-        #     return
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    #     # # Overenie e-mailu v database
-    #     # user = self.user_crud.verify_user_by_email(email)
-    #     # if user is None:
-    #     #     self.snack_bar.content.value = self.translation["erro_email_invalido"]
-    #     #     self.snack_bar.open = True
-    #     #     self.page.update()
-    #     #     return
-        
-    #     # # Overenie hesla v database
-    #     # verify_user = self.user_crud.verify_user_password(email, password)
-    #     # if verify_user is None:
-    #     #     self.snack_bar.content.value = self.translation["erro_usuario_senha"]
-    #     #     self.snack_bar.open = True
-    #     #     self.page.update()
-    #     #     return
-        
-    #     # # Overenie hesla na základe jeho dlzky
-    #     # if len(password) < 6:
-    #     #     self.snack_bar.content.value = self.translation["erro_quantidade_caracteres_senha"]
-    #     #     self.snack_bar.open = True
-    #     #     self.page.update()
-    #     #     return
-
-    #     # # Ak všetko prejde, zobrazenie správy o úspešnom prihlásení
-    #     # self.snack_bar.content.value = self.translation["msg_login"]
-    #     # self.snack_bar.open = True
-    #     # self.page.update()
-
-    #     # # Presmerovanie na domovskú stránku (príklad)
-    #     # self.page.go("/")

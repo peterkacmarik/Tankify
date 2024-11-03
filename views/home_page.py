@@ -1,6 +1,6 @@
 import flet as ft
 from components.links_separator_text import home_page_box
-from core.page_classes import BgColor, LanguageSwitcher
+from core.page_classes import LanguageSwitcher
 from locales.language_manager import LanguageManager
 from views.base_page import BaseView
 
@@ -10,21 +10,6 @@ class HomeView(BaseView):
         super().__init__(route="/", page=page)
         self.page = page
         self.lang_manager = LanguageManager()
-        
-        self.bgcolor = BgColor(self.page).get_background_color()
-        
-        self.vertical_alignment = ft.CrossAxisAlignment.CENTER
-        self.horizontal_alignment = ft.MainAxisAlignment.CENTER
-        
-        self.scroll = ft.ScrollMode.HIDDEN
-        self.fullscreen_dialog = True
-        
-        # Snack bar
-        self.snack_bar = ft.SnackBar(
-            content=ft.Text(""),
-            show_close_icon=True
-        )
-        self.page.overlay.append(self.snack_bar)
         
         self.language_switch_button = LanguageSwitcher(self.page).language_switch_button
         self.home_page_box = home_page_box(self.page)
