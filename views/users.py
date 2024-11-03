@@ -4,7 +4,7 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client, get_current_user
+from core.supa_base import get_supabese_client, get_all_data
 from views.base_page import BaseView
 
 
@@ -155,7 +155,7 @@ class UsersView(BaseView):
     
     def build_user_table(self):
         # Získanie údajov o používateľoch
-        users_data = self.get_all_data()
+        users_data = get_all_data(self.page)
 
         if users_data is None:
             print("No data available")
@@ -235,20 +235,6 @@ class UsersView(BaseView):
             ]
         )
         return user_table
-
-
-    def get_all_data(self):
-        try:
-            # Get current user id
-            current_user_id = get_current_user(self.page).id
-            
-            # Get all data from current user
-            response = self.supabase.table("users").select("*").eq("user_id", current_user_id).execute()
-
-            return response.data
-        except Exception as ex:
-            print(f"Error getting all data: {ex}")
-            return None
         
         
         

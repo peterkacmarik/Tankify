@@ -64,7 +64,7 @@ def main(page: ft.Page):
         page.update()
 
     page.on_route_change = route_change
-    page.go("/users/create")
+    page.go("/users")
     # page.go(page.route) # pri spusteni apk zobrazuje home page stranku
 
 ft.app(
