@@ -1,4 +1,4 @@
-
+import flet as ft
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
@@ -33,3 +33,24 @@ def get_supabese_client() -> Client:
     key: str = os.environ.get("SUPABASE_KEY")
     supabase: Client = create_client(url, key)
     return supabase
+
+
+def get_current_user(page: ft.Page):
+    try:
+        # Skontroluj, či máme uloženú session v page client storage
+        access_token = page.client_storage.get("access_token")
+        refresh_token = page.client_storage.get("refresh_token")
+
+        # Skontroluj, či oba tokeny existujú
+        if access_token and refresh_token:
+            # Nastav session pre supabase klienta
+            supabase = get_supabese_client()
+            supabase.auth.set_session(access_token, refresh_token)
+            return supabase.auth.get_session().user
+        return None
+    except Exception as ex:
+        print(f"Error getting current user: {ex}")
+        return None
+
+
+

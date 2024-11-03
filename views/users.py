@@ -150,7 +150,7 @@ class UsersView(BaseView):
         return table_header
     
     def go_to_add_user(self, e):
-        e.page.go("/users/add")
+        e.page.go("/users/create")
     
     
     def build_user_table(self):

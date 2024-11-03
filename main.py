@@ -59,12 +59,12 @@ def main(page: ft.Page):
             page.views.append(SettingsView(page))
         elif page.route == "/users":
             page.views.append(UsersView(page))
-        elif page.route == "/users/add":
+        elif page.route == "/users/create":
             page.views.append(AddUserData(page))
         page.update()
 
     page.on_route_change = route_change
-    page.go("/users")
+    page.go("/users/create")
     # page.go(page.route) # pri spusteni apk zobrazuje home page stranku
 
 ft.app(

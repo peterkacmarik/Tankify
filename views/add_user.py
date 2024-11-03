@@ -12,7 +12,7 @@ from components.buttons import add_new_user_button
 
 class AddUserData(BaseView):
     def __init__(self, page: ft.Page):
-        super().__init__("/users/add", page)
+        super().__init__("/users/create", page)
         self.page = page
         self.lang_manager = LanguageManager()
         
@@ -115,9 +115,23 @@ class AddUserData(BaseView):
                             shadow_color=ft.colors.TRANSPARENT,
                             bgcolor=ft.colors.TRANSPARENT,
                         ),
+                        text=self.lang_manager.get_text("configuracoes"),
+                        on_click=lambda e: self.go_to_settings(e),
+                        
+                    ),
+                    ft.Icon(
+                        name=ft.icons.KEYBOARD_ARROW_RIGHT_OUTLINED,
+                        color=ft.colors.BLUE_700,
+                        size=20,
+                    ),
+                    ft.TextButton(
+                        style=ft.ButtonStyle(
+                            overlay_color=ft.colors.TRANSPARENT,
+                            shadow_color=ft.colors.TRANSPARENT,
+                            bgcolor=ft.colors.TRANSPARENT,
+                        ),
                         text=self.lang_manager.get_text("usuarios"),
                         on_click=lambda e: self.go_to_users(e),
-                        
                     ),
                     ft.Icon(
                         name=ft.icons.KEYBOARD_ARROW_RIGHT_OUTLINED,
@@ -135,6 +149,9 @@ class AddUserData(BaseView):
     
     def go_to_users(self, e):
         e.page.go("/users")
+        
+    def go_to_settings(self, e):
+        e.page.go("/settings/general")
         
         
     def get_current_user(self):
