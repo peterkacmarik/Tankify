@@ -4,7 +4,7 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client
+from core.supa_base import get_supabese_client, get_current_user
 from views.base_page import BaseView
 
 
@@ -237,27 +237,10 @@ class UsersView(BaseView):
         return user_table
 
 
-    def get_current_user(self):
-        try:
-            # Skontroluj, či máme uloženú session v page client storage
-            access_token = self.page.client_storage.get("access_token")
-            refresh_token = self.page.client_storage.get("refresh_token")
-
-            # Skontroluj, či oba tokeny existujú
-            if access_token and refresh_token:
-                # Nastav session pre supabase klienta
-                self.supabase.auth.set_session(access_token, refresh_token)
-                return self.supabase.auth.get_session().user
-            return None
-        except Exception as ex:
-            print(f"Error getting current user: {ex}")
-            return None
-
-
     def get_all_data(self):
         try:
             # Get current user id
-            current_user_id = self.get_current_user().id
+            current_user_id = get_current_user(self.page).id
             
             # Get all data from current user
             response = self.supabase.table("users").select("*").eq("user_id", current_user_id).execute()

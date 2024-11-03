@@ -5,7 +5,7 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client
+from core.supa_base import get_supabese_client, get_current_user
 from views.base_page import BaseView
 from components.buttons import add_new_user_button
 
@@ -154,23 +154,6 @@ class AddUserData(BaseView):
         e.page.go("/settings/general")
         
         
-    def get_current_user(self):
-        try:
-            # Skontroluj, či máme uloženú session v page client storage
-            access_token = self.page.client_storage.get("access_token")
-            refresh_token = self.page.client_storage.get("refresh_token")
-
-            # Skontroluj, či oba tokeny existujú
-            if access_token and refresh_token:
-                # Nastav session pre supabase klienta
-                self.supabase.auth.set_session(access_token, refresh_token)
-                return self.supabase.auth.get_session().user
-            return None
-        except Exception as ex:
-            print(f"Error getting current user: {ex}")
-            return None
-
-        
     def handle_add_user_data(self, e):
         name = self.name_field.content.value
         email = self.email_field.content.value
@@ -194,7 +177,7 @@ class AddUserData(BaseView):
             }
         try:
             # Získanie ID prihláseného používateľa
-            current_user: dict = self.get_current_user()
+            current_user: dict = get_current_user(self.page)
             if not current_user:
                 raise Exception("No user is currently logged in")
                             
