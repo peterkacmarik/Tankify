@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from supabase import create_client, Client
 
+from locales.language_manager import LanguageManager
+
 
 # Načítaj .env súbor
 load_dotenv()
@@ -34,7 +36,6 @@ def get_supabese_client() -> Client:
     supabase: Client = create_client(url, key)
     return supabase
 
-
 def get_current_user(page: ft.Page):
     try:
         # Skontroluj, či máme uloženú session v page client storage
@@ -56,7 +57,7 @@ def get_current_user(page: ft.Page):
 class SupabaseUser:
     def __init__(self) -> None:
         self.supabase = get_supabese_client()
-        
+        self.lang_manager = LanguageManager()
         
     def create_user_in_table_users(self, page: ft.Page, user_data: dict):
         try:
@@ -76,6 +77,7 @@ class SupabaseUser:
             print(f"Error creating user: {ex}")
             return None
 
+
     def get_all_data_from_table_users(self, page: ft.Page):
         try:
             # Get current user id
@@ -88,13 +90,14 @@ class SupabaseUser:
             return None
             
 
-    def delete_user_from_table_users(self, page: ft.Page):
+    def delete_user_from_table_users(self, page: ft.Page, user_id):
         try:
-            # Get current user id
-            current_user_id = get_current_user(page).id
-            response = self.supabase.table("users").delete().eq("user_id", current_user_id).execute()
+            response = self.supabase.table("users").delete().eq("id", user_id).execute()
+            page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_excluir_sucesso"))))
+            page.go("/users")
+            # page.update()
             
-            return response
+            # return response
         except Exception as ex:
             print(f"Error getting all data: {ex}")
             return None
@@ -117,6 +120,7 @@ class SupabaseUser:
 class SupabaseVehicle:
     def __init__(self) -> None:
         self.supabase = get_supabese_client()
+        self.lang_manager = LanguageManager()
         
     def get_all_data_from_table_vehicles(self, page):
         try:

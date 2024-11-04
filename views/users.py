@@ -224,7 +224,7 @@ class UsersView(BaseView):
                                         ),
                                         ft.IconButton(
                                             icon=ft.icons.DELETE,
-                                            on_click=lambda e: self.delete_user(e, users_data),
+                                            on_click=lambda e: self.supabase_user.delete_user_from_table_users(self.page, users_data[0]["id"]),
                                         ),
                                     ]
                                 )
