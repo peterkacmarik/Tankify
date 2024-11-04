@@ -333,7 +333,7 @@ class CustomVehicleField(ft.TextField):
         search_results = ft.ListView(
             spacing=5,
             height=200,  # pridáme výšku pre zobrazenie výsledkov
-            visible=False  # na začiatku skryjeme zoznam
+            visible=False,  # na začiatku skryjeme zoznam
         )
         
         # Funkcia na filtrovanie výrobcov podľa vstupu
@@ -345,10 +345,18 @@ class CustomVehicleField(ft.TextField):
             if search_text:  # zobrazíme výsledky len ak je nejaký text
                 search_results.visible = True
                 for manufacturer in filtered:
-                    search_results.controls.append(ft.TextButton(
-                        text=manufacturer, 
-                        on_click=select_manufacturer
-                    ))
+                    search_results.controls.append(
+                        ft.Container(
+                            border=ft.border.all(0.5, ft.colors.GREY),
+                            border_radius=5,
+                            content=ft.TextButton(
+                                text=manufacturer, 
+                                on_click=select_manufacturer,
+                                style=ft.ButtonStyle(
+                                    # bgcolor=ft.colors.BLUE_GREY_100,
+                                    shape=ft.RoundedRectangleBorder(radius=5),
+                                ))
+                        ))
             else:
                 search_results.visible = False
             page.update()
