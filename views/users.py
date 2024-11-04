@@ -3,6 +3,7 @@ from components.buttons import floating_action_button
 from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
+from components.fields import CustomUserField
 
 from core.supa_base import get_supabese_client, SupabaseUser
 from views.base_page import BaseView
@@ -14,6 +15,7 @@ class UsersView(BaseView):
         self.page = page
         self.lang_manager = LanguageManager()
         self.supabase_user = SupabaseUser()
+        self.user_field = CustomUserField(validate_field=self.validate_user_field())
         
         self.supabase = get_supabese_client()
         
@@ -62,10 +64,9 @@ class UsersView(BaseView):
         # Aktualizácia textov v settings view
         # self.title_text.value = LanguageManager.get_text("intro_texto_05")
         self.update()
-    
-# ---------------------------------------------------
-
-
+        
+    def validate_user_field(self):
+        pass
     
     
     def build_navigation_header_bar(self):
@@ -220,11 +221,11 @@ class UsersView(BaseView):
                                     controls=[
                                         ft.IconButton(
                                             icon=ft.icons.EDIT,
-                                            on_click=lambda e: self.edit_user(e, users_data),
+                                            on_click=lambda e, user=user: self.handle_edit_user(e, user),
                                         ),
                                         ft.IconButton(
                                             icon=ft.icons.DELETE,
-                                            on_click=lambda e: self.supabase_user.delete_user_from_table_users(self.page, users_data[0]["id"]),
+                                            on_click=lambda _: self.supabase_user.delete_user_from_table_users(self.page, users_data[0]["id"]),
                                         ),
                                     ]
                                 )
@@ -236,13 +237,81 @@ class UsersView(BaseView):
             ]
         )
         return user_table
+
+    def get_value_from_fields(self, user):
+        name_field = self.user_field.name_field()
+        name_field.content.value = user["name"]
         
+        user_type_field = self.user_field.user_type_field()
+        user_type_field.content.value = user["user_type"]
         
+        driver_license_category_field = self.user_field.driver_license_category_field()
+        driver_license_category_field.content.value = user["driver_license_category"]
         
+        driver_license_expiry_field = self.user_field.driver_license_expiry_field(self.page)
+        driver_license_expiry_field.content.controls[1].value = user["driver_license_expiry"]
         
-    def edit_user(self, e, users_data):
-        pass
+        active_status_field = self.user_field.active_status_field()
+        active_status_field.content.value = user["is_active"]
+        
+        user_email_field = self.user_field.user_email_field()
+        user_email_field.content.value = user["email"]
+        
+        vehicle_user_field = self.user_field.vehicle_user_field(self.page)
+        vehicle_user_field.content.value = user["vehicle_user"]
+        return {
+            "name": name_field,
+            "email": user_email_field,
+            "user_type": user_type_field,
+            "driver_license_category": driver_license_category_field,
+            "driver_license_expiry": driver_license_expiry_field,
+            "is_active": active_status_field,
+            "vehicle_user": vehicle_user_field
+        }
+
+    def handle_edit_user(self, e, user):
+        user_data: dict =self.get_value_from_fields(user)
+        
+        def close_dialog(e):  
+            # Zatvorenie dialógu v overlay
+            for dialog in self.page.overlay:
+                if isinstance(dialog, ft.AlertDialog):
+                    dialog.open = False
+            self.page.update()
+        
+        def handle_edit(e):
+            user_id = user["id"]
+            self.supabase_user.update_user_in_table_users(user_id, user_data)
+            self.page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text(self.lang_manager.get_text("msg_atualiza_usuario")))))
+            self.page.close(dialog)
+            self.page.update()
+        
+        dialog = ft.AlertDialog(
+            modal=True,
+            title=ft.Text(self.lang_manager.get_text("atualizar")),
+            content=ft.Container(
+                content=ft.Column(
+                    controls=[
+                        user_data["name"],
+                        user_data["email"],
+                        user_data["user_type"],
+                        user_data["driver_license_category"],
+                        user_data["driver_license_expiry"],
+                        user_data["is_active"],
+                        user_data["vehicle_user"],
+                    ]
+                )
+            ),
+            actions=[
+                ft.TextButton(self.lang_manager.get_text("btn_salvar"), on_click=handle_edit),
+                ft.TextButton(self.lang_manager.get_text("btn_cancelar"), on_click=close_dialog),
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
+        )
+        if dialog not in self.page.overlay:
+            self.page.overlay.append(dialog)
+        dialog.open = True
+        self.page.update()
+        
     
     
-    def delete_user(self, e, users_data):
-        pass

@@ -103,6 +103,31 @@ class SupabaseUser:
             return None
 
 
+    def update_user_in_table_users(self, user_id, user_data: dict):
+        try:
+            update_data = {
+                "name": user_data["name"].content.value,
+                "email": user_data["email"].content.value,
+                "user_type": user_data["user_type"].content.value,
+                "driver_license_category": user_data["driver_license_category"].content.value,
+                "driver_license_expiry": user_data["driver_license_expiry"].content.controls[1].value,
+                "is_active": user_data["is_active"].content.value,
+                "vehicle_user": user_data["vehicle_user"].content.value,
+            }
+            
+            # Vloženie údajov do tabuľky users
+            response = (
+                self.supabase.table("users")
+                .update(update_data)
+                .eq("id", user_id)
+                .execute()
+            )
+            # return response.data
+        except Exception as ex:
+            print(f"Error updating user: {ex}")
+            return None
+
+
     def get_vehicle_names(self, page):
         try:
             # Get current user id

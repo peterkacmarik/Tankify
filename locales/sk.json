@@ -881,5 +881,6 @@
     "search_language": "Jazyk vyhľadávania",
     "actions": "Akcie",
     "unit_of_measure": "Merná jednotka",
-    "msg_cadastra_veiculo": "Vozidlo úspešne zaregistrované!"
+    "msg_cadastra_veiculo": "Vozidlo úspešne zaregistrované!",
+    "msg_atualiza_usuario": "Používateľ bol úspešne aktualizovaný!"
   }
