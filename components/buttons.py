@@ -220,7 +220,7 @@ def floating_action_button(dialog_window):
         )
     
     
-def add_new_user_button(handle_add_user_data):
+def button_on_register(handle_data):
     return ft.Container(
         # padding=ft.padding.only(left=20, top=10, right=20, bottom=0),
         alignment=ft.alignment.center,
@@ -234,6 +234,8 @@ def add_new_user_button(handle_add_user_data):
                 overlay_color=ft.colors.BLUE_900,
             ),
             color=ft.colors.WHITE,
-            on_click=handle_add_user_data
+            on_click=handle_data
         )
     )
+    
+

@@ -878,5 +878,8 @@
     "corporate_06_info": "Access the information of each vehicle, separated by date and modules. Visualize the performance of the fleet through graphs, which help in decision making.",
     "back_to_top_button": "Back to top",
     "select_language": "Select your language",
-    "search_language": "Search language"
+    "search_language": "Search language",
+    "actions": "Actions",
+    "unit_of_measure": "Unit of measure",
+    "msg_cadastra_veiculo": "Vehicle successfully registered!"
   }

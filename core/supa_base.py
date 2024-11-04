@@ -53,7 +53,7 @@ def get_current_user(page: ft.Page):
         return None
 
 
-def get_all_data(page: ft.Page):
+def get_all_data_from_table_users(page: ft.Page):
     try:
         # Get current user id
         current_user_id = get_current_user(page).id
@@ -68,5 +68,17 @@ def get_all_data(page: ft.Page):
         return None
         
         
+def get_all_data_from_table_vehicles(page: ft.Page):
+    try:
+        # Get current user id
+        current_user_id = get_current_user(page).id
         
+        # Get all data from current user
+        supabase = get_supabese_client()
+        response = supabase.table("vehicles").select("*").eq("vehicle_id", current_user_id).execute()
+
+        return response.data
+    except Exception as ex:
+        print(f"Error getting all data: {ex}")
+        return None
         

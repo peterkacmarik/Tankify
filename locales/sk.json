@@ -878,5 +878,8 @@
     "corporate_06_info": "Získajte prístup k informáciám o každom vozidle oddelene podľa dátumu a modulov. Vizualizujte výkonnosť vozového parku prostredníctvom grafov, ktoré pomáhajú pri rozhodovaní.",
     "back_to_top_button": "Späť na začiatok",
     "select_language": "Vyberte svoj jazyk",
-    "search_language": "Jazyk vyhľadávania"
+    "search_language": "Jazyk vyhľadávania",
+    "actions": "Akcie",
+    "unit_of_measure": "Merná jednotka",
+    "msg_cadastra_veiculo": "Vozidlo úspešne zaregistrované!"
   }

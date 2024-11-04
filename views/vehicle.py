@@ -4,13 +4,13 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client, get_all_data_from_table_users
+from core.supa_base import get_all_data_from_table_vehicles, get_supabese_client
 from views.base_page import BaseView
 
 
-class UsersView(BaseView):
+class VehiclesViews(BaseView):
     def __init__(self, page: ft.Page):
-        super().__init__("/users", page)
+        super().__init__("/vehicle", page)
         self.page = page
         self.lang_manager = LanguageManager()
         
@@ -29,7 +29,7 @@ class UsersView(BaseView):
                 
         self.navigation_header_bar = self.build_navigation_header_bar()
         self.table_header = self.build_table_header()
-        self.user_table = self.build_user_table() 
+        self.vehicle_table = self.build_vehicle_table() 
         
         self.controls = [
             ft.Container(
@@ -48,7 +48,7 @@ class UsersView(BaseView):
                                     self.navigation_header_bar,
                                     self.table_header,
                                     ft.Divider(),
-                                    self.user_table
+                                    self.vehicle_table
                                 ]
                             )
                         )
@@ -63,8 +63,6 @@ class UsersView(BaseView):
         self.update()
     
 # ---------------------------------------------------
-
-
     
     
     def build_navigation_header_bar(self):
@@ -88,10 +86,9 @@ class UsersView(BaseView):
                         name=ft.icons.KEYBOARD_ARROW_RIGHT_OUTLINED,
                         color=ft.colors.BLUE_700,
                         size=20,
-                    )
-                    ,
+                    ),
                     ft.Text(
-                        self.lang_manager.get_text("usuarios"),
+                        self.lang_manager.get_text("veiculos"),
                     )
                 ]
             )
@@ -112,7 +109,7 @@ class UsersView(BaseView):
                 controls=[
                     ft.Container(
                         content=ft.Text(
-                            self.lang_manager.get_text("usuarios"),
+                            self.lang_manager.get_text("veiculos"),
                             size=20,
                         ),
                         # alignment=ft.alignment.center_left,
@@ -134,7 +131,7 @@ class UsersView(BaseView):
                         content=ft.OutlinedButton(
                             text=self.lang_manager.get_text("adicionar_novo").upper(),
                             icon=ft.icons.ADD,
-                            on_click=lambda e: self.go_to_add_user(e),
+                            on_click=lambda e: self.go_to_add_vehicle(e),
                             style=ft.ButtonStyle(
                                 bgcolor=ft.colors.TRANSPARENT,
                                 shape={
@@ -149,39 +146,37 @@ class UsersView(BaseView):
         )
         return table_header
     
-    def go_to_add_user(self, e):
-        e.page.go("/user/create")
+    def go_to_add_vehicle(self, e):
+        e.page.go("/vehicle/create")
     
     
-    def build_user_table(self):
+    def build_vehicle_table(self):
         # Získanie údajov o používateľoch
-        users_data = get_all_data_from_table_users(self.page)
+        vehicles_data = get_all_data_from_table_vehicles(self.page)
 
-        if users_data is None:
-            print("No data available")
-            return ft.Text("No data available")
+        if vehicles_data is None:
+            self.page.open(ft.SnackBar(content=ft.Text("No data available")))
+            # print("No data available")
+            return None
         
         # Vytvorenie tabuľky používateľov
-        user_table = ft.DataTable(
+        vehicle_table = ft.DataTable(
             columns=[
                 ft.DataColumn(
                     ft.Text("#"),
                 ),
                 ft.DataColumn(
-                    ft.Text(self.lang_manager.get_text("nome")), # Name
+                    ft.Text(self.lang_manager.get_text("veiculo")), # Vehicle
                 ),
                 ft.DataColumn(
-                    ft.Text(self.lang_manager.get_text("email")) # Email
+                    ft.Text(self.lang_manager.get_text("marca")) # Manufacturer
                 ),
                 ft.DataColumn(
-                    ft.Text(self.lang_manager.get_text("tipo_usuario")) # User type
+                    ft.Text(self.lang_manager.get_text("modelo")) # Model
                 ),
                 ft.DataColumn(
-                    ft.Text(self.lang_manager.get_text("cnh_validade")), # Driver license expiry
+                    ft.Text(self.lang_manager.get_text("nome")) # Name
                 ),
-                # ft.DataColumn(
-                #     ft.Text(self.lang_manager.get_text("cnh_categoria")) # Driver license category
-                # ),
                 ft.DataColumn(
                     ft.Text(self.lang_manager.get_text("status")) # Active
                 ),
@@ -196,22 +191,19 @@ class UsersView(BaseView):
                             ft.Text(idx+1),
                         ),
                         ft.DataCell(
-                            ft.Text(user["name"])
+                            ft.Text(vehicle["vehicle"])
                         ),
                         ft.DataCell(
-                            ft.Text(user["email"])
+                            ft.Text(vehicle["manufacturer"])
                         ),
                         ft.DataCell(
-                            ft.Text(user["user_type"])
+                            ft.Text(vehicle["model"])
                         ),
                         ft.DataCell(
-                            ft.Text(user["driver_license_expiry"])
+                            ft.Text(vehicle["name"])
                         ),
-                        # ft.DataCell(
-                        #     ft.Text(user["driver_license_category"])
-                        # ),
                         ft.DataCell(
-                            ft.Text(user["is_active"])
+                            ft.Text(vehicle["is_active"]) # Active
                         ),
                         ft.DataCell(
                             content=ft.Container(
@@ -231,10 +223,10 @@ class UsersView(BaseView):
                         )
                     ]
                 )
-                for idx, user in enumerate(users_data)
+                for idx, vehicle in enumerate(vehicles_data)
             ]
         )
-        return user_table
+        return vehicle_table
         
         
         

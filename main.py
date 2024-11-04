@@ -2,7 +2,8 @@ import os
 import flet as ft
 
 # from views.history_old import HistoryView
-from views.add_user import AddUserData
+from views.create_user import CreateUsers
+from views.create_vehicle import CreateVehicles
 from views.history import HistoryView
 from views.login_page import LoginView
 from views.home_page import HomeView
@@ -14,6 +15,7 @@ from views.settings import SettingsView
 import warnings
 
 from views.users import UsersView
+from views.vehicle import VehiclesViews
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 port = int(os.getenv("PORT", 8000))
@@ -57,14 +59,20 @@ def main(page: ft.Page):
             page.views.append(HistoryView(page))
         elif page.route == "/settings/general":
             page.views.append(SettingsView(page))
+        
         elif page.route == "/users":
             page.views.append(UsersView(page))
-        elif page.route == "/users/create":
-            page.views.append(AddUserData(page))
+        elif page.route == "/user/create":
+            page.views.append(CreateUsers(page))
+        
+        elif page.route == "/vehicles":
+            page.views.append(VehiclesViews(page))
+        elif page.route == "/vehicle/create":
+            page.views.append(CreateVehicles(page))
         page.update()
 
     page.on_route_change = route_change
-    page.go("/users")
+    page.go("/vehicle/create")
     # page.go(page.route) # pri spusteni apk zobrazuje home page stranku
 
 ft.app(

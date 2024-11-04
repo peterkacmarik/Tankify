@@ -17,4 +17,4 @@ def get_manufacturers():
     
     return [item['nome'] for item in manufacturers]
 
-# get_manufacturers()
+# print(get_manufacturers())

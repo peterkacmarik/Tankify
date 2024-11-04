@@ -1,18 +1,23 @@
 import flet as ft
-from components.buttons import floating_action_button
-from components.fields import active_status_field, driver_license_category_field, driver_license_expiry_field, email_field, name_field, user_type_field
+from components.buttons import floating_action_button, button_on_register
+from components.fields import (
+    active_status_field,
+    vehicle_name_field,
+    vehicle_type_field,
+    manufacturer_field,
+    vehicle_model_field
+)
 from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
 from core.supa_base import get_supabese_client, get_current_user
 from views.base_page import BaseView
-from components.buttons import add_new_user_button
 
 
-class AddUserData(BaseView):
+class CreateVehicles(BaseView):
     def __init__(self, page: ft.Page):
-        super().__init__("/users/create", page)
+        super().__init__("/vehicle/create", page)
         self.page = page
         self.lang_manager = LanguageManager()
         
@@ -32,21 +37,21 @@ class AddUserData(BaseView):
         self.navigation_header_bar = self.build_navigation_header_bar()
         self.table_header = self.build_table_header()
         
-        self.name_field = name_field(self.validate_fields)
-        self.email_field = email_field(self.validate_fields)
-        self.user_type_field = user_type_field(self.validate_fields)
-        self.driver_license_category_field = driver_license_category_field(self.validate_fields)
-        self.driver_license_expiry_field = driver_license_expiry_field(self.validate_fields)
+        self.vehicle_model_field = vehicle_model_field(self.validate_fields)
+        self.manufacturer_field = manufacturer_field(self.page)
+        self.vehicle_name_field = vehicle_name_field(self.validate_fields)
+        self.vehicle_type_field = vehicle_type_field(self.validate_fields)
         self.active_status_field = active_status_field(self.validate_fields)
         
         # self.form_fields = self.build_form_fields()
-        self.add_new_user_button = add_new_user_button(self.handle_add_user_data)
+        self.register_button = button_on_register(self.handle_add_vehicle_data)
         
         self.controls = [
             ft.Container(
                 alignment=ft.alignment.center,
                 padding=ft.padding.only(20, 30, 20, 0),
                 content=ft.Column(
+                    width=400,
                     controls=[
                         ft.Container(
                             bgcolor=ft.colors.TRANSPARENT,
@@ -60,15 +65,14 @@ class AddUserData(BaseView):
                                     self.navigation_header_bar,
                                     self.table_header,
                                     ft.Divider(),
-                                    # self.form_fields,
-                                    
-                                    self.name_field,
-                                    self.email_field,
-                                    self.user_type_field,
-                                    self.driver_license_category_field,
-                                    self.driver_license_expiry_field,
+                                    self.vehicle_model_field,
+                                    self.vehicle_name_field,
+                                    self.vehicle_type_field,
                                     self.active_status_field,
-                                    self.add_new_user_button,
+                                    
+                                    
+                                    self.manufacturer_field,
+                                    self.register_button
                                 ]
                             )
                         )
@@ -85,21 +89,19 @@ class AddUserData(BaseView):
     
     def validate_fields(self, e=None):
         # Získame hodnoty z polí
-        name = self.name_field.content.value
-        email = self.email_field.content.value
-        user_type = self.user_type_field.content.value
-        driver_license_category = self.driver_license_category_field.content.value
-        driver_license_expiry = self.driver_license_expiry_field.content.value
+        vehicle_model = self.vehicle_model_field.content.value
+        vehicle_name = self.vehicle_name_field.content.value
+        vehicle_type = self.vehicle_type_field.content.value
         active_status = self.active_status_field.content.value
         
-        # Aktivujeme tlačidlo len ak sú obe polia vyplnené
-        if name and email and user_type and driver_license_category and driver_license_expiry and active_status:
-            self.add_new_user_button.content.disabled = False
+        # Aktivujeme tlačidlo len ak sú polia vyplnené
+        if vehicle_model and active_status and vehicle_name and vehicle_type:
+            self.register_button.content.disabled = False
         else:
-            self.add_new_user_button.content.disabled = True
+            self.register_button.content.disabled = True
             
         # Aktualizujeme UI
-        self.add_new_user_button.update()
+        self.register_button.update()
     
     
     def build_navigation_header_bar(self):
@@ -130,8 +132,8 @@ class AddUserData(BaseView):
                             shadow_color=ft.colors.TRANSPARENT,
                             bgcolor=ft.colors.TRANSPARENT,
                         ),
-                        text=self.lang_manager.get_text("usuarios"),
-                        on_click=lambda e: self.go_to_users(e),
+                        text=self.lang_manager.get_text("veiculos"),
+                        on_click=lambda e: self.go_to_vehicles(e),
                     ),
                     ft.Icon(
                         name=ft.icons.KEYBOARD_ARROW_RIGHT_OUTLINED,
@@ -147,54 +149,13 @@ class AddUserData(BaseView):
         )
     
     
-    def go_to_users(self, e):
-        e.page.go("/users")
+    def go_to_vehicles(self, e):
+        e.page.go("/vehicles")
+        
         
     def go_to_settings(self, e):
         e.page.go("/settings/general")
         
-        
-    def handle_add_user_data(self, e):
-        name = self.name_field.content.value
-        email = self.email_field.content.value
-        user_type = self.user_type_field.content.value
-        driver_license_category = self.driver_license_category_field.content.value
-        driver_license_expiry = self.driver_license_expiry_field.content.value
-        active_status = self.active_status_field.content.value
-        
-        if active_status == "Active":
-            active_status = True
-        else:
-            active_status = False
-            
-        user_data: dict = {
-                "name": name,
-                "email": email,
-                "user_type": user_type,
-                "driver_license_category": driver_license_category,
-                "driver_license_expiry": driver_license_expiry,
-                "active": active_status
-            }
-        try:
-            # Získanie ID prihláseného používateľa
-            current_user: dict = get_current_user(self.page)
-            if not current_user:
-                raise Exception("No user is currently logged in")
-                            
-            # Pridanie user_id do údajov
-            user_data["user_id"] = current_user.id
-            
-            # Vloženie údajov do tabuľky users
-            response = self.supabase.table("users").insert(user_data).execute()
-           
-            self.page.go("/users")
-            self.page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_cadastrar_usuario"))))
-            
-            # return response.data
-        except Exception as ex:
-            print(f"Error adding user data: {ex}")
-            return None
-
         
     def build_table_header(self):
         table_header = ft.Container(
@@ -211,37 +172,74 @@ class AddUserData(BaseView):
                         ),
                         # alignment=ft.alignment.center_left,
                     ),
-                    ft.Container(
-                        content=ft.SearchBar(
-                            bar_bgcolor=ft.colors.GREY_100,
-                            bar_overlay_color=ft.colors.GREY_100,
-                            value="Search...",
-                            width=200,
-                            height=40,
-                            on_change=lambda e: print("Search"),
-                            on_submit=lambda e: print("Search"),
-                        ),
-                        # alignment=ft.alignment.center_left,
-                    ),
+                    # ft.Container(
+                    #     content=ft.SearchBar(
+                    #         bar_bgcolor=ft.colors.GREY_100,
+                    #         bar_overlay_color=ft.colors.GREY_100,
+                    #         value="Search...",
+                    #         width=200,
+                    #         height=40,
+                    #         on_change=lambda e: print("Search"),
+                    #         on_submit=lambda e: print("Search"),
+                    #     ),
+                    #     # alignment=ft.alignment.center_left,
+                    # ),
                     
                 ]
             )
         )
         return table_header
     
+        
+    def handle_add_vehicle_data(self, e):
+        vehicle_model = self.vehicle_model_field.content.value
+        vehicle_name = self.vehicle_name_field.content.value
+        vehicle_type = self.vehicle_type_field.content.value
+        active_status = self.active_status_field.content.value
+        manufacturer = self.manufacturer_field.content.controls[0].value
+            
+        vehicle_data: dict = {
+                "vehicle": vehicle_type,
+                "manufacturer": manufacturer,
+                "model": vehicle_model,
+                "name": vehicle_name,
+                "is_active": active_status,
+            }
+        try:
+            # Získanie ID prihláseného používateľa
+            current_user: dict = get_current_user(self.page)
+            if not current_user:
+                raise Exception("No user is currently logged in")
+                            
+            # Pridanie user_id do údajov
+            vehicle_data["vehicle_id"] = current_user.id
+            
+            # Vloženie údajov do tabuľky users
+            response = self.supabase.table("vehicles").insert(vehicle_data).execute()
+           
+            self.page.go("/vehicles")
+            self.page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_cadastra_veiculo"))))
+            
+            # return response.data
+        except Exception as ex:
+            print(f"Error adding user data: {ex}")
+            return None
+
+        
+    
     
     # def build_form_fields(self):
     #     form_fields = ft.Container(
-    #         border=ft.border.all(0.5, ft.colors.GREY_400),
-    #         border_radius=10,
+    #         # alignment=ft.alignment.center,
+    #         # border=ft.border.all(0.5, ft.colors.GREY_400),
+    #         # border_radius=10,
     #         padding=ft.padding.only(20, 20, 20, 20),
     #         content=ft.Column(
+    #             alignment=ft.MainAxisAlignment.START,
+    #             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
     #             controls=[
-    #                 self.name_field,
-    #                 self.email_field,
-    #                 self.user_type_field,
-    #                 self.driver_license_category_field,
-    #                 self.driver_license_expiry_field,
+    #                 self.vehicle_name_field,
+    #                 self.vehicle_type_field,
     #                 self.active_status_field,
                     
     #             ]
