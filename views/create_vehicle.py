@@ -220,19 +220,19 @@ class CreateVehicles(BaseView):
         notes = self.vehicle_notes_field.content.value
             
         vehicle_data: dict = {
-                "vehicle": vehicle_type,
-                "manufacturer": manufacturer,
-                "model": vehicle_model,
-                "year": year,
-                "name": vehicle_name,
-                "fuel_type": fuel_type,
-                "fuel_capacity": fuel_capacity,
-                "unit_measure": unit_measure,
-                "license_plate": license_plate,
-                "chassis_number": chassis_number,
-                "vin": vin,
-                "notes": notes,
-                "is_active": active_status,
+                "vehicle": vehicle_type, # Vehicle type
+                "manufacturer": manufacturer, # Manufacturer
+                "model": vehicle_model, # Model
+                "year": year, # Year
+                "name": vehicle_name, # Name
+                "fuel_type": fuel_type, # Fuel type
+                "fuel_capacity": fuel_capacity, # Fuel capacity
+                "unit_measure": unit_measure, # Unit measure
+                "license_plate": license_plate, # License plate
+                "chassis_number": chassis_number, # Chassis number
+                "vin": vin, # VIN
+                "notes": notes, # Notes
+                "is_active": active_status, # Active
             }
         try:
             self.supabase_vehicle.create_vehicle_in_table_vehicles(self.page, vehicle_data)

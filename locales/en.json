@@ -883,5 +883,6 @@
     "actions": "Actions",
     "unit_of_measure": "Unit of measure",
     "msg_cadastra_veiculo": "Vehicle successfully registered!",
-    "msg_atualiza_usuario": "User successfully updated!"
+    "msg_atualiza_usuario": "User successfully updated!",
+    "msg_atualiza_veiculo": "Vehicle successfully updated!"
   }

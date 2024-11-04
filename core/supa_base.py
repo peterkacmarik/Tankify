@@ -86,7 +86,7 @@ class SupabaseUser:
 
             return response.data
         except Exception as ex:
-            print(f"Error getting all data: {ex}")
+            print(f"Error getting all user data: {ex}")
             return None
             
 
@@ -155,7 +155,7 @@ class SupabaseVehicle:
 
             return response.data
         except Exception as ex:
-            print(f"Error getting all data: {ex}")
+            print(f"Error getting all vehicle data: {ex}")
             return None
 
 
@@ -191,16 +191,16 @@ class SupabaseVehicle:
             return None
 
 
-    def update_vehicle_in_table_vehicles(self, vehicle_id, user_data: dict):
+    def update_vehicle_in_table_vehicles(self, vehicle_id, vehicle_data: dict):
         try:
             update_data = {
-                "name": user_data["name"].content.value,
-                "email": user_data["email"].content.value,
-                "user_type": user_data["user_type"].content.value,
-                "driver_license_category": user_data["driver_license_category"].content.value,
-                "driver_license_expiry": user_data["driver_license_expiry"].content.controls[1].value,
-                "is_active": user_data["is_active"].content.value,
-                "vehicle_user": user_data["vehicle_user"].content.value,
+                "name": vehicle_data["name"].content.value,
+                "email": vehicle_data["email"].content.value,
+                "user_type": vehicle_data["user_type"].content.value,
+                "driver_license_category": vehicle_data["driver_license_category"].content.value,
+                "driver_license_expiry": vehicle_data["driver_license_expiry"].content.controls[1].value,
+                "is_active": vehicle_data["is_active"].content.value,
+                "vehicle_user": vehicle_data["vehicle_user"].content.value,
             }
             
             # Vloženie údajov do tabuľky users

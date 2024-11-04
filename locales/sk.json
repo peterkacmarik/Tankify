@@ -883,5 +883,6 @@
     "actions": "Akcie",
     "unit_of_measure": "Merná jednotka",
     "msg_cadastra_veiculo": "Vozidlo úspešne zaregistrované!",
-    "msg_atualiza_usuario": "Používateľ bol úspešne aktualizovaný!"
+    "msg_atualiza_usuario": "Používateľ bol úspešne aktualizovaný!",
+    "msg_atualiza_veiculo": "Vozidlo úspešne aktualizované!"
   }

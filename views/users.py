@@ -15,7 +15,7 @@ class UsersView(BaseView):
         self.page = page
         self.lang_manager = LanguageManager()
         self.supabase_user = SupabaseUser()
-        self.user_field = CustomUserField(validate_field=self.validate_user_field())
+        self.user_field = CustomUserField(validate_field=None)
         
         self.supabase = get_supabese_client()
         
@@ -64,9 +64,6 @@ class UsersView(BaseView):
         # Aktualizácia textov v settings view
         # self.title_text.value = LanguageManager.get_text("intro_texto_05")
         self.update()
-        
-    def validate_user_field(self):
-        pass
     
     
     def build_navigation_header_bar(self):
@@ -307,6 +304,7 @@ class UsersView(BaseView):
         )
         return user_table
 
+
     def get_value_from_fields(self, user):
         name_field = self.user_field.name_field()
         name_field.content.value = user["name"]
@@ -337,6 +335,7 @@ class UsersView(BaseView):
             "is_active": active_status_field,
             "vehicle_user": vehicle_user_field
         }
+
 
     def handle_edit_user(self, e, user):
         user_data: dict = self.get_value_from_fields(user)
