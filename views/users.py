@@ -179,9 +179,9 @@ class UsersView(BaseView):
                 ft.DataColumn(
                     ft.Text(self.lang_manager.get_text("cnh_validade")), # Driver license expiry
                 ),
-                # ft.DataColumn(
-                #     ft.Text(self.lang_manager.get_text("cnh_categoria")) # Driver license category
-                # ),
+                ft.DataColumn(
+                    ft.Text(self.lang_manager.get_text("veiculo_usuario")) # Vehicle \/ User
+                ),
                 ft.DataColumn(
                     ft.Text(self.lang_manager.get_text("status")) # Active
                 ),
@@ -207,9 +207,9 @@ class UsersView(BaseView):
                         ft.DataCell(
                             ft.Text(user["driver_license_expiry"])
                         ),
-                        # ft.DataCell(
-                        #     ft.Text(user["driver_license_category"])
-                        # ),
+                        ft.DataCell(
+                            ft.Text(user["vehicle_user"])
+                        ),
                         ft.DataCell(
                             ft.Text(user["is_active"])
                         ),

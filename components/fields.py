@@ -1,8 +1,9 @@
 import datetime
 import flet as ft
+from core.supa_base import get_vehicle_name
 from locales.open_files import get_manufacturers
 from locales.language_manager import LanguageManager
-
+from typing import Callable, Dict, Optional, Union, List, Any
 
 lang_manager = LanguageManager()
 
@@ -181,7 +182,7 @@ class CustomUserField(ft.TextField):
         )
         
 
-    def driver_license_expiry_field(self,page: ft.Page):
+    def driver_license_expiry_field(self, page: ft.Page):
         # Funkcia na otvorenie DatePicker a spracovanie dátumu
         def on_button_click(e):
             # Nastavíme dialógové okno s DatePicker
@@ -267,6 +268,24 @@ class CustomUserField(ft.TextField):
                 on_change=self.validate_field,
             )
         )
+    
+    
+    def vehicle_user_field(self, page: ft.Page):
+        vehicle_names = get_vehicle_name(page)
+        dropdown = ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.Dropdown(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                border_color=ft.colors.GREY,
+                width=300,
+                height=50,
+                label=lang_manager.get_text("veiculo_usuario"),
+                on_change=self.validate_field,
+                options=[ft.dropdown.Option(name) for name in vehicle_names],
+            )
+        )
+        return dropdown
+    
     
     
 class CustomVehicleField(ft.TextField):

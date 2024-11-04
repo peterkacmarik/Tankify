@@ -82,3 +82,20 @@ def get_all_data_from_table_vehicles(page: ft.Page):
         print(f"Error getting all data: {ex}")
         return None
         
+
+def get_vehicle_name(page: ft.Page):
+    try:
+        # Get current user id
+        current_user_id = get_current_user(page).id
+        
+        # Get all data from current user
+        supabase = get_supabese_client()
+        response: dict = supabase.table("vehicles").select("name").eq("vehicle_id", current_user_id).execute()
+        
+        names: list = [name["name"] for name in response.data]
+        
+        # Return vehicle name
+        return names
+    except Exception as ex:
+        print(f"Error getting all data: {ex}")
+        return []

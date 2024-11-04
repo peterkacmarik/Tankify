@@ -47,13 +47,7 @@ class CreateUsers(BaseView):
         self.driver_license_category_field = self.custom_user_field.driver_license_category_field()
         self.driver_license_expiry_field = self.custom_user_field.driver_license_expiry_field(self.page)
         self.active_status_field = self.custom_user_field.active_status_field()
-        
-        # self.name_field = name_field(self.validate_fields)
-        # self.email_field = email_field(self.validate_fields)
-        # self.user_type_field = user_type_field(self.validate_fields)
-        # self.driver_license_category_field = driver_license_category_field(self.validate_fields)
-        # self.driver_license_expiry_field = driver_license_expiry_field(self.page, self.validate_fields)
-        # self.active_status_field = active_status_field(self.validate_fields)
+        self.vehicle_user_field = self.custom_user_field.vehicle_user_field(self.page)
         
         self.form_fields = self.build_form_fields()
         self.register_button = button_on_register(self.handle_add_user_data)
@@ -101,9 +95,10 @@ class CreateUsers(BaseView):
         driver_license_category = self.driver_license_category_field.content.value
         driver_license_expiry = self.driver_license_expiry_field.content.controls[1].value
         active_status = self.active_status_field.content.value
+        vehicle_user = self.vehicle_user_field.content.value
         
         # Aktivujeme tlačidlo len ak sú obe polia vyplnené
-        if name and email and user_type and driver_license_category and driver_license_expiry and active_status:
+        if name and email and user_type and driver_license_category and driver_license_expiry and active_status and vehicle_user:
             self.register_button.content.disabled = False
         else:
             self.register_button.content.disabled = True
@@ -171,6 +166,7 @@ class CreateUsers(BaseView):
         driver_license_category = self.driver_license_category_field.content.value
         driver_license_expiry = self.driver_license_expiry_field.content.controls[1].value
         active_status = self.active_status_field.content.value
+        vehicle_user = self.vehicle_user_field.content.value
             
         user_data: dict = {
                 "name": name,
@@ -178,7 +174,8 @@ class CreateUsers(BaseView):
                 "user_type": user_type,
                 "driver_license_category": driver_license_category,
                 "driver_license_expiry": driver_license_expiry,
-                "is_active": active_status
+                "is_active": active_status,
+                "vehicle_user": vehicle_user
             }
         try:
             # Získanie ID prihláseného používateľa
@@ -251,7 +248,7 @@ class CreateUsers(BaseView):
                     self.driver_license_category_field,
                     self.driver_license_expiry_field,
                     self.active_status_field,
-                    
+                    self.vehicle_user_field
                 ]
             )
         )
