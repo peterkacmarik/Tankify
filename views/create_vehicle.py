@@ -35,10 +35,20 @@ class CreateVehicles(BaseView):
         self.table_header = self.build_table_header()
         
         self.custom_vehicle_field = CustomVehicleField(self.validate_fields)
-        self.vehicle_model_field = self.custom_vehicle_field.vehicle_model_field()
-        self.manufacturer_field = self.custom_vehicle_field.vehicle_manufacturer_field(self.page)
-        self.vehicle_name_field = self.custom_vehicle_field.vehicle_name_field()
+        
         self.vehicle_type_field = self.custom_vehicle_field.vehicle_type_field()
+        self.manufacturer_field = self.custom_vehicle_field.vehicle_manufacturer_field(self.page)
+        self.vehicle_model_field = self.custom_vehicle_field.vehicle_model_field()
+        self.vehicle_year_field = self.custom_vehicle_field.vehicle_year_field()
+        self.vehicle_name_field = self.custom_vehicle_field.vehicle_name_field()
+        self.vehicle_fuel_type_field = self.custom_vehicle_field.vehicle_fuel_type_field()
+        self.vehicle_fuel_capacity_field = self.custom_vehicle_field.vehicle_fuel_capacity_field()
+        self.vehicle_unit_measurement_field = self.custom_vehicle_field.vehicle_unit_measurement_field()
+        self.vehicle_license_plate_field = self.custom_vehicle_field.vehicle_license_plate_field()
+        self.vehicle_chassis_number_field = self.custom_vehicle_field.vehicle_chassis_number_field()
+        self.vehicle_vin_field = self.custom_vehicle_field.vehicle_vin_field()
+        self.vehicle_notes_field = self.custom_vehicle_field.vehicle_notes_field()
+        
         self.active_status_field = self.custom_vehicle_field.vehicle_active_status_field()
         
         # self.form_fields = self.build_form_fields()
@@ -67,6 +77,14 @@ class CreateVehicles(BaseView):
                                     self.vehicle_type_field,
                                     self.manufacturer_field,
                                     self.vehicle_model_field,
+                                    self.vehicle_year_field,
+                                    self.vehicle_fuel_type_field,
+                                    self.vehicle_fuel_capacity_field,
+                                    self.vehicle_unit_measurement_field,
+                                    self.vehicle_license_plate_field,
+                                    self.vehicle_chassis_number_field,
+                                    self.vehicle_vin_field,
+                                    self.vehicle_notes_field,
                                     self.active_status_field,
                                     self.register_button
                                 ]
@@ -86,12 +104,11 @@ class CreateVehicles(BaseView):
     def validate_fields(self, e=None):
         # Získame hodnoty z polí
         vehicle_model = self.vehicle_model_field.content.value
-        vehicle_name = self.vehicle_name_field.content.value
         vehicle_type = self.vehicle_type_field.content.value
         active_status = self.active_status_field.content.value
         
         # Aktivujeme tlačidlo len ak sú polia vyplnené
-        if vehicle_model and active_status and vehicle_name and vehicle_type:
+        if vehicle_model and active_status and vehicle_type:
             self.register_button.content.disabled = False
         else:
             self.register_button.content.disabled = True
@@ -193,20 +210,28 @@ class CreateVehicles(BaseView):
         vehicle_type = self.vehicle_type_field.content.value
         active_status = self.active_status_field.content.value
         manufacturer = self.manufacturer_field.content.controls[0].value
+        year = self.vehicle_year_field.content.value
+        fuel_type = self.vehicle_fuel_type_field.content.value
+        fuel_capacity = self.vehicle_fuel_capacity_field.content.value
+        unit_measure = self.vehicle_unit_measurement_field.content.value
+        license_plate = self.vehicle_license_plate_field.content.value
+        chassis_number = self.vehicle_chassis_number_field.content.value
+        vin = self.vehicle_vin_field.content.value
+        notes = self.vehicle_notes_field.content.value
             
         vehicle_data: dict = {
                 "vehicle": vehicle_type,
                 "manufacturer": manufacturer,
                 "model": vehicle_model,
-                # "year": year,
+                "year": year,
                 "name": vehicle_name,
-                # "fuel_type": fuel_type,
-                # "fuel_capacity": fuel_capacity,
-                # "unit_measure": unit_measure,
-                # "license_plate": license_plate,
-                # "chassis_number": chassis_number,
-                # "vin": vin,
-                # "notes": notes,
+                "fuel_type": fuel_type,
+                "fuel_capacity": fuel_capacity,
+                "unit_measure": unit_measure,
+                "license_plate": license_plate,
+                "chassis_number": chassis_number,
+                "vin": vin,
+                "notes": notes,
                 "is_active": active_status,
             }
         try:

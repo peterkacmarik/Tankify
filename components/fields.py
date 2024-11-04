@@ -301,8 +301,8 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("nome_carro"),
-                on_change=self.validate_field
+                label=f"{lang_manager.get_text("nome")} ({lang_manager.get_text("opcional")})",
+                # on_change=self.validate_field
             )
         )
     
@@ -419,4 +419,124 @@ class CustomVehicleField(ft.TextField):
         )
     
     
+    def vehicle_year_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=f"{lang_manager.get_text("ano")} ({lang_manager.get_text("opcional")})",
+                # on_change=self.validate_field
+            )
+        )
+        
+        
+    def vehicle_fuel_type_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.Dropdown(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                border_color=ft.colors.GREY,
+                width=300,
+                height=50,
+                label=lang_manager.get_text("tipo_combustivel"),
+                # on_change=self.validate_field,
+                options=[
+                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_03")),
+                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_04")),
+                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_02")),
+                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_01")),
+                ]
+            )
+        )
+        
+        
+        
+    def vehicle_fuel_capacity_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("volume_tanque_litros"),
+                # on_change=self.validate_field
+            )
+        )
+        
+        
+    def vehicle_unit_measurement_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.Dropdown(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                border_color=ft.colors.GREY,
+                width=300,
+                height=50,
+                label=lang_manager.get_text("unit_of_measure"),
+                # on_change=self.validate_field,
+                options=[
+                    ft.dropdown.Option(lang_manager.get_text("distancia_01")),
+                    ft.dropdown.Option(lang_manager.get_text("distancia_02")),
+                ]
+            )
+        )
+        
+        
+    def vehicle_license_plate_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=f"{lang_manager.get_text("placa")} ({lang_manager.get_text("opcional")})",
+                # on_change=self.validate_field
+            )
+        )
+        
     
+    def vehicle_chassis_number_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=f"{lang_manager.get_text("chassi")} ({lang_manager.get_text("opcional")})",
+                # on_change=self.validate_field
+            )
+        )
+        
+        
+    def vehicle_vin_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=f"{lang_manager.get_text("renavam")} ({lang_manager.get_text("opcional")})",
+                # on_change=self.validate_field
+            )
+        )
+        
+        
+    def vehicle_notes_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("observacao"),
+                # on_change=self.validate_field
+            )
+        )

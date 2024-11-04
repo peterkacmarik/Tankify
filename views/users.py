@@ -145,11 +145,80 @@ class UsersView(BaseView):
                                 }
                             ),
                         )
-                    )
+                    ),
+                    ft.Container(
+                        alignment=ft.alignment.center,
+                        content=ft.IconButton(
+                            icon=ft.icons.REFRESH, on_click=lambda e: self.load_data(e)
+                        ),
+                    ),
                 ]
             )
         )
         return table_header
+    
+    def load_data(self, e):
+        response_data = self.supabase_user.get_all_data_from_table_users(
+            self.page
+        )
+
+        if response_data is None:
+            self.page.show_snack_bar(ft.SnackBar(content=ft.Text("No data available")))
+            return
+
+        # Vyčisti existujúce riadky
+        self.user_table.rows.clear()
+
+        # Pridaj nové riadky
+        for idx, user in enumerate(response_data):
+            self.user_table.rows.append(
+                ft.DataRow(
+                    cells=[
+                        ft.DataCell(
+                            ft.Text(idx+1),
+                        ),
+                        ft.DataCell(
+                            ft.Text(user["name"])
+                        ),
+                        ft.DataCell(
+                            ft.Text(user["email"])
+                        ),
+                        ft.DataCell(
+                            ft.Text(user["user_type"])
+                        ),
+                        ft.DataCell(
+                            ft.Text(user["driver_license_expiry"])
+                        ),
+                        ft.DataCell(
+                            ft.Text(user["vehicle_user"])
+                        ),
+                        ft.DataCell(
+                            ft.Text(user["is_active"])
+                        ),
+                        ft.DataCell(
+                            content=ft.Container(
+                                content=ft.Row(
+                                    controls=[
+                                        ft.IconButton(
+                                            icon=ft.icons.EDIT,
+                                            on_click=lambda e, u=user: self.handle_edit_user(e, user),
+                                        ),
+                                        ft.IconButton(
+                                            icon=ft.icons.DELETE,
+                                            on_click=lambda _, u=user: self.supabase_user.delete_user_from_table_users(self.page, user["id"]),
+                                        ),
+                                    ]
+                                )
+                            )
+                        ),
+                    ]
+                )
+            )
+
+        # Aktualizuj UI
+        self.user_table.update()
+        self.page.update()
+
     
     def go_to_add_user(self, e):
         e.page.go("/user/create")
@@ -270,7 +339,7 @@ class UsersView(BaseView):
         }
 
     def handle_edit_user(self, e, user):
-        user_data: dict =self.get_value_from_fields(user)
+        user_data: dict = self.get_value_from_fields(user)
         
         def close_dialog(e):  
             # Zatvorenie dialógu v overlay

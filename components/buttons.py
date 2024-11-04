@@ -239,3 +239,31 @@ def button_on_register(handle_data):
     )
     
 
+def refresh_button(page: ft.Page):
+    return ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.IconButton(
+            icon=ft.icons.REFRESH,
+            on_click=lambda e: load_data(e, page)
+        )
+    )
+    
+def load_data(e, page: ft.Page):
+    e.controls.content.text = "Carregando..."
+    page.update()
+    from core.supa_base import SupabaseVehicle
+    supabase_vehicle = SupabaseVehicle()
+    response_data = supabase_vehicle.get_all_data_from_table_vehicles(page)
+
+    if response_data is None:
+        page.open(ft.SnackBar(content=ft.Text("No data available")))
+        return None
+    
+    page.update()
+    
+# def handle_refresh(self, e):
+#     response_data = self.supabase_vehicle.get_all_data_from_table_vehicles(self.page)
+#     self.build_vehicle_table().rows.clear()
+#     for item in response_data:
+#         self.build_vehicle_table().rows.append(item)
+#         self.page.update()

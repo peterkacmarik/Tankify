@@ -619,6 +619,7 @@
     "completou_tanque": "Plná nádrž",
     "porcentagem_tanque": "% objemu nádrže",
     "volume_tanque": "Kapacita paliva ({{V1}})",
+    "volume_tanque_litros": "Kapacita paliva (L)",
     "esta_completando_tanque": "Natankovali jste plnou nádrž?",
     "litros": "Litry",
     "galoes": "Galonů",

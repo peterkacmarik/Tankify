@@ -95,7 +95,7 @@ class SupabaseUser:
             response = self.supabase.table("users").delete().eq("id", user_id).execute()
             page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_excluir_sucesso"))))
             page.go("/users")
-            # page.update()
+            page.update()
             
             # return response
         except Exception as ex:
@@ -178,5 +178,41 @@ class SupabaseVehicle:
             return None
     
     
+    def delete_vehicle_from_table_vehicles(self, page: ft.Page, vehicle_id):
+        try:
+            response = self.supabase.table("vehicles").delete().eq("id", vehicle_id).execute()
+            page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_excluir_sucesso"))))
+            page.go("/vehicles")
+            page.update()
+            
+            # return response
+        except Exception as ex:
+            print(f"Error getting all data: {ex}")
+            return None
+
+
+    def update_vehicle_in_table_vehicles(self, vehicle_id, user_data: dict):
+        try:
+            update_data = {
+                "name": user_data["name"].content.value,
+                "email": user_data["email"].content.value,
+                "user_type": user_data["user_type"].content.value,
+                "driver_license_category": user_data["driver_license_category"].content.value,
+                "driver_license_expiry": user_data["driver_license_expiry"].content.controls[1].value,
+                "is_active": user_data["is_active"].content.value,
+                "vehicle_user": user_data["vehicle_user"].content.value,
+            }
+            
+            # Vloženie údajov do tabuľky users
+            response = (
+                self.supabase.table("vehicles")
+                .update(update_data)
+                .eq("id", vehicle_id)
+                .execute()
+            )
+            # return response.data
+        except Exception as ex:
+            print(f"Error updating user: {ex}")
+            return None
 
 

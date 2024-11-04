@@ -619,6 +619,7 @@
     "completou_tanque": "Filled tank completely",
     "porcentagem_tanque": "% of tank",
     "volume_tanque": "Fuel capacity({{V1}})",
+    "volume_tanque_litros": "Fuel capacity(L)",
     "esta_completando_tanque": "Are you filling the tank?",
     "litros": "Litres",
     "galoes": "Gallons",
