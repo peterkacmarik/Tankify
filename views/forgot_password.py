@@ -7,7 +7,7 @@ from components.links_separator_text import (
     sub_forgot_password_text,
     cancel_link
 )
-from components.fields import email_field
+from components.fields import LoginRegisterForgotFields
 from components.buttons import send_button
 from locales.language_manager import LanguageManager
 
@@ -22,24 +22,16 @@ class ForgotPasswordView(BaseView):
         self.page = page
         self.lang_manager = LanguageManager()
         
-        # self.bgcolor = ft.colors.WHITE
-        # self.bgcolor = BgColor(self.page).get_background_color()
         self.supabase: Client = get_supabese_client()
         
-        self.scroll = ft.ScrollMode.AUTO
-        self.fullscreen_dialog = True
-        
-        self.snack_bar = ft.SnackBar(
-            content=ft.Text(""),
-            show_close_icon=True
-        )
-        self.page.overlay.append(self.snack_bar)
-    
         self.language_switch_button = LanguageSwitcher(self.page).language_switch_button
         self.page_logo = page_logo()
         self.main_forgot_text = main_forgot_password_text()
         self.sub_forgot_text = sub_forgot_password_text()
-        self.email_field = email_field(self.validate_fields)
+        
+        self.log_reg_forgot_fields = LoginRegisterForgotFields(self.validate_fields)
+        self.forgot_email_field = self.log_reg_forgot_fields.forgot_email_field()
+        # self.email_field = email_field(self.validate_fields)
         self.send_button = send_button(self.handle_forgot_password)
         self.cancel_button = cancel_link(self.page)
         
@@ -53,7 +45,7 @@ class ForgotPasswordView(BaseView):
                         self.page_logo,
                         self.main_forgot_text,
                         self.sub_forgot_text,
-                        self.email_field,
+                        self.forgot_email_field,
                         self.send_button,
                         self.cancel_button
                     ]
@@ -65,7 +57,7 @@ class ForgotPasswordView(BaseView):
         # Aktualizácia textov v settings view
         self.main_forgot_text.content.value = LanguageManager.get_text("esqueceu_sua_senha")
         self.sub_forgot_text.content.value = LanguageManager.get_text("ajudaremos_redefinir")
-        self.email_field.content.label = LanguageManager.get_text("email")
+        self.forgot_email_field.content.label = LanguageManager.get_text("email")
         self.send_button.content.text = LanguageManager.get_text("btn_enviar")
         self.cancel_button.content.text = LanguageManager.get_text("btn_cancelar")
         self.update()
@@ -73,7 +65,7 @@ class ForgotPasswordView(BaseView):
     
     def validate_fields(self, e=None):
         # Získame hodnoty z polí
-        email = self.email_field.value
+        email = self.forgot_email_field.value
     
         # Aktivujeme tlačidlo len ak sú obe polia vyplnené
         if email:
@@ -87,7 +79,7 @@ class ForgotPasswordView(BaseView):
         
     def handle_forgot_password(self, e):
         try:
-            email = self.email_field.value
+            email = self.forgot_email_field.value
             
             response = self.supabase.auth.reset_password_for_email(
                 email

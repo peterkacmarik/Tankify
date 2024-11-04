@@ -6,112 +6,131 @@ from locales.language_manager import LanguageManager
 
 lang_manager = LanguageManager()
 
-def login_email_field(validate_field):
-    return ft.TextField(
-        width=300,
-        height=50,
-        border_color=ft.colors.GREY,
-        label=lang_manager.get_text("email"),
-        on_change=validate_field,
-    )
+# def confirm_password_field(validate_field):
+#     return ft.Container(
+#         alignment=ft.alignment.center,
+#         content=ft.TextField(
+#             width=300,
+#             height=50,
+#             border_color=ft.colors.GREY,
+#             label=lang_manager.get_text("senha"),
+#             password=True,
+#             can_reveal_password=True,
+#             on_change=validate_field
+#         )
+#     )    
+
+
+
+class LoginRegisterForgotFields(ft.TextField):
+
+    def __init__(self, validate_field, **kwargs):
+        super().__init__(**kwargs)
+        self.validate_field = validate_field
+
+    def forgot_email_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("email"),
+                on_change=self.validate_field,
+            )
+        )
     
-
-def login_password_field(validate_field):
-    return ft.TextField(
-        width=300,
-        height=50,
-        border_color=ft.colors.GREY,
-        label=lang_manager.get_text("senha"),
-        password=True,
-        can_reveal_password=True,
-        on_change=validate_field
-    )
-
-
-def first_name_field(validate_field):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextField(
-            width=300,
-            height=50,
-            border_color=ft.colors.GREY,
-            label=lang_manager.get_text("primeiro_nome"),
-            on_change=validate_field
-        )
-    )
-                                                    
-                                                    
-def last_name_field(validate_field):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextField(
-            width=300,
-            height=50,
-            border_color=ft.colors.GREY,
-            label=lang_manager.get_text("segundo_nome"),
-            on_change=validate_field
-        )
-    )
-
-
-def email_field(validate_field):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextField(
+    
+    def login_email_field(self):
+        return ft.TextField(
             width=300,
             height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("email"),
-            on_change=validate_field,
+            on_change=self.validate_field,
         )
-    )
-    
-    
-def password_field(validate_field):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextField(
+        
+
+    def login_password_field(self):
+        return ft.TextField(
             width=300,
             height=50,
             border_color=ft.colors.GREY,
             label=lang_manager.get_text("senha"),
             password=True,
             can_reveal_password=True,
-            on_change=validate_field
+            on_change=self.validate_field
         )
-    )
-    
-    
-def repeat_password_field(validate_field):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextField(
-            width=300,
-            height=50,
-            border_color=ft.colors.GREY,
-            label=lang_manager.get_text("senha_repetir"),
-            password=True,
-            can_reveal_password=True,
-            on_change=validate_field
-        )
-    )
-    
-    
-def confirm_password_field(validate_field):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextField(
-            width=300,
-            height=50,
-            border_color=ft.colors.GREY,
-            label=lang_manager.get_text("senha"),
-            password=True,
-            can_reveal_password=True,
-            on_change=validate_field
-        )
-    )    
 
 
+    def first_name_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("primeiro_nome"),
+                on_change=self.validate_field
+            )
+        )
+                                                        
+                                                        
+    def last_name_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("segundo_nome"),
+                on_change=self.validate_field
+            )
+        )
+
+
+    def email_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("email"),
+                on_change=self.validate_field,
+            )
+        )
+        
+        
+    def password_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("senha"),
+                password=True,
+                can_reveal_password=True,
+                on_change=self.validate_field
+            )
+        )
+        
+        
+    def repeat_password_field(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=lang_manager.get_text("senha_repetir"),
+                password=True,
+                can_reveal_password=True,
+                on_change=self.validate_field
+            )
+        )
+        
 
 class CustomUserField(ft.TextField):
     def __init__(self, validate_field):
@@ -250,7 +269,6 @@ class CustomUserField(ft.TextField):
         )
     
     
-    
 class CustomVehicleField(ft.TextField):
     def __init__(self, validate_field):
         super().__init__()
@@ -372,4 +390,6 @@ class CustomVehicleField(ft.TextField):
                 ]
             )
         )
+    
+    
     

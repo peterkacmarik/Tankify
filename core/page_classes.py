@@ -252,26 +252,3 @@ class ManageDialogWindow(ft.Container):
         self.page.update()
         
         
-# class ManageSwitchTheme():    
-#     def __init__(self, page: ft.Page, bgcolor_page):  
-#         super().__init__()  
-#         self.page = page
-#         self.bgcolor_page = bgcolor_page
-        
-#     def switch_theme(self, e):
-        
-#         self.page.splash.visible = True
-#         self.page.theme_mode = ft.ThemeMode.DARK if self.page.theme_mode == ft.ThemeMode.LIGHT else ft.ThemeMode.LIGHT
-#         self.update_theme()  # Aktualizácia pozadia pre nový režim
-#         self.page.update()
-        
-#         time.sleep(0.5)
-#         self.page.splash.visible = False
-#         self.page.update()
-        
-#     def update_theme(self):
-#         self.bgcolor = self.bgcolor_page
-#         self.page.update()
-    
-    
-    

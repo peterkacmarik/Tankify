@@ -15,11 +15,12 @@ from components.links_separator_text import (
     line_separator,
 )
 from components.fields import (
-    first_name_field,
-    last_name_field,
-    email_field,
-    password_field,
-    repeat_password_field
+    LoginRegisterForgotFields,
+    # first_name_field,
+    # last_name_field,
+    # email_field,
+    # password_field,
+    # repeat_password_field
 )
 from supabase import Client
 from core.supa_base import get_supabese_client
@@ -32,17 +33,7 @@ class RegisterView(BaseView):
         self.page = page
         self.lang_manager = LanguageManager()
         
-        # self.bgcolor = BgColor(self.page).get_background_color()
         self.supabase: Client = get_supabese_client()
-        
-        self.scroll = ft.ScrollMode.HIDDEN
-        self.fullscreen_dialog = True
-        
-        self.snack_bar = ft.SnackBar(
-            content=ft.Text(""),
-            show_close_icon=True
-        )
-        self.page.overlay.append(self.snack_bar)
         
         self.language_switch_button = LanguageSwitcher(self.page).language_switch_button
         self.page_logo = page_logo()
@@ -68,13 +59,19 @@ class RegisterView(BaseView):
         
         self.line_separator = line_separator()
         
+        self.log_reg_forgot_fields = LoginRegisterForgotFields(self.validate_fields)
+        self.first_name_value = self.log_reg_forgot_fields.first_name_field()
+        self.last_name_value = self.log_reg_forgot_fields.last_name_field()
+        self.email_value = self.log_reg_forgot_fields.email_field()
+        self.password_value = self.log_reg_forgot_fields.password_field()
+        self.repeat_password_value = self.log_reg_forgot_fields.repeat_password_field()
         # Create account form fields
-        self.first_name_value = first_name_field(self.validate_fields)
-        self.last_name_value = last_name_field(self.validate_fields)
+        # self.first_name_value = first_name_field(self.validate_fields)
+        # self.last_name_value = last_name_field(self.validate_fields)
         
-        self.email_value = email_field(self.validate_fields)
-        self.password_value = password_field(self.validate_fields)
-        self.repeat_password_value = repeat_password_field(self.validate_fields)
+        # self.email_value = email_field(self.validate_fields)
+        # self.password_value = password_field(self.validate_fields)
+        # self.repeat_password_value = repeat_password_field(self.validate_fields)
         
         # Registration button and cancel button
         self.registration = register_button(self.handle_register)

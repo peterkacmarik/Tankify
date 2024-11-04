@@ -1,10 +1,7 @@
 import flet as ft
 from core.page_classes import LanguageSwitcher
 from components.fields import (
-    email_field,
-    login_email_field,
-    login_password_field, 
-    password_field
+    LoginRegisterForgotFields
 )
 from components.buttons import (
     google_login_button, 
@@ -31,20 +28,8 @@ class LoginView(BaseView):
         super().__init__(route="/login", page=page)
         self.page = page
         self.lang_manager = LanguageManager()
-        
-        # self.bgcolor = ft.colors.WHITE
-        # self.bgcolor = BgColor(self.page).get_background_color()
+
         self.supabase: Client = get_supabese_client()
-        
-        self.scroll = ft.ScrollMode.HIDDEN
-        self.fullscreen_dialog = True
-        
-        # Snack bar
-        self.snack_bar = ft.SnackBar(
-            content=ft.Text(""),
-            show_close_icon=True
-        )
-        self.page.overlay.append(self.snack_bar)
 
         self.language_switch_button = LanguageSwitcher(self.page).language_switch_button
         self.page_logo = page_logo()
@@ -67,14 +52,15 @@ class LoginView(BaseView):
 
         self.line_separator = line_separator()
         
+        self.log_reg_forgot_fields = LoginRegisterForgotFields(self.validate_fields)
         self.login_fields = ft.Container(
             alignment=ft.alignment.center,
             content=ft.Column(
                 alignment=ft.MainAxisAlignment.CENTER,
                 spacing=20,
                 controls=[
-                    login_email_field(self.validate_fields),
-                    login_password_field(self.validate_fields)
+                    self.log_reg_forgot_fields.login_email_field(),
+                    self.log_reg_forgot_fields.login_password_field()
                 ]
             )
         )
