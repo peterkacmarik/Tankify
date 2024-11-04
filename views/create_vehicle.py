@@ -7,7 +7,7 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client, get_current_user
+from core.supa_base import get_supabese_client, SupabaseVehicle
 from views.base_page import BaseView
 
 
@@ -16,6 +16,7 @@ class CreateVehicles(BaseView):
         super().__init__("/vehicle/create", page)
         self.page = page
         self.lang_manager = LanguageManager()
+        self.supabase_vehicle = SupabaseVehicle()
         
         self.supabase = get_supabese_client()
         
@@ -197,21 +198,20 @@ class CreateVehicles(BaseView):
                 "vehicle": vehicle_type,
                 "manufacturer": manufacturer,
                 "model": vehicle_model,
+                # "year": year,
                 "name": vehicle_name,
+                # "fuel_type": fuel_type,
+                # "fuel_capacity": fuel_capacity,
+                # "unit_measure": unit_measure,
+                # "license_plate": license_plate,
+                # "chassis_number": chassis_number,
+                # "vin": vin,
+                # "notes": notes,
                 "is_active": active_status,
             }
         try:
-            # Získanie ID prihláseného používateľa
-            current_user: dict = get_current_user(self.page)
-            if not current_user:
-                raise Exception("No user is currently logged in")
-                            
-            # Pridanie user_id do údajov
-            vehicle_data["vehicle_id"] = current_user.id
-            
-            # Vloženie údajov do tabuľky users
-            response = self.supabase.table("vehicles").insert(vehicle_data).execute()
-           
+            self.supabase_vehicle.create_vehicle_in_table_vehicles(self.page, vehicle_data)
+
             self.page.go("/vehicles")
             self.page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_cadastra_veiculo"))))
             

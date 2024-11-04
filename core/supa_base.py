@@ -52,50 +52,102 @@ def get_current_user(page: ft.Page):
         print(f"Error getting current user: {ex}")
         return None
 
+    
+class SupabaseUser:
+    def __init__(self) -> None:
+        self.supabase = get_supabese_client()
+        
+        
+    def create_user_in_table_users(self, page: ft.Page, user_data: dict):
+        try:
+            # Get current user id
+            current_user_id = get_current_user(page).id
+            if not current_user_id:
+                raise Exception("No user is currently logged in")
 
-def get_all_data_from_table_users(page: ft.Page):
-    try:
-        # Get current user id
-        current_user_id = get_current_user(page).id
-        
-        # Get all data from current user
-        supabase = get_supabese_client()
-        response = supabase.table("users").select("*").eq("user_id", current_user_id).execute()
+            # Pridanie user_id do údajov
+            user_data["user_id"] = current_user_id
+            
+            # Vloženie údajov do tabuľky users
+            response = self.supabase.table("users").insert(user_data).execute()
+            
+            # return response.data
+        except Exception as ex:
+            print(f"Error creating user: {ex}")
+            return None
 
-        return response.data
-    except Exception as ex:
-        print(f"Error getting all data: {ex}")
-        return None
-        
-        
-def get_all_data_from_table_vehicles(page: ft.Page):
-    try:
-        # Get current user id
-        current_user_id = get_current_user(page).id
-        
-        # Get all data from current user
-        supabase = get_supabese_client()
-        response = supabase.table("vehicles").select("*").eq("vehicle_id", current_user_id).execute()
+    def get_all_data_from_table_users(self, page: ft.Page):
+        try:
+            # Get current user id
+            current_user_id = get_current_user(page).id
+            response = self.supabase.table("users").select("*").eq("user_id", current_user_id).execute()
 
-        return response.data
-    except Exception as ex:
-        print(f"Error getting all data: {ex}")
-        return None
-        
+            return response.data
+        except Exception as ex:
+            print(f"Error getting all data: {ex}")
+            return None
+            
 
-def get_vehicle_name(page: ft.Page):
-    try:
-        # Get current user id
-        current_user_id = get_current_user(page).id
+    def delete_user_from_table_users(self, page: ft.Page):
+        try:
+            # Get current user id
+            current_user_id = get_current_user(page).id
+            response = self.supabase.table("users").delete().eq("user_id", current_user_id).execute()
+            
+            return response
+        except Exception as ex:
+            print(f"Error getting all data: {ex}")
+            return None
+
+
+    def get_vehicle_names(self, page):
+        try:
+            # Get current user id
+            current_user_id = get_current_user(page).id
+            # Get vehicle name from supabase
+            response: dict = self.supabase.table("vehicles").select("name").eq("vehicle_id", current_user_id).execute()
+            names: list = [name["name"] for name in response.data]
+            # Return vehicle name
+            return names
+        except Exception as ex:
+            print(f"Error getting all data: {ex}")
+            return []
+
+
+class SupabaseVehicle:
+    def __init__(self) -> None:
+        self.supabase = get_supabese_client()
         
-        # Get all data from current user
-        supabase = get_supabese_client()
-        response: dict = supabase.table("vehicles").select("name").eq("vehicle_id", current_user_id).execute()
-        
-        names: list = [name["name"] for name in response.data]
-        
-        # Return vehicle name
-        return names
-    except Exception as ex:
-        print(f"Error getting all data: {ex}")
-        return []
+    def get_all_data_from_table_vehicles(self, page):
+        try:
+            # Get current user id
+            current_user_id = get_current_user(page).id
+            response = self.supabase.table("vehicles").select("*").eq("vehicle_id", current_user_id).execute()
+
+            return response.data
+        except Exception as ex:
+            print(f"Error getting all data: {ex}")
+            return None
+
+
+    def create_vehicle_in_table_vehicles(self, page: ft.Page, vehicle_data: dict):
+        try:
+            # Get current user id
+            current_user_id = get_current_user(page).id
+            if not current_user_id:
+                raise Exception("No user is currently logged in")
+
+            # Pridanie user_id do údajov
+            vehicle_data["vehicle_id"] = current_user_id
+            
+            # Vloženie údajov do tabuľky users
+            response = self.supabase.table("vehicles").insert(vehicle_data).execute()
+            
+            # return response.data
+        except Exception as ex:
+            print(f"Error creating vehicle: {ex}")
+            return None
+    
+    
+
+

@@ -4,7 +4,7 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_all_data_from_table_vehicles, get_supabese_client
+from core.supa_base import get_supabese_client, SupabaseVehicle
 from views.base_page import BaseView
 
 
@@ -13,6 +13,7 @@ class VehiclesViews(BaseView):
         super().__init__("/vehicle", page)
         self.page = page
         self.lang_manager = LanguageManager()
+        self.supabase_vehicle = SupabaseVehicle()
         
         self.supabase = get_supabese_client()
         
@@ -152,7 +153,7 @@ class VehiclesViews(BaseView):
     
     def build_vehicle_table(self):
         # Získanie údajov o používateľoch
-        vehicles_data = get_all_data_from_table_vehicles(self.page)
+        vehicles_data = self.supabase_vehicle.get_all_data_from_table_vehicles(self.page)
 
         if vehicles_data is None:
             self.page.open(ft.SnackBar(content=ft.Text("No data available")))

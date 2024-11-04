@@ -1,6 +1,6 @@
 import datetime
 import flet as ft
-from core.supa_base import get_vehicle_name
+from core.supa_base import SupabaseUser
 from locales.open_files import get_manufacturers
 from locales.language_manager import LanguageManager
 from typing import Callable, Dict, Optional, Union, List, Any
@@ -137,7 +137,7 @@ class CustomUserField(ft.TextField):
     def __init__(self, validate_field):
         super().__init__()
         self.validate_field = validate_field
-        
+        self.supabase_user = SupabaseUser()
         
     def name_field(self):
         return ft.Container(
@@ -271,7 +271,7 @@ class CustomUserField(ft.TextField):
     
     
     def vehicle_user_field(self, page: ft.Page):
-        vehicle_names = get_vehicle_name(page)
+        vehicle_names = self.supabase_user.get_vehicle_names(page)
         dropdown = ft.Container(
             alignment=ft.alignment.center,
             content=ft.Dropdown(

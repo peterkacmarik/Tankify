@@ -4,7 +4,7 @@ from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client, get_all_data_from_table_users
+from core.supa_base import get_supabese_client, SupabaseUser
 from views.base_page import BaseView
 
 
@@ -13,6 +13,7 @@ class UsersView(BaseView):
         super().__init__("/users", page)
         self.page = page
         self.lang_manager = LanguageManager()
+        self.supabase_user = SupabaseUser()
         
         self.supabase = get_supabese_client()
         
@@ -155,7 +156,7 @@ class UsersView(BaseView):
     
     def build_user_table(self):
         # Získanie údajov o používateľoch
-        users_data = get_all_data_from_table_users(self.page)
+        users_data = self.supabase_user.get_all_data_from_table_users(self.page)
 
         if users_data is None:
             print("No data available")
@@ -219,11 +220,11 @@ class UsersView(BaseView):
                                     controls=[
                                         ft.IconButton(
                                             icon=ft.icons.EDIT,
-                                            on_click=lambda e: print("Edit"),
+                                            on_click=lambda e: self.edit_user(e, users_data),
                                         ),
                                         ft.IconButton(
                                             icon=ft.icons.DELETE,
-                                            on_click=lambda e: print("Delete"),
+                                            on_click=lambda e: self.delete_user(e, users_data),
                                         ),
                                     ]
                                 )
@@ -239,3 +240,9 @@ class UsersView(BaseView):
         
         
         
+    def edit_user(self, e, users_data):
+        pass
+    
+    
+    def delete_user(self, e, users_data):
+        pass

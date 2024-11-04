@@ -2,18 +2,12 @@ import flet as ft
 from components.buttons import floating_action_button
 from components.fields import (
     CustomUserField,
-    # active_status_field, 
-    # driver_license_category_field, 
-    # driver_license_expiry_field, 
-    # email_field, 
-    # name_field, 
-    # user_type_field
 )
 from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
 
-from core.supa_base import get_supabese_client, get_current_user
+from core.supa_base import get_current_user, get_supabese_client, SupabaseUser
 from views.base_page import BaseView
 from components.buttons import button_on_register
 
@@ -23,6 +17,7 @@ class CreateUsers(BaseView):
         super().__init__("/user/create", page)
         self.page = page
         self.lang_manager = LanguageManager()
+        self.supabase_user = SupabaseUser()
         
         self.supabase = get_supabese_client()
         
@@ -49,7 +44,15 @@ class CreateUsers(BaseView):
         self.active_status_field = self.custom_user_field.active_status_field()
         self.vehicle_user_field = self.custom_user_field.vehicle_user_field(self.page)
         
-        self.form_fields = self.build_form_fields()
+        self.form_fields = self.build_form_fields(
+            self.name_field, 
+            self.email_field, 
+            self.user_type_field, 
+            self.driver_license_category_field, 
+            self.driver_license_expiry_field, 
+            self.active_status_field, 
+            self.vehicle_user_field
+        )
         self.register_button = button_on_register(self.handle_add_user_data)
         
         self.controls = [
@@ -155,49 +158,11 @@ class CreateUsers(BaseView):
     def go_to_users(self, e):
         e.page.go("/users")
         
+        
     def go_to_settings(self, e):
         e.page.go("/settings/general")
         
-        
-    def handle_add_user_data(self, e):
-        name = self.name_field.content.value
-        email = self.email_field.content.value
-        user_type = self.user_type_field.content.value
-        driver_license_category = self.driver_license_category_field.content.value
-        driver_license_expiry = self.driver_license_expiry_field.content.controls[1].value
-        active_status = self.active_status_field.content.value
-        vehicle_user = self.vehicle_user_field.content.value
-            
-        user_data: dict = {
-                "name": name,
-                "email": email,
-                "user_type": user_type,
-                "driver_license_category": driver_license_category,
-                "driver_license_expiry": driver_license_expiry,
-                "is_active": active_status,
-                "vehicle_user": vehicle_user
-            }
-        try:
-            # Získanie ID prihláseného používateľa
-            current_user: dict = get_current_user(self.page)
-            if not current_user:
-                raise Exception("No user is currently logged in")
-                            
-            # Pridanie user_id do údajov
-            user_data["user_id"] = current_user.id
-            
-            # Vloženie údajov do tabuľky users
-            response = self.supabase.table("users").insert(user_data).execute()
-           
-            self.page.go("/users")
-            self.page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_cadastrar_usuario"))))
-            
-            # return response.data
-        except Exception as ex:
-            print(f"Error adding user data: {ex}")
-            return None
-
-        
+    
     def build_table_header(self):
         table_header = ft.Container(
             border=ft.border.all(0.5, ft.colors.GREY_400),
@@ -232,7 +197,16 @@ class CreateUsers(BaseView):
         return table_header
     
     
-    def build_form_fields(self):
+    def build_form_fields(
+        self, 
+        name_field, 
+        email_field, 
+        user_type_field,
+        driver_license_category_field, 
+        driver_license_expiry_field, 
+        active_status_field, 
+        vehicle_user_field
+        ):
         form_fields = ft.Container(
             # alignment=ft.alignment.center,
             # border=ft.border.all(0.5, ft.colors.GREY_400),
@@ -242,18 +216,51 @@ class CreateUsers(BaseView):
                 alignment=ft.MainAxisAlignment.START,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=[
-                    self.name_field,
-                    self.email_field,
-                    self.user_type_field,
-                    self.driver_license_category_field,
-                    self.driver_license_expiry_field,
-                    self.active_status_field,
-                    self.vehicle_user_field
+                    name_field,
+                    email_field,
+                    user_type_field,
+                    driver_license_category_field,
+                    driver_license_expiry_field,
+                    active_status_field,
+                    vehicle_user_field
                 ]
             )
         )
         return form_fields
     
+    
+    
+    def handle_add_user_data(self, e):
+        name = self.name_field.content.value
+        email = self.email_field.content.value
+        user_type = self.user_type_field.content.value
+        driver_license_category = self.driver_license_category_field.content.value
+        driver_license_expiry = self.driver_license_expiry_field.content.controls[1].value
+        active_status = self.active_status_field.content.value
+        vehicle_user = self.vehicle_user_field.content.value
+            
+        user_data: dict = {
+                "name": name,
+                "email": email,
+                "user_type": user_type,
+                "driver_license_category": driver_license_category,
+                "driver_license_expiry": driver_license_expiry,
+                "is_active": active_status,
+                "vehicle_user": vehicle_user
+            }
+        try:
+            self.supabase_user.create_user_in_table_users(self.page, user_data)
+            
+            self.page.go("/users")
+            self.page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_cadastrar_usuario"))))
+            
+            # return response.data
+        except Exception as ex:
+            print(f"Error adding user data: {ex}")
+            return None
+
+        
+
     
     
     
