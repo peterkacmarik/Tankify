@@ -166,7 +166,10 @@ class VehiclesViews(BaseView):
                     ft.Text("#"),
                 ),
                 ft.DataColumn(
-                    ft.Text(self.lang_manager.get_text("veiculo")), # Vehicle
+                    ft.Text(self.lang_manager.get_text("tipo")), # Type
+                ),
+                ft.DataColumn(
+                    ft.Text(self.lang_manager.get_text("apelido")) # Nickname
                 ),
                 ft.DataColumn(
                     ft.Text(self.lang_manager.get_text("marca")) # Manufacturer
@@ -174,9 +177,7 @@ class VehiclesViews(BaseView):
                 ft.DataColumn(
                     ft.Text(self.lang_manager.get_text("modelo")) # Model
                 ),
-                ft.DataColumn(
-                    ft.Text(self.lang_manager.get_text("nome")) # Name
-                ),
+                
                 ft.DataColumn(
                     ft.Text(self.lang_manager.get_text("status")) # Active
                 ),
@@ -194,14 +195,15 @@ class VehiclesViews(BaseView):
                             ft.Text(vehicle["vehicle"])
                         ),
                         ft.DataCell(
+                            ft.Text(vehicle["name"])
+                        ),
+                        ft.DataCell(
                             ft.Text(vehicle["manufacturer"])
                         ),
                         ft.DataCell(
                             ft.Text(vehicle["model"])
                         ),
-                        ft.DataCell(
-                            ft.Text(vehicle["name"])
-                        ),
+                        
                         ft.DataCell(
                             ft.Text(vehicle["is_active"]) # Active
                         ),

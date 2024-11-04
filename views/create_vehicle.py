@@ -1,11 +1,7 @@
 import flet as ft
 from components.buttons import floating_action_button, button_on_register
 from components.fields import (
-    active_status_field,
-    vehicle_name_field,
-    vehicle_type_field,
-    manufacturer_field,
-    vehicle_model_field
+    CustomVehicleField,
 )
 from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
@@ -37,11 +33,12 @@ class CreateVehicles(BaseView):
         self.navigation_header_bar = self.build_navigation_header_bar()
         self.table_header = self.build_table_header()
         
-        self.vehicle_model_field = vehicle_model_field(self.validate_fields)
-        self.manufacturer_field = manufacturer_field(self.page)
-        self.vehicle_name_field = vehicle_name_field(self.validate_fields)
-        self.vehicle_type_field = vehicle_type_field(self.validate_fields)
-        self.active_status_field = active_status_field(self.validate_fields)
+        self.custom_vehicle_field = CustomVehicleField(self.validate_fields)
+        self.vehicle_model_field = self.custom_vehicle_field.vehicle_model_field()
+        self.manufacturer_field = self.custom_vehicle_field.vehicle_manufacturer_field(self.page)
+        self.vehicle_name_field = self.custom_vehicle_field.vehicle_name_field()
+        self.vehicle_type_field = self.custom_vehicle_field.vehicle_type_field()
+        self.active_status_field = self.custom_vehicle_field.vehicle_active_status_field()
         
         # self.form_fields = self.build_form_fields()
         self.register_button = button_on_register(self.handle_add_vehicle_data)
@@ -65,13 +62,11 @@ class CreateVehicles(BaseView):
                                     self.navigation_header_bar,
                                     self.table_header,
                                     ft.Divider(),
-                                    self.vehicle_model_field,
                                     self.vehicle_name_field,
                                     self.vehicle_type_field,
-                                    self.active_status_field,
-                                    
-                                    
                                     self.manufacturer_field,
+                                    self.vehicle_model_field,
+                                    self.active_status_field,
                                     self.register_button
                                 ]
                             )

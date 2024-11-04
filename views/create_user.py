@@ -1,6 +1,14 @@
 import flet as ft
 from components.buttons import floating_action_button
-from components.fields import active_status_field, driver_license_category_field, driver_license_expiry_field, email_field, name_field, user_type_field
+from components.fields import (
+    CustomUserField,
+    # active_status_field, 
+    # driver_license_category_field, 
+    # driver_license_expiry_field, 
+    # email_field, 
+    # name_field, 
+    # user_type_field
+)
 from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
@@ -32,12 +40,20 @@ class CreateUsers(BaseView):
         self.navigation_header_bar = self.build_navigation_header_bar()
         self.table_header = self.build_table_header()
         
-        self.name_field = name_field(self.validate_fields)
-        self.email_field = email_field(self.validate_fields)
-        self.user_type_field = user_type_field(self.validate_fields)
-        self.driver_license_category_field = driver_license_category_field(self.validate_fields)
-        self.driver_license_expiry_field = driver_license_expiry_field(self.page, self.validate_fields)
-        self.active_status_field = active_status_field(self.validate_fields)
+        self.custom_user_field = CustomUserField(self.validate_fields)
+        self.name_field = self.custom_user_field.name_field()
+        self.email_field = self.custom_user_field.user_email_field()
+        self.user_type_field = self.custom_user_field.user_type_field()
+        self.driver_license_category_field = self.custom_user_field.driver_license_category_field()
+        self.driver_license_expiry_field = self.custom_user_field.driver_license_expiry_field(self.page)
+        self.active_status_field = self.custom_user_field.active_status_field()
+        
+        # self.name_field = name_field(self.validate_fields)
+        # self.email_field = email_field(self.validate_fields)
+        # self.user_type_field = user_type_field(self.validate_fields)
+        # self.driver_license_category_field = driver_license_category_field(self.validate_fields)
+        # self.driver_license_expiry_field = driver_license_expiry_field(self.page, self.validate_fields)
+        # self.active_status_field = active_status_field(self.validate_fields)
         
         self.form_fields = self.build_form_fields()
         self.register_button = button_on_register(self.handle_add_user_data)
