@@ -301,7 +301,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text("nome")} ({lang_manager.get_text("opcional")})",
+                label=f"{lang_manager.get_text('nome')} ({lang_manager.get_text('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -427,7 +427,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text("ano")} ({lang_manager.get_text("opcional")})",
+                label=f"{lang_manager.get_text('ano')} ({lang_manager.get_text('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -494,7 +494,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text("placa")} ({lang_manager.get_text("opcional")})",
+                label=f"{lang_manager.get_text('placa')} ({lang_manager.get_text('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -508,7 +508,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text("chassi")} ({lang_manager.get_text("opcional")})",
+                label=f"{lang_manager.get_text('chassi')} ({lang_manager.get_text('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -522,7 +522,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text("renavam")} ({lang_manager.get_text("opcional")})",
+                label=f"{lang_manager.get_text('renavam')} ({lang_manager.get_text('opcional')})",
                 # on_change=self.validate_field
             )
         )

@@ -1,8 +1,6 @@
 import flet as ft
 from components.buttons import floating_action_button
-from components.fields import (
-    CustomUserField,
-)
+from components.fields import CustomUserField
 from components.navigations import app_bar, navigation_bottom_bar, left_drawer
 from core.page_classes import ManageDialogWindow
 from locales.language_manager import LanguageManager
