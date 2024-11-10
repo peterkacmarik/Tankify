@@ -330,23 +330,23 @@ class EditVehiclesViews(BaseView):
 
         data_container.controls.extend(
             [
-                vehicle_name_field,
-                vehicle_type_field,
-                manufacturer_field,
-                vehicle_model_field,
-                vehicle_year_field,
-                vehicle_fuel_type_field,
-                vehicle_fuel_capacity_field,
-                vehicle_unit_measurement_field,
-                vehicle_license_plate_field,
-                vehicle_chassis_number_field,
-                vehicle_vin_field,
-                vehicle_notes_field,
-                active_status_field,
+                ft.Container(content=vehicle_name_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_type_field, alignment=ft.alignment.center),
+                ft.Container(content=manufacturer_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_model_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_year_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_fuel_type_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_fuel_capacity_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_unit_measurement_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_license_plate_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_chassis_number_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_vin_field, alignment=ft.alignment.center),
+                ft.Container(content=vehicle_notes_field, alignment=ft.alignment.center),
+                ft.Container(content=active_status_field, alignment=ft.alignment.center),
+                ft.Container(content=save_button, alignment=ft.alignment.center, padding=ft.padding.only(bottom=10)),
                 ft.Container(content=save_button, alignment=ft.alignment.center, padding=ft.padding.only(bottom=10))
             ]
         )
-        # print(data)
         return data_container
 
     def vehicle_manufacturer_field(self, manufacturer_value):

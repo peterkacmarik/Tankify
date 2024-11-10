@@ -21,7 +21,7 @@ from views.edit_vehicle import EditVehiclesViews
 
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-# port = int(os.getenv("PORT", 8000))
+port = int(os.getenv("PORT", 8000))
 
 
 def main(page: ft.Page):
@@ -86,6 +86,6 @@ if __name__ == '__main__':
         view=ft.AppView.FLET_APP,
         web_renderer=ft.WebRenderer.CANVAS_KIT,
         assets_dir="assets",
-        # port=port
+        port=port
         # export_asgi_app=True
     )
