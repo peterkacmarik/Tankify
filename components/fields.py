@@ -1,33 +1,19 @@
 import datetime
+import json
+import os
 import flet as ft
 from core.supa_base import SupabaseUser
-from locales.open_files import get_manufacturers
-from locales.language_manager import LanguageManager
+from core.lang_manager import LanguageManager
 from typing import Callable, Dict, Optional, Union, List, Any
-
-lang_manager = LanguageManager()
-
-# def confirm_password_field(validate_field):
-#     return ft.Container(
-#         alignment=ft.alignment.center,
-#         content=ft.TextField(
-#             width=300,
-#             height=50,
-#             border_color=ft.colors.GREY,
-#             label=lang_manager.get_text("senha"),
-#             password=True,
-#             can_reveal_password=True,
-#             on_change=validate_field
-#         )
-#     )    
 
 
 
 class LoginRegisterForgotFields(ft.TextField):
-
     def __init__(self, validate_field, **kwargs):
         super().__init__(**kwargs)
         self.validate_field = validate_field
+        self.lang_manager = LanguageManager(self.page)
+
 
     def forgot_email_field(self):
         return ft.Container(
@@ -36,7 +22,7 @@ class LoginRegisterForgotFields(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("email"),
+                label=self.lang_manager.get_translation("email"),
                 on_change=self.validate_field,
             )
         )
@@ -47,7 +33,7 @@ class LoginRegisterForgotFields(ft.TextField):
             width=300,
             height=50,
             border_color=ft.colors.GREY,
-            label=lang_manager.get_text("email"),
+            label=self.lang_manager.get_translation("email"),
             on_change=self.validate_field,
         )
         
@@ -57,7 +43,7 @@ class LoginRegisterForgotFields(ft.TextField):
             width=300,
             height=50,
             border_color=ft.colors.GREY,
-            label=lang_manager.get_text("senha"),
+            label=self.lang_manager.get_translation("senha"),
             password=True,
             can_reveal_password=True,
             on_change=self.validate_field
@@ -71,7 +57,7 @@ class LoginRegisterForgotFields(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("primeiro_nome"),
+                label=self.lang_manager.get_translation("primeiro_nome"),
                 on_change=self.validate_field
             )
         )
@@ -84,7 +70,7 @@ class LoginRegisterForgotFields(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("segundo_nome"),
+                label=self.lang_manager.get_translation("segundo_nome"),
                 on_change=self.validate_field
             )
         )
@@ -97,7 +83,7 @@ class LoginRegisterForgotFields(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("email"),
+                label=self.lang_manager.get_translation("email"),
                 on_change=self.validate_field,
             )
         )
@@ -110,7 +96,7 @@ class LoginRegisterForgotFields(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("senha"),
+                label=self.lang_manager.get_translation("senha"),
                 password=True,
                 can_reveal_password=True,
                 on_change=self.validate_field
@@ -125,7 +111,7 @@ class LoginRegisterForgotFields(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("senha_repetir"),
+                label=self.lang_manager.get_translation("senha_repetir"),
                 password=True,
                 can_reveal_password=True,
                 on_change=self.validate_field
@@ -136,9 +122,11 @@ class LoginRegisterForgotFields(ft.TextField):
 class CustomUserField(ft.TextField):
     def __init__(self, validate_field):
         super().__init__()
+        self.lang_manager = LanguageManager(self.page)  
         self.validate_field = validate_field
-        self.supabase_user = SupabaseUser()
+        self.supabase_user = SupabaseUser(self.page)
         
+         
     def name_field(self):
         return ft.Container(
             alignment=ft.alignment.center,
@@ -146,7 +134,7 @@ class CustomUserField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("nome"),
+                label=self.lang_manager.get_translation("nome"),
                 on_change=self.validate_field,
             )
         )
@@ -156,14 +144,14 @@ class CustomUserField(ft.TextField):
         return ft.Container(
             alignment=ft.alignment.center,
             content=ft.Dropdown(
-                label=lang_manager.get_text("tipo_usuario"),
+                label=self.lang_manager.get_translation("tipo_usuario"),
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
                 on_change=self.validate_field,
                 options=[
-                    ft.dropdown.Option(lang_manager.get_text("tipo_usuario_02")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_usuario_03")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_usuario_02")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_usuario_03")),
                 ]
             )
         )
@@ -176,7 +164,7 @@ class CustomUserField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("cnh_categoria"),
+                label=self.lang_manager.get_translation("cnh_categoria"),
                 on_change=self.validate_field,
             )
         )
@@ -206,7 +194,7 @@ class CustomUserField(ft.TextField):
             height=50,
             read_only=True,
             # hint_text="Vybraný dátum",
-            label=lang_manager.get_text("cnh_validade"),
+            label=self.lang_manager.get_translation("cnh_validade"),
             on_change=self.validate_field,
         )
         
@@ -217,7 +205,7 @@ class CustomUserField(ft.TextField):
             ),
             icon=ft.icons.CALENDAR_MONTH_OUTLINED,
             width=140,
-            text=lang_manager.get_text("data"),
+            text=self.lang_manager.get_translation("data"),
             on_click=on_button_click,  # Pri kliknutí spustíme DatePicker
         )
         
@@ -244,14 +232,14 @@ class CustomUserField(ft.TextField):
             alignment=ft.alignment.center,
             content=ft.Dropdown(
                 icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
-                label=lang_manager.get_text("status"),
+                label=self.lang_manager.get_translation("status"),
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
                 on_change=self.validate_field,
                 options=[
-                    ft.dropdown.Option(lang_manager.get_text("ativo")),
-                    ft.dropdown.Option(lang_manager.get_text("inativo")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("ativo")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("inativo")),
                 ]
             )
         )
@@ -264,7 +252,7 @@ class CustomUserField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("email"),
+                label=self.lang_manager.get_translation("email"),
                 on_change=self.validate_field,
             )
         )
@@ -279,7 +267,7 @@ class CustomUserField(ft.TextField):
                 border_color=ft.colors.GREY,
                 width=300,
                 height=50,
-                label=lang_manager.get_text("veiculo_usuario"),
+                label=self.lang_manager.get_translation("veiculo_usuario"),
                 on_change=self.validate_field,
                 options=[ft.dropdown.Option(name) for name in vehicle_names],
             )
@@ -291,6 +279,7 @@ class CustomUserField(ft.TextField):
 class CustomVehicleField(ft.TextField):
     def __init__(self, validate_field):
         super().__init__()
+        self.lang_manager = LanguageManager(self.page)
         self.validate_field = validate_field
         
     def vehicle_name_field(self):
@@ -301,7 +290,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text('nome')} ({lang_manager.get_text('opcional')})",
+                label=f"{self.lang_manager.get_translation('nome')} ({self.lang_manager.get_translation('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -315,20 +304,27 @@ class CustomVehicleField(ft.TextField):
                 border_color=ft.colors.GREY,
                 width=300,
                 height=50,
-                label=lang_manager.get_text("tipo_veiculo"),
+                label=self.lang_manager.get_translation("tipo_veiculo"),
                 on_change=self.validate_field,
                 options=[
-                    ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_03")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_01")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_02")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_veiculo_04")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_veiculo_03")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_veiculo_01")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_veiculo_02")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_veiculo_04")),
                 ]
             )
         )
         
         
     def vehicle_manufacturer_field(self, page: ft.Page):
-        manufacturers: list = get_manufacturers()
+        def _load_manufacturers(manufacturer):
+            # Načíta JSON súbor podľa jazykového kódu
+            file_path = os.path.join("manufacturers", f"{manufacturer}.json")
+            with open(file_path, "r", encoding="utf-8") as file:
+                manufacturers = json.load(file)
+            return [item['nome'] for item in manufacturers]
+        
+        manufacturers: list = _load_manufacturers("manufacturers")
         
         search_results = ft.ListView(
             spacing=5,
@@ -372,7 +368,7 @@ class CustomVehicleField(ft.TextField):
             icon=ft.icons.SHIELD,
             width=300,
             border_color=ft.colors.GREY,
-            hint_text=lang_manager.get_text("marca"),
+            hint_text=self.lang_manager.get_translation("marca"),
             on_change=filter_manufacturers,
         )
             
@@ -395,7 +391,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("modelo"),
+                label=self.lang_manager.get_translation("modelo"),
                 on_change=self.validate_field
             )
         )
@@ -406,14 +402,14 @@ class CustomVehicleField(ft.TextField):
             alignment=ft.alignment.center,
             content=ft.Dropdown(
                 icon=ft.icons.DIRECTIONS_CAR_OUTLINED,
-                label=lang_manager.get_text("status"),
+                label=self.lang_manager.get_translation("status"),
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
                 on_change=self.validate_field,
                 options=[
-                    ft.dropdown.Option(lang_manager.get_text("ativo")),
-                    ft.dropdown.Option(lang_manager.get_text("inativo")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("ativo")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("inativo")),
                 ]
             )
         )
@@ -427,7 +423,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text('ano')} ({lang_manager.get_text('opcional')})",
+                label=f"{self.lang_manager.get_translation('ano')} ({self.lang_manager.get_translation('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -441,13 +437,13 @@ class CustomVehicleField(ft.TextField):
                 border_color=ft.colors.GREY,
                 width=300,
                 height=50,
-                label=lang_manager.get_text("tipo_combustivel"),
+                label=self.lang_manager.get_translation("tipo_combustivel"),
                 # on_change=self.validate_field,
                 options=[
-                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_03")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_04")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_02")),
-                    ft.dropdown.Option(lang_manager.get_text("tipo_combustivel_01")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_combustivel_03")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_combustivel_04")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_combustivel_02")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("tipo_combustivel_01")),
                 ]
             )
         )
@@ -462,7 +458,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("volume_tanque_litros"),
+                label=self.lang_manager.get_translation("volume_tanque_litros"),
                 # on_change=self.validate_field
             )
         )
@@ -476,11 +472,11 @@ class CustomVehicleField(ft.TextField):
                 border_color=ft.colors.GREY,
                 width=300,
                 height=50,
-                label=lang_manager.get_text("unit_of_measure"),
+                label=self.lang_manager.get_translation("unit_of_measure"),
                 # on_change=self.validate_field,
                 options=[
-                    ft.dropdown.Option(lang_manager.get_text("distancia_01")),
-                    ft.dropdown.Option(lang_manager.get_text("distancia_02")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("distancia_01")),
+                    ft.dropdown.Option(self.lang_manager.get_translation("distancia_02")),
                 ]
             )
         )
@@ -494,7 +490,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text('placa')} ({lang_manager.get_text('opcional')})",
+                label=f"{self.lang_manager.get_translation('placa')} ({self.lang_manager.get_translation('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -508,7 +504,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text('chassi')} ({lang_manager.get_text('opcional')})",
+                label=f"{self.lang_manager.get_translation('chassi')} ({self.lang_manager.get_translation('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -522,7 +518,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=f"{lang_manager.get_text('renavam')} ({lang_manager.get_text('opcional')})",
+                label=f"{self.lang_manager.get_translation('renavam')} ({self.lang_manager.get_translation('opcional')})",
                 # on_change=self.validate_field
             )
         )
@@ -536,7 +532,7 @@ class CustomVehicleField(ft.TextField):
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=lang_manager.get_text("observacao"),
+                label=self.lang_manager.get_translation("observacao"),
                 # on_change=self.validate_field
             )
         )

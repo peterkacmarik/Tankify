@@ -1,4 +1,5 @@
 import flet as ft
+
 from components.logo import page_logo
 from supabase import Client
 from core.supa_base import get_supabese_client
@@ -6,7 +7,7 @@ from locales.localization import LocalizedText, LocalizedTextField, LocalizedEle
 from views.base_page import BaseView
 
 
-class ForgotPasswordView(BaseView):
+class UpdatePasswordView(BaseView):
     def __init__(self, page: ft.Page, loc):
         super().__init__(page, loc)
         self.page = page
@@ -20,13 +21,14 @@ class ForgotPasswordView(BaseView):
         # self.language_selector = self.loc.create_language_selector()
 
         self.page_logo = page_logo()
-        self.main_forgot_text = LocalizedText(self.loc, "esqueceu_sua_senha", size=24, weight=ft.FontWeight.NORMAL, font_family="Roboto_Slap",)
-        self.sub_forgot_text = LocalizedText(self.loc, "ajudaremos_redefinir", size=16, weight=ft.FontWeight.NORMAL, font_family="Roboto_Slab",)
-        
+        self.main_updated_text = LocalizedText(self.loc, "updata_senha", size=24, weight=ft.FontWeight.NORMAL,
+                                              font_family="Roboto_Slap", )
+        self.sub_updated_text = LocalizedText(self.loc, "secura_acaunta", size=16, weight=ft.FontWeight.NORMAL,
+                                             font_family="Roboto_Slab", )
 
-        self.forgot_email_field = LocalizedTextField(
+        self.update_password_field = LocalizedTextField(
             localization=self.loc,
-            text_key="email",
+            text_key="nova_senha",
             width=300,
             height=50,
             border_color=ft.colors.GREY,
@@ -35,7 +37,7 @@ class ForgotPasswordView(BaseView):
 
         self.send_button = LocalizedElevatedButton(
             localization=self.loc,
-            text_key="btn_enviar",
+            text_key="alterar_senha",
             disabled=True,
             bgcolor=ft.colors.BLUE_700,
             width=300,
@@ -60,50 +62,50 @@ class ForgotPasswordView(BaseView):
                     controls=[
                         self.language_selector,
                         self.page_logo,
-                        ft.Container(content=self.main_forgot_text, alignment=ft.alignment.center, padding=ft.padding.only(top=10)),
-                        ft.Container(content=self.sub_forgot_text, alignment=ft.alignment.center),
-                        ft.Container(content=self.forgot_email_field, alignment=ft.alignment.center, padding=ft.padding.only(top=20)),
-                        ft.Container(content=self.send_button, alignment=ft.alignment.center, padding=ft.padding.only(top=10)),
+                        ft.Container(content=self.main_updated_text, alignment=ft.alignment.center,
+                                     padding=ft.padding.only(top=10)),
+                        ft.Container(content=self.sub_updated_text, alignment=ft.alignment.center),
+                        ft.Container(content=self.update_password_field, alignment=ft.alignment.center,
+                                     padding=ft.padding.only(top=20)),
+                        ft.Container(content=self.send_button, alignment=ft.alignment.center,
+                                     padding=ft.padding.only(top=10)),
                         ft.Container(content=self.cancel_button, alignment=ft.alignment.center),
                     ]
                 )
             )
         ]
-        
-
 
     def validate_fields(self, e=None):
         # Získame hodnoty z polí
-        email = self.forgot_email_field.value
-    
+        new_password = self.update_password_field.value
+
         # Aktivujeme tlačidlo len ak sú obe polia vyplnené
-        if email:
+        if new_password:
             self.send_button.disabled = False
         else:
             self.send_button.disabled = True
-            
+
         # Aktualizujeme UI
         self.send_button.update()
-        
-        
+
     def handle_forgot_password(self):
         try:
-            email = self.forgot_email_field.value
+            new_password = self.update_password_field.value
 
-            self.supabase.auth.reset_password_for_email(email, {
-                # "redirect_to": "/update-password",
+            response = self.supabase.auth.update_user({
+                "password": new_password
             })
 
-            self.snack_bar.content.value = self.loc.get_text("msg_eviar_senha")
-            self.snack_bar.open = True
-            self.page.update()
-            
-            self.page.go("/update-password")
-                
+            if response:
+                self.snack_bar.content.value = self.loc.get_text("msg_alterar_senha")
+                self.snack_bar.open = True
+                self.page.update()
+
+                self.page.go("/login")
+
         except Exception as ex:
             self.snack_bar.content.value = str(ex)
             self.snack_bar.open = True
             self.page.update()
             return
-    
-    
+

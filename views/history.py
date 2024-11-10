@@ -1,46 +1,53 @@
 import flet as ft
-from components.buttons import floating_action_button
-from components.navigations import app_bar, navigation_bottom_bar, left_drawer
-from core.page_classes import ManageDialogWindow
-from locales.language_manager import LanguageManager
-
-from supabase import Client
-from core.supa_base import get_supabese_client
+from core.supa_base import get_supabese_client, get_current_user
+from locales.localization import LocalizedText
 from views.base_page import BaseView
 
 
 class HistoryView(BaseView):
-    def __init__(self, page: ft.Page):
-        super().__init__("/history", page)
+    def __init__(self, page: ft.Page, loc):
+        super().__init__(page, loc)
         self.page = page
-        self.lang_manager = LanguageManager()
-        
-        self.appbar = app_bar(self.page)
-        
-        self.page.drawer = left_drawer(self.page)
-        self.drawer = self.page.drawer
-        
-        self.navigation_bar = navigation_bottom_bar(self.page)
-        
-        self.dialog_window = ManageDialogWindow(self.page).dialog_window
-        self.floating_action_button = floating_action_button(self.dialog_window)
-        self.floating_action_button_location = ft.FloatingActionButtonLocation.CENTER_DOCKED
-        
-        self.controls = [
+
+        # Nastavíme build_list_tile ako metódu (bez jej okamžitého vykonania)
+        self.build_list_tile = self.build_list_tile
+
+        self.controls.append(
             ft.Container(
                 alignment=ft.alignment.center,
                 padding=ft.padding.only(20, 30, 20, 0),
                 content=ft.Column(
                     controls=[
-                        
+                        LocalizedText(self.loc, "History Page"),
+                        self.build_list_tile()
                     ]
                 )
             )
+        )
+
+    def build_list_tile(self):
+        # Kontajner pre všetky tiles
+        tiles_container = ft.Column()
+
+        # Ukážkové dáta pre vozidlá
+        vehicles_data = [
+            {'id': 38, 'name': 'Car Fast', 'manufacturer': 'Renault', 'model': 'Clio', 'is_active': 'Active'}
         ]
-    
-    
-    def update_texts(self) -> None:
-        # Aktualizácia textov v settings view
-        # self.title_text.value = LanguageManager.get_text("intro_texto_05")
-        self.update()
-    
+
+        for vehicle in vehicles_data:
+            # Vytvorenie jednotlivého tile
+            tile = ft.CupertinoListTile(
+                notched=True,
+                additional_info=ft.Text(vehicle["is_active"]),
+                leading=ft.Icon(name=ft.cupertino_icons.CAR),
+                title=ft.Text(vehicle["name"]),
+                subtitle=ft.Text(vehicle["manufacturer"] + " " + vehicle["model"]),
+                trailing=ft.Icon(name=ft.cupertino_icons.CHECK_MARK_CIRCLED),
+                on_click=self.tile_clicked,  # Použitie funkcie tile_clicked
+            )
+            tiles_container.controls.append(tile)
+
+        return tiles_container
+
+    def tile_clicked(self, e):
+        print("Tile clicked")

@@ -1,141 +1,145 @@
 import flet as ft
 from components.logo import home_page_logo, page_logo
-from components.buttons import log_in_button_home_page
-from locales.language_manager import LanguageManager
+from components.buttons import LoginButtons
+from core.lang_manager import LanguageManager
 
 
-lang_manager = LanguageManager()
 
-def line_separator():
-    return ft.Row(
-        alignment=ft.MainAxisAlignment.CENTER,
-        controls=[
-            ft.Container(
-                bgcolor=ft.colors.GREY,
-                height=0.5,
-                width=130,
-                # expand=True
-            ),
-            ft.Text(
-                value=lang_manager.get_text("ou").lower(),
-            ),
-            ft.Container(
-                bgcolor=ft.colors.GREY,
-                height=0.5,
-                width=130,
-                # expand=True
-            ),
-        ]
-    )
-    
-    
-def main_login_text():
-    return ft.Text(
-        lang_manager.get_text("login"),
-        size=24,
-        weight=ft.FontWeight.NORMAL,
-        font_family="Roboto_Slap",
-    )
-    
-    
-def forgot_password_link(page: ft.Page):
-    return ft.Container(
-        # border=ft.border.all(0),
-        alignment=ft.alignment.center,
-        content=ft.TextButton(
+class LinkSeparatorText:
+    def __init__(self, page: ft.Page):
+        self.page = page
+        self.lang_manager = LanguageManager(self.page)
+        
+    def line_separator(self):
+        return ft.Row(
+            alignment=ft.MainAxisAlignment.CENTER,
+            controls=[
+                ft.Container(
+                    bgcolor=ft.colors.GREY,
+                    height=0.5,
+                    width=130,
+                    # expand=True
+                ),
+                ft.Text(
+                    value=self.lang_manager.get_translation("ou").lower(),
+                ),
+                ft.Container(
+                    bgcolor=ft.colors.GREY,
+                    height=0.5,
+                    width=130,
+                    # expand=True
+                ),
+            ]
+        )
+        
+        
+    def main_login_text(self):
+        return ft.Text(
+            self.lang_manager.get_translation("login"),
+            size=24,
+            weight=ft.FontWeight.NORMAL,
+            font_family="Roboto_Slap",
+        )
+        
+        
+    def forgot_password_link(self):
+        return ft.Container(
+            # border=ft.border.all(0),
+            alignment=ft.alignment.center,
+            content=ft.TextButton(
+                style=ft.ButtonStyle(
+                    alignment=ft.alignment.center,
+                    bgcolor=ft.colors.TRANSPARENT
+                ),
+                content=ft.Text(
+                    value=self.lang_manager.get_translation("esqueceu_sua_senha"),
+                    style=ft.TextStyle(
+                        size=13,
+                        decoration=ft.TextDecoration.UNDERLINE
+                    )
+                ),
+
+            )
+        )
+        
+        
+    def create_account_link(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextButton(
+                text=self.lang_manager.get_translation("criar_conta").upper(),
+                style=ft.ButtonStyle(
+                    overlay_color=ft.colors.TRANSPARENT,
+                ),
+                on_click=lambda _: self.page.go("/register"),
+            )
+        )
+        
+        
+    def main_register_text(self):
+        return ft.Container(
+            # border=ft.border.all(0),
+            alignment=ft.alignment.center,
             content=ft.Text(
-                value=lang_manager.get_text("esqueceu_sua_senha"),
-                style=ft.TextStyle(
-                    size=13,
-                    decoration=ft.TextDecoration.UNDERLINE
-                )
-            ),
-            style=ft.ButtonStyle(
-                overlay_color=ft.colors.TRANSPARENT,
-            ),
-            on_click=lambda _: page.go("/forgot-password"),
+                self.lang_manager.get_translation("criar_conta_tankify"),
+                size=24,
+                weight=ft.FontWeight.NORMAL,
+                font_family="Roboto_Slap",
+            )        
         )
-    )
-    
-    
-def create_account_link(page: ft.Page):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextButton(
-            text=lang_manager.get_text("criar_conta").upper(),
-            style=ft.ButtonStyle(
-                overlay_color=ft.colors.TRANSPARENT,
-            ),
-            on_click=lambda _: page.go("/register"),
+        
+        
+    def sub_register_text(self):
+        return ft.Container(
+            # border=ft.border.all(0),
+            alignment=ft.alignment.center,
+            content=ft.Text(
+                self.lang_manager.get_translation("comece_gerenciamento_gratuito"),
+                size=15,
+                weight=ft.FontWeight.NORMAL,
+                color=ft.colors.GREY_600,
+            )
         )
-    )
-    
-    
-def main_register_text():
-    return ft.Container(
-        # border=ft.border.all(0),
-        alignment=ft.alignment.center,
-        content=ft.Text(
-            lang_manager.get_text("criar_conta_tankify"),
-            size=24,
-            weight=ft.FontWeight.NORMAL,
-            font_family="Roboto_Slap",
-        )        
-    )
-    
-    
-def sub_register_text():
-    return ft.Container(
-        # border=ft.border.all(0),
-        alignment=ft.alignment.center,
-        content=ft.Text(
-            lang_manager.get_text("comece_gerenciamento_gratuito"),
-            size=15,
-            weight=ft.FontWeight.NORMAL,
-            color=ft.colors.GREY_600,
+        
+        
+    def main_forgot_password_text(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.Text(
+                self.lang_manager.get_translation("esqueceu_sua_senha"),
+                size=24,
+                weight=ft.FontWeight.NORMAL,
+                font_family="Roboto_Slap",
+            )
         )
-    )
-    
-    
-def main_forgot_password_text():
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.Text(
-            lang_manager.get_text("esqueceu_sua_senha"),
-            size=24,
-            weight=ft.FontWeight.NORMAL,
-            font_family="Roboto_Slap",
+        
+        
+    def sub_forgot_password_text(self):
+        return ft.Container(
+            padding=ft.padding.only(bottom=20),
+            alignment=ft.alignment.center,
+            content=ft.Text(
+                self.lang_manager.get_translation("ajudaremos_redefinir"),
+                size=16,
+                weight=ft.FontWeight.NORMAL,
+                font_family="Roboto_Slab",
+            )
         )
-    )
-    
-    
-def sub_forgot_password_text():
-    return ft.Container(
-        padding=ft.padding.only(bottom=20),
-        alignment=ft.alignment.center,
-        content=ft.Text(
-            lang_manager.get_text("ajudaremos_redefinir"),
-            size=16,
-            weight=ft.FontWeight.NORMAL,
-            font_family="Roboto_Slab",
+        
+        
+    def cancel_link(self):
+        return ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextButton(
+                text=self.lang_manager.get_translation("btn_cancelar").upper(),
+                style=ft.ButtonStyle(
+                    overlay_color=ft.colors.TRANSPARENT,
+                ),
+                on_click=lambda _: self.page.go("/login")
+            )
         )
-    )
+        
     
-    
-def cancel_link(page: ft.Page):
-    return ft.Container(
-        alignment=ft.alignment.center,
-        content=ft.TextButton(
-            text=lang_manager.get_text("btn_cancelar").upper(),
-            style=ft.ButtonStyle(
-                overlay_color=ft.colors.TRANSPARENT,
-            ),
-            on_click=lambda _: page.go("/login")
-        )
-    )
-    
-    
-
 def home_page_box(page: ft.Page):
     return ft.Container(
         alignment=ft.alignment.center,
@@ -160,12 +164,12 @@ def home_page_box(page: ft.Page):
                                 alignment=ft.alignment.center,
                                 controls=[
                                     ft.Text(
-                                        value=lang_manager.get_text("home_personal_use_desc"),
+                                        value="Text...",
                                         size=16,
                                         weight=ft.FontWeight.NORMAL,
                                         font_family="Roboto_Slap",
                                     ),
-                                    log_in_button_home_page(page),
+                                    
                                 ]
                             )
                         ),

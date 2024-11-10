@@ -1,38 +1,41 @@
 import flet as ft
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 from supabase import create_client, Client
+# from config import Config
+from locales.localization import LocalizedText
 
-from locales.language_manager import LanguageManager
-
+# config = Config()
 
 # Načítaj .env súbor
 load_dotenv()
 
 # Ziskať hodnoty premennych
-SUPABASE_USER = os.getenv("SUPABASE_USER")
-SUPABASE_PASSWORD = os.getenv("SUPABASE_PASSWORD")
-SUPABASE_DB = os.getenv("SUPABASE_DB")
-SUPABASE_PORT = os.getenv("SUPABASE_PORT")
-SUPABASE_HOST = os.getenv("SUPABASE_HOST")
-SUPABASE_PREFIX = os.getenv("SUPABASE_PREFIX")
+# SUPABASE_USER = os.getenv("SUPABASE_USER")
+# SUPABASE_PASSWORD = os.getenv("SUPABASE_PASSWORD")
+# SUPABASE_DB = os.getenv("SUPABASE_DB")
+# SUPABASE_PORT = os.getenv("SUPABASE_PORT")
+# SUPABASE_HOST = os.getenv("SUPABASE_HOST")
+# SUPABASE_PREFIX = os.getenv("SUPABASE_PREFIX")
 
 # Vytvoriť engine
-engine = create_engine(
-    f"{SUPABASE_PREFIX}",
-    connect_args={
-        "host": f"{SUPABASE_HOST}",
-        "port": f"{SUPABASE_PORT}",
-        "database": f"{SUPABASE_DB}",
-        "user": f"{SUPABASE_USER}",
-        "password": f"{SUPABASE_PASSWORD}",
-    }
-)
+# engine = create_engine(
+#     f"{SUPABASE_PREFIX}",
+#     connect_args={
+#         "host": f"{SUPABASE_HOST}",
+#         "port": f"{SUPABASE_PORT}",
+#         "database": f"{SUPABASE_DB}",
+#         "user": f"{SUPABASE_USER}",
+#         "password": f"{SUPABASE_PASSWORD}",
+#     }
+# )
 
 def get_supabese_client() -> Client:
     url: str = os.environ.get("SUPABASE_URL")
     key: str = os.environ.get("SUPABASE_KEY")
+    # url = config.SUPABASE_URL
+    # key = config.SUPABASE_KEY
     supabase: Client = create_client(url, key)
     return supabase
 
@@ -53,12 +56,13 @@ def get_current_user(page: ft.Page):
         print(f"Error getting current user: {ex}")
         return None
 
-    
+
 class SupabaseUser:
-    def __init__(self) -> None:
+    def __init__(self, page: ft.Page) -> None:
+        self.page = page
         self.supabase = get_supabese_client()
-        self.lang_manager = LanguageManager()
-        
+        # self.lang_manager = LanguageManager(self.page)
+
     def create_user_in_table_users(self, page: ft.Page, user_data: dict):
         try:
             # Get current user id
@@ -68,10 +72,10 @@ class SupabaseUser:
 
             # Pridanie user_id do údajov
             user_data["user_id"] = current_user_id
-            
+
             # Vloženie údajov do tabuľky users
             response = self.supabase.table("users").insert(user_data).execute()
-            
+
             # return response.data
         except Exception as ex:
             print(f"Error creating user: {ex}")
@@ -88,15 +92,15 @@ class SupabaseUser:
         except Exception as ex:
             print(f"Error getting all user data: {ex}")
             return None
-            
+
 
     def delete_user_from_table_users(self, page: ft.Page, user_id):
         try:
             response = self.supabase.table("users").delete().eq("id", user_id).execute()
-            page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_excluir_sucesso"))))
+            page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_translation("msg_excluir_sucesso"))))
             page.go("/users")
             page.update()
-            
+
             # return response
         except Exception as ex:
             print(f"Error getting all data: {ex}")
@@ -114,7 +118,7 @@ class SupabaseUser:
                 "is_active": user_data["is_active"].content.value,
                 "vehicle_user": user_data["vehicle_user"].content.value,
             }
-            
+
             # Vloženie údajov do tabuľky users
             response = (
                 self.supabase.table("users")
@@ -143,14 +147,14 @@ class SupabaseUser:
 
 
 class SupabaseVehicle:
-    def __init__(self) -> None:
+    def __init__(self, page: ft.Page) -> None:
+        self.page = page
         self.supabase = get_supabese_client()
-        self.lang_manager = LanguageManager()
-        
-    def get_all_data_from_table_vehicles(self, page):
+
+    def get_all_data_from_table_vehicles(self):
         try:
             # Get current user id
-            current_user_id = get_current_user(page).id
+            current_user_id = get_current_user(self.page).id
             response = self.supabase.table("vehicles").select("*").eq("vehicle_id", current_user_id).execute()
 
             return response.data
@@ -168,23 +172,24 @@ class SupabaseVehicle:
 
             # Pridanie user_id do údajov
             vehicle_data["vehicle_id"] = current_user_id
-            
+
             # Vloženie údajov do tabuľky users
             response = self.supabase.table("vehicles").insert(vehicle_data).execute()
-            
+
             # return response.data
         except Exception as ex:
             print(f"Error creating vehicle: {ex}")
             return None
-    
-    
-    def delete_vehicle_from_table_vehicles(self, page: ft.Page, vehicle_id):
+
+
+    def delete_vehicle_from_table_vehicles(self, page: ft.Page, vehicle_id, loc, dialog):
         try:
             response = self.supabase.table("vehicles").delete().eq("id", vehicle_id).execute()
-            page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_text("msg_excluir_sucesso"))))
-            page.go("/vehicles")
+            page.open(ft.SnackBar(content=LocalizedText(loc, "msg_excluir_sucesso")))
+            # page.go("/vehicles")
+            page.close(dialog)
             page.update()
-            
+
             # return response
         except Exception as ex:
             print(f"Error getting all data: {ex}")
@@ -193,26 +198,20 @@ class SupabaseVehicle:
 
     def update_vehicle_in_table_vehicles(self, vehicle_id, vehicle_data: dict):
         try:
-            update_data = {
-                "name": vehicle_data["name"].content.value,
-                "email": vehicle_data["email"].content.value,
-                "user_type": vehicle_data["user_type"].content.value,
-                "driver_license_category": vehicle_data["driver_license_category"].content.value,
-                "driver_license_expiry": vehicle_data["driver_license_expiry"].content.controls[1].value,
-                "is_active": vehicle_data["is_active"].content.value,
-                "vehicle_user": vehicle_data["vehicle_user"].content.value,
-            }
-            
             # Vloženie údajov do tabuľky users
             response = (
                 self.supabase.table("vehicles")
-                .update(update_data)
+                .update(vehicle_data)
                 .eq("id", vehicle_id)
                 .execute()
             )
-            # return response.data
+            if response.data:
+                return response.data
+            else:
+                print("No data returned from update operation")
+                return None
         except Exception as ex:
-            print(f"Error updating user: {ex}")
+            print(f"Error updating vehicle: {ex}")
             return None
 
 

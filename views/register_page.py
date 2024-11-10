@@ -1,49 +1,38 @@
 import flet as ft
-
-from core.page_classes import LanguageSwitcher
-from locales.language_manager import LanguageManager
 from components.logo import page_logo
 from components.buttons import (
-    register_button_facebook,
-    register_button_google,
-    register_button,
-    cancel_button
+    RegisterButtons,
 )
 from components.links_separator_text import (
-    main_register_text,
-    sub_register_text,
-    line_separator,
-)
-from components.fields import (
-    LoginRegisterForgotFields,
-    # first_name_field,
-    # last_name_field,
-    # email_field,
-    # password_field,
-    # repeat_password_field
+    LinkSeparatorText,
 )
 from supabase import Client
 from core.supa_base import get_supabese_client
 from views.base_page import BaseView
 
 
+
 class RegisterView(BaseView):
-    def __init__(self, page: ft.Page):
-        super().__init__(route="/register", page=page)
+    def __init__(self, page: ft.Page, loc):
+        super().__init__(page, loc)
         self.page = page
-        self.lang_manager = LanguageManager()
-        
         self.supabase: Client = get_supabese_client()
-        
-        self.language_switch_button = LanguageSwitcher(self.page).language_switch_button
+        self.initialize_view()
+
+    def initialize_view(self):
+        self.appbar.visible = False
+        self.navigation_bar.visible = False
+        self.floating_action_button.visible = False
+        # self.language_selector = self.loc.create_language_selector()
+
         self.page_logo = page_logo()
         self.register_text = ft.Container(
             content=ft.Column(
                 alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=[
-                    main_register_text(),
-                    sub_register_text()
+                    LinkSeparatorText(self.page).main_register_text(),
+                    LinkSeparatorText(self.page).sub_register_text()
                 ]
             )
         )
@@ -52,30 +41,72 @@ class RegisterView(BaseView):
         self.social_buttons = ft.Column(
             alignment=ft.MainAxisAlignment.CENTER,
             controls=[
-                register_button_facebook(self.page),
-                register_button_google(self.page)
+                RegisterButtons(self.page).register_button_facebook(),
+                RegisterButtons(self.page).register_button_google()
             ]
         )
         
-        self.line_separator = line_separator()
+        self.line_separator = LinkSeparatorText(self.page).line_separator()
         
-        self.log_reg_forgot_fields = LoginRegisterForgotFields(self.validate_fields)
-        self.first_name_value = self.log_reg_forgot_fields.first_name_field()
-        self.last_name_value = self.log_reg_forgot_fields.last_name_field()
-        self.email_value = self.log_reg_forgot_fields.email_field()
-        self.password_value = self.log_reg_forgot_fields.password_field()
-        self.repeat_password_value = self.log_reg_forgot_fields.repeat_password_field()
-        # Create account form fields
-        # self.first_name_value = first_name_field(self.validate_fields)
-        # self.last_name_value = last_name_field(self.validate_fields)
-        
-        # self.email_value = email_field(self.validate_fields)
-        # self.password_value = password_field(self.validate_fields)
-        # self.repeat_password_value = repeat_password_field(self.validate_fields)
+        # self.log_reg_forgot_fields = LoginRegisterForgotFields(self.validate_fields)
+        self.first_name_value = ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=self.translate("primeiro_nome"),
+                on_change=lambda e: self.validate_fields(e)
+            )
+        )
+        self.last_name_value = ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=self.translate("segundo_nome"),
+                on_change=lambda e: self.validate_fields(e)
+            )
+        )
+        self.email_value = ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=self.translate("email"),
+                on_change=lambda e: self.validate_fields(e)
+            )
+        )
+        self.password_value = ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=self.translate("senha"),
+                password=True,
+                can_reveal_password=True,
+                on_change=lambda e: self.validate_fields(e)
+            )
+        )
+        self.repeat_password_value = ft.Container(
+            alignment=ft.alignment.center,
+            content=ft.TextField(
+                width=300,
+                height=50,
+                border_color=ft.colors.GREY,
+                label=self.translate("senha_repetir"),
+                password=True,
+                can_reveal_password=True,
+                on_change=lambda e: self.validate_fields(e)
+            )
+        )
         
         # Registration button and cancel button
-        self.registration = register_button(self.handle_register)
-        self.cancel_button = cancel_button(self.page)
+        self.registration = RegisterButtons(self.page).register_button(self.handle_register)
+        self.cancel_button = RegisterButtons(self.page).cancel_button()
         
         # Setup controls
         self.controls = [
@@ -83,10 +114,9 @@ class RegisterView(BaseView):
                 # border=ft.border.all(5),
                 alignment=ft.alignment.center,
                 padding=ft.padding.only(20, 30, 20, 0),
-                expand=True,
                 content=ft.Column(
                     controls=[
-                        self.language_switch_button,
+                        self.language_selector,
                         self.page_logo,
                         self.register_text,
                         self.social_buttons,
@@ -99,31 +129,10 @@ class RegisterView(BaseView):
                         self.registration,
                         self.cancel_button,
                     ],
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                    spacing=20
                 )
             )
         ]
-    
-    def update_texts(self) -> None:
-        # Aktualizácia textov v settings view
-        self.register_text.content.controls[0].content.value = LanguageManager.get_text("criar_conta_tankify")
-        self.register_text.content.controls[1].content.value = LanguageManager.get_text("comece_gerenciamento_gratuito")
-        
-        self.social_buttons.controls[0].content.text = LanguageManager.get_text("criar_conta_com_facebook")
-        self.social_buttons.controls[1].content.content.controls[1].value = LanguageManager.get_text("criar_conta_com_google")
-        
-        self.line_separator.controls[1].value = LanguageManager.get_text("ou")
-        self.first_name_value.content.label = LanguageManager.get_text("primeiro_nome")
-        self.last_name_value.content.label = LanguageManager.get_text("segundo_nome")
-        self.email_value.content.label = LanguageManager.get_text("email")
-        self.password_value.content.label = LanguageManager.get_text("senha")
-        self.repeat_password_value.content.label = LanguageManager.get_text("senha_repetir")
-        self.registration.content.text = LanguageManager.get_text("criar_conta")
-        self.cancel_button.content.text = LanguageManager.get_text("btn_cancelar")
-        self.update()
-    
+
     def validate_fields(self, e=None):
         # Získame hodnoty z polí
         first_name = self.first_name_value.content.value
@@ -140,8 +149,7 @@ class RegisterView(BaseView):
             
         # Aktualizujeme UI
         self.registration.update()
-    
-        
+
     def handle_register(self, e):
         try:
             first_name = self.first_name_value.content.value
@@ -163,7 +171,7 @@ class RegisterView(BaseView):
             )
             
             if response:
-                self.snack_bar.content.value = self.lang_manager.get_text("msg_cadastrar_usuario")
+                self.snack_bar.content.value = self.translate("msg_cadastrar_usuario")
                 self.snack_bar.open = True
                 self.page.update()
                 
