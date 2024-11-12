@@ -7,7 +7,9 @@ from components.links_separator_text import (
     LinkSeparatorText,
 )
 from supabase import Client
+from core.auth_google import handle_google_login
 from core.supa_base import get_supabese_client
+from locales.localization import LocalizedElevatedButton, LocalizedOutlinedButton, LocalizedText, LocalizedTextButton, LocalizedTextField
 from views.base_page import BaseView
 
 
@@ -23,17 +25,28 @@ class RegisterView(BaseView):
         self.appbar.visible = False
         self.navigation_bar.visible = False
         self.floating_action_button.visible = False
-        # self.language_selector = self.loc.create_language_selector()
 
         self.page_logo = page_logo()
+        
         self.register_text = ft.Container(
-            content=ft.Column(
-                alignment=ft.MainAxisAlignment.CENTER,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                controls=[
-                    LinkSeparatorText(self.page).main_register_text(),
-                    LinkSeparatorText(self.page).sub_register_text()
-                ]
+            alignment=ft.alignment.center,
+            content=LocalizedText(
+                localization=self.loc,
+                text_key="criar_conta_tankify",
+                size=24,
+                weight=ft.FontWeight.NORMAL,
+                font_family="Roboto_Slap",
+            )
+        )
+        
+        self.sub_register_text = ft.Container(
+            alignment=ft.alignment.center,
+            content=LocalizedText(
+                localization=self.loc,
+                text_key="comece_gerenciamento_gratuito",
+                size=15,
+                weight=ft.FontWeight.NORMAL,
+                color=ft.colors.GREY_600,
             )
         )
         
@@ -41,63 +54,143 @@ class RegisterView(BaseView):
         self.social_buttons = ft.Column(
             alignment=ft.MainAxisAlignment.CENTER,
             controls=[
-                RegisterButtons(self.page).register_button_facebook(),
-                RegisterButtons(self.page).register_button_google()
+                ft.Container(
+                    alignment=ft.alignment.center,
+                    content=LocalizedOutlinedButton(
+                        localization=self.loc, 
+                        text_key="criar_conta_com_facebook", 
+                        icon=ft.icons.FACEBOOK,
+                        width=300,
+                        height=60,
+                        expand=True,
+                        on_click=lambda e: self.page.go("/login"),
+                        style=ft.ButtonStyle(
+                            bgcolor=ft.colors.WHITE,
+                            overlay_color=ft.colors.WHITE,
+                            side={
+                                "": ft.BorderSide(width=0.5, color=ft.colors.GREY),
+                                "hovered": ft.BorderSide(width=0.5, color=ft.colors.BLACK),
+                            },
+                        ),
+                    ),
+                ),
+                ft.Container(
+                    alignment=ft.alignment.center,
+                    content=LocalizedOutlinedButton(
+                        localization=self.loc,
+                        text_key="criar_conta_com_google",
+                        content=ft.Row(
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            controls=[
+                                ft.Image(
+                                    src="https://cdn-icons-png.flaticon.com/512/300/300221.png",
+                                    width=18,
+                                    height=18,
+                                    fit=ft.ImageFit.CONTAIN,
+                                    repeat=ft.ImageRepeat.NO_REPEAT,
+                                ),
+                                LocalizedText(
+                                    localization=self.loc,
+                                    text_key="criar_conta_com_google"
+                                ),
+                            ]
+                        ),
+                        width=300,
+                        height=60,
+                        expand=True,
+                        style=ft.ButtonStyle(
+                            bgcolor=ft.colors.WHITE,
+                            overlay_color=ft.colors.WHITE,
+                            side={
+                                "": ft.BorderSide(width=0.5, color=ft.colors.GREY),
+                                "hovered": ft.BorderSide(width=0.5, color=ft.colors.BLACK),
+                            },
+                        ),
+                        on_click=lambda e: handle_google_login(e, self.page),
+                    )
+                )
             ]
         )
         
-        self.line_separator = LinkSeparatorText(self.page).line_separator()
+        self.line_separator = ft.Row(
+            alignment=ft.MainAxisAlignment.CENTER,
+            controls=[
+                ft.Container(
+                    bgcolor=ft.colors.GREY,
+                    height=0.5,
+                    width=130,
+                    # expand=True
+                ),
+                LocalizedText(
+                    localization=self.loc, text_key="ou"
+                ),
+                ft.Container(
+                    bgcolor=ft.colors.GREY,
+                    height=0.5,
+                    width=130,
+                    # expand=True
+                ),
+            ]
+        )
         
-        # self.log_reg_forgot_fields = LoginRegisterForgotFields(self.validate_fields)
         self.first_name_value = ft.Container(
             alignment=ft.alignment.center,
-            content=ft.TextField(
+            content=LocalizedTextField(
+                localization=self.loc,
+                text_key="primeiro_nome",
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=self.translate("primeiro_nome"),
                 on_change=lambda e: self.validate_fields(e)
             )
         )
+        
         self.last_name_value = ft.Container(
             alignment=ft.alignment.center,
-            content=ft.TextField(
+            content=LocalizedTextField(
+                localization=self.loc,
+                text_key="segundo_nome",
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=self.translate("segundo_nome"),
                 on_change=lambda e: self.validate_fields(e)
             )
         )
+        
         self.email_value = ft.Container(
             alignment=ft.alignment.center,
-            content=ft.TextField(
+            content=LocalizedTextField(
+                localization=self.loc,
+                text_key="email",
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=self.translate("email"),
                 on_change=lambda e: self.validate_fields(e)
             )
         )
+        
         self.password_value = ft.Container(
             alignment=ft.alignment.center,
-            content=ft.TextField(
+            content=LocalizedTextField(
+                localization=self.loc,
+                text_key="senha",
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=self.translate("senha"),
                 password=True,
                 can_reveal_password=True,
                 on_change=lambda e: self.validate_fields(e)
             )
         )
+        
         self.repeat_password_value = ft.Container(
             alignment=ft.alignment.center,
-            content=ft.TextField(
+            content=LocalizedTextField(
+                localization=self.loc,
+                text_key="senha_repetir",
                 width=300,
                 height=50,
                 border_color=ft.colors.GREY,
-                label=self.translate("senha_repetir"),
                 password=True,
                 can_reveal_password=True,
                 on_change=lambda e: self.validate_fields(e)
@@ -105,8 +198,34 @@ class RegisterView(BaseView):
         )
         
         # Registration button and cancel button
-        self.registration = RegisterButtons(self.page).register_button(self.handle_register)
-        self.cancel_button = RegisterButtons(self.page).cancel_button()
+        self.registration = ft.Container(
+            alignment=ft.alignment.center,
+            content=LocalizedElevatedButton(
+                localization=self.loc,
+                text_key="criar_conta",
+                disabled=True,
+                bgcolor=ft.colors.BLUE_700,
+                style=ft.ButtonStyle(
+                    overlay_color=ft.colors.BLUE_900,
+                ),
+                width=300,
+                height=50,
+                color=ft.colors.WHITE,
+                on_click=lambda e: self.handle_register(e)
+            )
+        )
+        
+        self.cancel_button = ft.Container(
+            alignment=ft.alignment.center,
+            content=LocalizedTextButton(
+                localization=self.loc,
+                text_key="btn_cancelar",
+                style=ft.ButtonStyle(
+                    overlay_color=ft.colors.TRANSPARENT,
+                ),
+                on_click=lambda e: self.page.go("/login")
+            )
+        )
         
         # Setup controls
         self.controls = [
@@ -119,6 +238,7 @@ class RegisterView(BaseView):
                         self.language_selector,
                         self.page_logo,
                         self.register_text,
+                        self.sub_register_text,
                         self.social_buttons,
                         self.line_separator,
                         self.first_name_value,
@@ -171,7 +291,7 @@ class RegisterView(BaseView):
             )
             
             if response:
-                self.snack_bar.content.value = self.translate("msg_cadastrar_usuario")
+                self.snack_bar.content.value = self.loc.get_text("msg_cadastrar_usuario")
                 self.snack_bar.open = True
                 self.page.update()
                 

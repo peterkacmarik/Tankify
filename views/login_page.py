@@ -26,9 +26,9 @@ class LoginView(BaseView):
         self.appbar.visible = False
         self.navigation_bar.visible = False
         self.floating_action_button.visible = False
-        # self.language_selector = self.loc.create_language_selector()
 
         self.page_logo = page_logo()
+        
         self.login_text = ft.Container(
             alignment=ft.alignment.center,
             content=LocalizedText(
@@ -39,6 +39,7 @@ class LoginView(BaseView):
                 font_family="Roboto_Slap",
             )
         )
+        
         self.social_buttons = ft.Container(
             # alignment=ft.alignment.center,
             # padding=ft.padding.only(top=10, bottom=20),
@@ -113,6 +114,7 @@ class LoginView(BaseView):
                 ),
             ]
         )
+        
         self.email_field = LocalizedTextField(
             localization=self.loc,
             text_key="email",
