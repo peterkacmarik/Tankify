@@ -344,7 +344,6 @@ class EditVehiclesViews(BaseView):
                 ft.Container(content=vehicle_notes_field, alignment=ft.alignment.center),
                 ft.Container(content=active_status_field, alignment=ft.alignment.center),
                 ft.Container(content=save_button, alignment=ft.alignment.center, padding=ft.padding.only(bottom=10)),
-                ft.Container(content=save_button, alignment=ft.alignment.center, padding=ft.padding.only(bottom=10))
             ]
         )
         return data_container
