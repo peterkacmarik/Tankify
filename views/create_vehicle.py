@@ -22,7 +22,7 @@ class CreateVehicles(BaseView):
         self.supabase_vehicle = SupabaseVehicle(self.page)
 
         # self.navigation_header_bar = self.build_navigation_header_bar()
-        self.build_control_panel = self.build_control_panel()
+        self.control_panel = self.build_control_panel()
 
         self.vehicle_name_field = LocalizedTextField(
             localization=self.loc,
@@ -31,7 +31,7 @@ class CreateVehicles(BaseView):
             width=300,
             height=50,
             border_color=ft.colors.GREY,
-            on_change=self.validate_fields
+            on_change=lambda _: self.validate_fields()
         )
 
         options_vehicle_type = [
@@ -61,7 +61,7 @@ class CreateVehicles(BaseView):
             width=300,
             height=50,
             border_color=ft.colors.GREY,
-            on_change=self.validate_fields
+            on_change=lambda _: self.validate_fields()
         )
 
         self.vehicle_year_field = LocalizedTextField(
@@ -97,7 +97,7 @@ class CreateVehicles(BaseView):
             width=300,
             height=50,
             border_color=ft.colors.GREY,
-            on_change=self.validate_fields
+            on_change=lambda _: self.validate_fields()
         )
 
         options_unit_measurement = [
@@ -166,13 +166,13 @@ class CreateVehicles(BaseView):
             width=300,
             height=50,
             border_color=ft.colors.GREY,
-            on_change=self.validate_fields,
+            on_change=lambda _: self.validate_fields()
         )
 
         self.register_button = LocalizedElevatedButton(
             localization=self.loc,
             text_key="btn_cadastrar",
-            disabled=False,
+            disabled=True,
             bgcolor=ft.colors.BLUE_700,
             width=200,
             height=50,
@@ -200,7 +200,7 @@ class CreateVehicles(BaseView):
                                 spacing=10,
                                 controls=[
                                     # self.navigation_header_bar,
-                                    self.build_control_panel,
+                                    self.control_panel,
                                     ft.Divider(),
                                     ft.Container(content=self.vehicle_name_field, alignment=ft.alignment.center),
                                     ft.Container(content=self.vehicle_type_field, alignment=ft.alignment.center),
@@ -230,7 +230,7 @@ class CreateVehicles(BaseView):
             on_click=lambda _: self.page.go("/vehicles")
         )
 
-    def validate_fields(self, e=None):
+    def validate_fields(self):
         # Získame hodnoty z polí
         vehicle_nickname = self.vehicle_name_field.value
         vehicle_manufacterer = self.manufacturer_field.content.controls[0].value
@@ -305,7 +305,7 @@ class CreateVehicles(BaseView):
             localization=self.loc,
             text_key="marca",
             on_change=filter_manufacturers,
-            on_submit=self.validate_fields
+            on_submit=lambda _: self.validate_fields()
         )
 
         return ft.Container(

@@ -888,5 +888,8 @@
     "updata_senha": "Aktualizujte své heslo!",
     "secura_acaunta": "Zajistěte svůj účet",
     "tile_heames": "Informace o vozidle",
-    "erro_editar_vehic": "Vyskytl se problém při úpravách vozidla."
+    "tile_heames_user": "Informace o uživateli",
+    "erro_editar_vehic": "Vyskytl se problém při úpravách vozidla.",
+    "msg_no_vehdata": "Nebyla nalezena žádná data o vozidle.",
+    "msg_no_usrdata": "Nebyla nalezena žádná uživatelská data."
   }

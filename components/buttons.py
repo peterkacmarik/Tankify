@@ -200,28 +200,28 @@ class RegisterButtons:
     
     
     
-class ForgotPasswordButtons:
-    def __init__(self, page: ft.Page):
-        self.page = page
-        self.lang_manager = LanguageManager(self.page)
+# class ForgotPasswordButtons:
+#     def __init__(self, page: ft.Page):
+#         self.page = page
+#         self.lang_manager = LanguageManager(self.page)
 
-    def send_button(self, handle_forgot_password):
-        return ft.Container(
-            padding=ft.padding.only(left=20, top=10, right=20, bottom=0),
-            alignment=ft.alignment.center,
-            content=ft.ElevatedButton(
-                disabled=True,
-                bgcolor=ft.colors.BLUE_700,
-                text=self.lang_manager.get_translation("btn_enviar").upper(),
-                width=300,
-                height=50,
-                style=ft.ButtonStyle(
-                    overlay_color=ft.colors.BLUE_900,
-                ),
-                color=ft.colors.WHITE,
-                on_click=handle_forgot_password
-            )
-        )
+#     def send_button(self, handle_forgot_password):
+#         return ft.Container(
+#             padding=ft.padding.only(left=20, top=10, right=20, bottom=0),
+#             alignment=ft.alignment.center,
+#             content=ft.ElevatedButton(
+#                 disabled=True,
+#                 bgcolor=ft.colors.BLUE_700,
+#                 text=self.lang_manager.get_translation("btn_enviar").upper(),
+#                 width=300,
+#                 height=50,
+#                 style=ft.ButtonStyle(
+#                     overlay_color=ft.colors.BLUE_900,
+#                 ),
+#                 color=ft.colors.WHITE,
+#                 on_click=handle_forgot_password
+#             )
+#         )
         
     
     

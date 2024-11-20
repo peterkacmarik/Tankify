@@ -41,6 +41,7 @@ class RegisterView(BaseView):
         
         self.sub_register_text = ft.Container(
             alignment=ft.alignment.center,
+            padding=ft.padding.only(bottom=20),
             content=LocalizedText(
                 localization=self.loc,
                 text_key="comece_gerenciamento_gratuito",
@@ -112,25 +113,28 @@ class RegisterView(BaseView):
             ]
         )
         
-        self.line_separator = ft.Row(
-            alignment=ft.MainAxisAlignment.CENTER,
-            controls=[
-                ft.Container(
-                    bgcolor=ft.colors.GREY,
-                    height=0.5,
-                    width=130,
-                    # expand=True
-                ),
-                LocalizedText(
-                    localization=self.loc, text_key="ou"
-                ),
-                ft.Container(
-                    bgcolor=ft.colors.GREY,
-                    height=0.5,
-                    width=130,
-                    # expand=True
-                ),
-            ]
+        self.line_separator = ft.Container(
+            padding=ft.padding.only(top=10, bottom=20),
+            content=ft.Row(
+                alignment=ft.MainAxisAlignment.CENTER,
+                controls=[
+                    ft.Container(
+                        bgcolor=ft.colors.GREY,
+                        height=0.5,
+                        width=130,
+                        # expand=True
+                    ),
+                    LocalizedText(
+                        localization=self.loc, text_key="ou"
+                    ),
+                    ft.Container(
+                        bgcolor=ft.colors.GREY,
+                        height=0.5,
+                        width=130,
+                        # expand=True
+                    ),
+                ]
+            )
         )
         
         self.first_name_value = ft.Container(
@@ -146,6 +150,7 @@ class RegisterView(BaseView):
         )
         
         self.last_name_value = ft.Container(
+            padding=ft.padding.only(top=10, bottom=10),
             alignment=ft.alignment.center,
             content=LocalizedTextField(
                 localization=self.loc,
@@ -170,6 +175,7 @@ class RegisterView(BaseView):
         )
         
         self.password_value = ft.Container(
+            padding=ft.padding.only(top=10, bottom=10),
             alignment=ft.alignment.center,
             content=LocalizedTextField(
                 localization=self.loc,
@@ -200,6 +206,7 @@ class RegisterView(BaseView):
         # Registration button and cancel button
         self.registration = ft.Container(
             alignment=ft.alignment.center,
+            padding=ft.padding.only(top=10),
             content=LocalizedElevatedButton(
                 localization=self.loc,
                 text_key="criar_conta",
@@ -223,7 +230,20 @@ class RegisterView(BaseView):
                 style=ft.ButtonStyle(
                     overlay_color=ft.colors.TRANSPARENT,
                 ),
-                on_click=lambda e: self.page.go("/login")
+                on_click=lambda e: self.page.go("/login"),
+            )
+        )
+        
+        self.terms_of_use = ft.Container(
+            alignment=ft.alignment.center,
+            # bgcolor=ft.colors.SURFACE_VARIANT,
+            expand=True,
+            content=LocalizedTextButton(
+                localization=self.loc,
+                text_key="politica_privacidade_termos_uso",
+                style=ft.ButtonStyle(
+                    overlay_color=ft.colors.TRANSPARENT,
+                )
             )
         )
         
@@ -250,6 +270,12 @@ class RegisterView(BaseView):
                         self.cancel_button,
                     ],
                 )
+            ),
+            ft.Container(
+                expand=True,
+                alignment=ft.alignment.center,
+                # bgcolor=ft.colors.SURFACE_VARIANT,
+                content=self.terms_of_use
             )
         ]
 

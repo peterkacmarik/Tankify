@@ -12,8 +12,9 @@ from views.register_page import RegisterView
 from views.forgot_password import ForgotPasswordView
 from views.update_password import UpdatePasswordView
 
-# from views.users import UsersView
-# from views.create_user import CreateUsers
+from views.users import UsersView
+from views.create_user import CreateUsers
+from views.edit_user import EditUsersViews
 
 from views.vehicle import VehiclesViews
 from views.create_vehicle import CreateVehicles
@@ -57,10 +58,14 @@ def main(page: ft.Page):
             page.views.append(HistoryView(page, loc))
         # elif page.route == "/settings/general":
         #     page.views.append(SettingsView(page))
-        # elif page.route == "/users":
-        #     page.views.append(UsersView(page))
-        # elif page.route == "/user/create":
-        #     page.views.append(CreateUsers(page))
+        
+        elif page.route == "/users":
+            page.views.append(UsersView(page, loc))
+        elif page.route == "/user/create":
+            page.views.append(CreateUsers(page, loc))
+        elif page.route.startswith("/user/edit/"):
+            page.views.append(EditUsersViews(page, loc))
+            
         elif page.route == "/vehicles":
             page.views.append(VehiclesViews(page, loc))
         elif page.route == "/vehicle/create":
@@ -76,7 +81,7 @@ def main(page: ft.Page):
 
     page.on_route_change = route_change
     page.on_view_pop = view_pop
-    page.go("/login")
+    page.go("/user/edit")
     # page.go(page.route) # pri spusteni apk zobrazuje home page stranku
 
 

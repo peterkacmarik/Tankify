@@ -94,11 +94,12 @@ class SupabaseUser:
             return None
 
 
-    def delete_user_from_table_users(self, page: ft.Page, user_id):
+    def delete_user_from_table_users(self, page: ft.Page, user_id, loc, dialog):
         try:
             response = self.supabase.table("users").delete().eq("id", user_id).execute()
-            page.open(ft.SnackBar(content=ft.Text(self.lang_manager.get_translation("msg_excluir_sucesso"))))
-            page.go("/users")
+            page.open(ft.SnackBar(content=LocalizedText(localization=loc, text_key="msg_excluir_sucesso")))
+            # page.go("/users")
+            page.close(dialog)
             page.update()
 
             # return response
@@ -185,7 +186,7 @@ class SupabaseVehicle:
     def delete_vehicle_from_table_vehicles(self, page: ft.Page, vehicle_id, loc, dialog):
         try:
             response = self.supabase.table("vehicles").delete().eq("id", vehicle_id).execute()
-            page.open(ft.SnackBar(content=LocalizedText(loc, "msg_excluir_sucesso")))
+            page.open(ft.SnackBar(content=LocalizedText(localization=loc, text_key="msg_excluir_sucesso")))
             # page.go("/vehicles")
             page.close(dialog)
             page.update()
